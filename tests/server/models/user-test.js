@@ -20,11 +20,9 @@ describe('User model', function () {
             it('should exist', function () {
                 expect(User.generateSalt).to.be.a('function');
             });
-
             it('should return a random string basically', function () {
                 expect(User.generateSalt()).to.be.a('string');
             });
-
         });
 
         describe('encryptPassword', function () {
@@ -33,7 +31,6 @@ describe('User model', function () {
             var hashUpdateSpy;
             var hashDigestStub;
             beforeEach(function () {
-
                 cryptoStub = sinon.stub(require('crypto'), 'createHash');
 
                 hashUpdateSpy = sinon.spy();
@@ -43,7 +40,6 @@ describe('User model', function () {
                     update: hashUpdateSpy,
                     digest: hashDigestStub
                 });
-
             });
 
             afterEach(function () {
@@ -60,7 +56,6 @@ describe('User model', function () {
             });
 
             it('should call hash.update with the first and second argument', function () {
-
                 var pass = 'testing';
                 var salt = '1093jf10j23ej===12j';
 
@@ -72,10 +67,8 @@ describe('User model', function () {
             });
 
             it('should call hash.digest with hex and return the result', function () {
-
                 var x = {};
                 hashDigestStub.returns(x);
-
                 var e = User.encryptPassword('sdlkfj', 'asldkjflksf');
 
                 expect(hashDigestStub.calledWith('hex')).to.be.ok;
@@ -89,7 +82,6 @@ describe('User model', function () {
 
             var encryptSpy;
             var saltSpy;
-
             var createUser = function () {
                 return User.create({ email: 'obama@gmail.com', password: 'potus' });
             };
@@ -147,6 +139,56 @@ describe('User model', function () {
             });
         });
 
+    });
+
+    describe('email creation and validation', function () {
+
+        var buildBadEmail = User.build({ email: 'obamamail.com', password: 'potus', name: 'Mr. President'});
+        var buildWithNoEmail = User.build({ password: 'potus', name: 'Mr. President'});
+        var buildWithExistingEmail = User.build({ email: 'obama@gmail.com', password: '123', name: 'What Ever'});
+
+        beforeEach(function () {
+            return User.create({ email: 'obama@gmail.com', password: 'potus', name: 'Mr. President'});
+        })
+
+
+        it('rejects a bad email',
+           function (){
+                return buildBadEmail.validate()
+                .then(function(response){
+                    expect(response).to.be.an.instanceOf(Error);
+                })
+            }
+        );
+
+        it('email cannot be null', function () {
+             return buildWithNoEmail.validate()
+             .then(function(response) {
+                expect(response).to.be.an.instanceOf(Error);
+             })
+           })
+
+        it('email has to be unique', function () {
+           return buildWithExistingEmail.save()
+            .then(function (result) {
+                expect(result).to.not.exist;
+            })
+            .catch(function (err) {
+                expect(err).to.exist;
+                expect(err.errors[0].message).to.equal('email must be unique')
+            })
+        })
+
+    });
+    describe('name creation and validation', function(){
+        var buildWithNoName = User.build({ email: 'mynonameemail@gmail.com', password: '123'});
+
+        it('name cannot be null', function () {
+             return buildWithNoName.validate()
+             .then(function(response) {
+                expect(response).to.be.an.instanceOf(Error);
+             })
+           })
     });
 
 });
