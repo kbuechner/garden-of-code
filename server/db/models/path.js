@@ -10,12 +10,10 @@ module.exports = db.define('path', {
 	},
 	description: {
 		type: Sequelize.TEXT
-	}
-	// ,
-	// plantType: {
-	// 	type: Sequelize.STRING,
-	// },
-	// plantColor: {
-	// 	type: Sequelize.STRING
-	// }
+	},
+	plant: {
+		//changed to JSON because data storage as a string doesn't make much sense
+		//kb 8/12
+		type: Sequelize.JSON,
+	},
 });
