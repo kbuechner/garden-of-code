@@ -10,11 +10,9 @@ var Challenge = db.define('challenge', {
     },
     description: {
         type: Sequelize.TEXT,
-
     },
     examples: {
         type: Sequelize.TEXT,
-
     },
     level: {
         type: Sequelize.INTEGER,
