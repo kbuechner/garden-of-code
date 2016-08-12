@@ -86,7 +86,7 @@ var seedUserChallenges = function() {
         return UserChallenge.create(userChallengeObj);
     });
 
-    return Promise.all(creatingUsers);
+    return Promise.all(creatingUserChallenges);
 
 };
 var seedPaths = function() {
