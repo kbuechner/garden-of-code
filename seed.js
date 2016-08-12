@@ -78,9 +78,7 @@ var seedChallenges = function() {
 };
 var seedUserChallenges = function() {
 
-    var userChallenges = [{
-
-    }, ];
+    var userChallenges = [ ];
 
     var creatingUserChallenges = userChallenges.map(function(userChallengeObj) {
         return UserChallenge.create(userChallengeObj);
