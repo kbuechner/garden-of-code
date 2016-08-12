@@ -2,10 +2,8 @@
 var Sequelize = require('sequelize');
 
 var db = require('../_db');
-var User = db.require('./user')
-var Challenge = db.require('./challenge')
 
-var userChallenge = db.define('userChallenge', {
+var userChallenge = db.define('user_challenge', {
     complete: {
         type: Sequelize.BOOLEAN,
         defaultValue: false
