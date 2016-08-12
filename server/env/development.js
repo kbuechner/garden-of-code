@@ -1,6 +1,6 @@
 module.exports = {
   "DATABASE_URI": "postgres://localhost:5432/this_is_fine",
-  "SESSION_SECRET": "We can do it if we try",
+  "SESSION_SECRET": "Don't be such a freakin jabroni",
   "TWITTER": {
     "consumerKey": "INSERT_TWITTER_CONSUMER_KEY_HERE",
     "consumerSecret": "INSERT_TWITTER_CONSUMER_SECRET_HERE",
@@ -12,9 +12,9 @@ module.exports = {
     "callbackURL": "INSERT_FACEBOOK_CALLBACK_HERE"
   },
   "GOOGLE": {
-    "clientID": "INSERT_GOOGLE_CLIENTID_HERE",
-    "clientSecret": "INSERT_GOOGLE_CLIENT_SECRET_HERE",
-    "callbackURL": "INSERT_GOOGLE_CALLBACK_HERE"
+    "clientID": "574348732279-kkgtqk36q99800l06utovlnp9ji8kvnk.apps.googleusercontent.com",
+    "clientSecret": "mHz1NOi51oD55wKiWaThsEQZ",
+    "callbackURL": "http://tiny.cc/qarwdy"
   },
   "LOGGING": true
 };
