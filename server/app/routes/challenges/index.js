@@ -20,7 +20,7 @@ function runDocker(req, res) {
 function dockerHelloWorld(req, res) {
 	let exeFile = 'docker';
 	let args = ['run', '--rm', '--user=netuser', '--net=none', '--cap-drop', 'all', 
-				'meredithroman/thisisfine:v1', 'node', 'main.js']
+				'meredithroman/thisisfine:node', 'node', 'main.js']
 	child_process.execFile(exeFile, args,
 		{timeout: TIMEOUT_SECS * 1000,
 		maxBuffer: 5000 * 1024,
