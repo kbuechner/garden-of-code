@@ -1,5 +1,9 @@
-let _ = process.argv[2];
+const child_process = require('child_process');
 
-/*let code = eval(_);*/
+let argv = require('minimist')(process.argv.slice(2));
+let code = argv.code;
 
-module.exports = _;
+child_process.exec('code=' + '"' + code + '"' + ' ./node_modules/mocha/bin/mocha --grep "Hello World"', function (err, sdout) {
+	if (err) console.log(err);
+	else console.log(sdout);
+});
