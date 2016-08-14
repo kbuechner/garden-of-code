@@ -17,22 +17,27 @@
 </nav> -->
 
 
-
 <md-nav-bar nav-bar-aria-label="navigation links">
-	<!-- TO DO:
-    // add ui-sref-active or md-selected-nav-item
-    -->
-	<md-nav-item md-nav-sref="{{ item.state }}" ng-repeat="item in items">{{ item.label }}</md-nav-item>
+	<md-nav-item md-nav-sref="{{ item.state }}" ng-show="!item.auth || isLoggedIn()" ng-repeat="item in items">
+        {{ item.label }}
+    </md-nav-item>
+
 	<span flex></span>
-	<md-button ng-show="!user" ui-sref="login" class="md-raised">Login</md-button>
+    <!-- TO DO:
+    // buttons or nav items?
+    -->
+
+	<md-button ng-show="!user" ui-sref="login">Login</md-button>
 
 	<!-- TO DO:
     // set up routes and logic for signup and garden
     // adjust height imbalance on button text (related to use of ng-click vs ui-sref
     // add correct state names once those are written
      -->
-	<md-button ng-show="user" ng-click="logout()" class="md-raised">Logout</md-button>
-	<md-button ng-show="!user" ui-sref="signup" class="md-raised">Sign Up</md-button>
-	<md-button ng-show="user" ui-sref="garden" class="md-raised">Garden</md-button>
+	<md-button ng-show="user" ng-click="logout()">Logout</md-button>
+	<md-button ng-show="!user" ui-sref="signup">Sign Up</md-button>
+	<md-button ng-show="user" ui-sref="garden">Garden</md-button>
 </md-nav-bar>
+
+
 
