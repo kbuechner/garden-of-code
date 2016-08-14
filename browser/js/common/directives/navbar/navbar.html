@@ -16,17 +16,16 @@
     </div>
 </nav> -->
 
-
 <md-nav-bar nav-bar-aria-label="navigation links">
 	<md-nav-item md-nav-sref="{{ item.state }}" ng-show="!item.auth || isLoggedIn()" ng-repeat="item in items">
         {{ item.label }}
     </md-nav-item>
 
 	<span flex></span>
+    
     <!-- TO DO:
     // buttons or nav items?
     -->
-
 	<md-button ng-show="!user" ui-sref="login">Login</md-button>
 
 	<!-- TO DO:
