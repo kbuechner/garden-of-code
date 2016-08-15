@@ -15,7 +15,6 @@ router.get('/',  function (req, res, next) {
 });
 
 router.get('/:userId', function (req, res, next) {
-  console.log(req.user,"baby.")
   if (req.user.id===+req.params.userId || req.user.isAdmin){
     User.findOne({where: {id: req.params.userId}})
     .then(function(user){
@@ -26,6 +25,14 @@ router.get('/:userId', function (req, res, next) {
   else{
     res.sendStatus(401);
   }
+});
+router.get('/username/:uName', function (req, res, next) {
+  User.findOne({where: {userName: {$iLike: req.params.uName}}})
+  .then(function(user){
+    if(user) {res.send(user); }
+    else {res.status(404).send('No user found') }
+  })
+  .catch(next);
 });
 
 // router.get('/:userId/challenges',utils.ensureAuthenticated,function(req,res,next){
