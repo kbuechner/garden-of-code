@@ -12,7 +12,8 @@ module.exports = function (app, db) {
     var googleCredentials = {
         clientID: googleConfig.clientID,
         clientSecret: googleConfig.clientSecret,
-        callbackURL: googleConfig.callbackURL
+        callbackURL: googleConfig.callbackURL,
+        scope: 'email profile'
     };
 
     var verifyCallback = function (accessToken, refreshToken, profile, done) {
@@ -52,9 +53,10 @@ module.exports = function (app, db) {
         ]
     }));
 
-    app.get('/auth/google/callback',
+    app.get('/auth/google/callback/*',
         passport.authenticate('google', {failureRedirect: '/login'}),
         function (req, res) {
+            console.log("####\n" + Object.keys(req)+"\n####\n")
             res.redirect('/');
         });
 
