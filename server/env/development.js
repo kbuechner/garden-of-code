@@ -14,7 +14,7 @@ module.exports = {
   "GOOGLE": {
     "clientID": "574348732279-kkgtqk36q99800l06utovlnp9ji8kvnk.apps.googleusercontent.com",
     "clientSecret": "mHz1NOi51oD55wKiWaThsEQZ",
-    "callbackURL": "http://tiny.cc/qarwdy"
+    "callbackURL": "http://goo.gl/nclvAS"
   },
   "LOGGING": true
 };

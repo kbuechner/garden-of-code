@@ -3,16 +3,20 @@ var router = require('express').Router();
 var User = require('../../../db/models/user');
 // var utils = require('./utils')
 
-// router.get('/', utils.ensureAdmin, function (req, res, next) {
-//   User.findAll()
-//   .then(function (userArr) {
-//     res.send(userArr)
-//   })
-//   .catch(next);
-// });
+router.get('/',  function (req, res, next) {
+  if (req.user.isAdmin)
+  {User.findAll()
+    .then(function (userArr) {
+      res.send(userArr)
+    })
+    .catch(next);
+  }
+  else res.sendStatus(403)
+});
 
 router.get('/:userId', function (req, res, next) {
-  if (req.user.id===req.params.userId || req.user.isAdmin){
+  console.log(req.user,"baby.")
+  if (req.user.id===+req.params.userId || req.user.isAdmin){
     User.findOne({where: {id: req.params.userId}})
     .then(function(user){
       res.send(user);
@@ -24,8 +28,8 @@ router.get('/:userId', function (req, res, next) {
   }
 });
 
-// router.get('/:userId/orderHistory',utils.ensureAuthenticated,function(req,res,next){
-//   Order.findAll({where: {userId: req.params.userId}})
+// router.get('/:userId/challenges',utils.ensureAuthenticated,function(req,res,next){
+//   Challenge.findAll({where: {userId: req.params.userId}})
 //   .then(function(orders){
 //     if(utils.ensureAdminOrSameUser(req,orders[0])){
 //       res.send(orders);
@@ -37,22 +41,33 @@ router.get('/:userId', function (req, res, next) {
 // });
 
 router.post('/', function (req, res, next) {
-  User.findOne({where: {email: req.body.email}})
+  console.log(Object.keys(req.body))
+  if (!req.body.name) {req.body.name = req.body.userName}
+  User.findOne({
+            $or: [
+                { email: req.body.email },
+                { userName: req.body.userName }
+          ]
+  })
   .then(function (user) {
-    if (user) {
+    if (user && user.email === req.body.email) {
       res.status(409).send("There is already an account with this email");
+      return;
+    }
+    else if (user && user.userName === req.body.userName) {
+      res.status(409).send("This user name is already taken. Please choose again.");
       return;
     }
     else
       User.create(req.body)
-      .then(function(user){
-        res.status(201).send(user);
+      .then(function(createdUser){
+        res.status(201).send(createdUser);
       })
   })
 });
 
 router.put('/:userId', function (req, res, next) {
-  if (req.user.id===req.params.userId || req.user.isAdmin) {
+  if (req.user.id===+req.params.userId || req.user.isAdmin) {
     // console.log("PUT route >>>>>>> ",req.params.userId)
     User.findById(req.params.userId)
     .then(function(userInstance){
