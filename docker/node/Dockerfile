@@ -12,6 +12,8 @@ COPY ./contents /tmp/javascript
 RUN useradd netuser
 
 
+# bash
 # docker run -t -i --rm --user=netuser --net=none --cap-drop all meredithroman/thisisfine:node bash
 
+# build docker
 # docker build -t meredithroman/thisisfine:node ./docker/node

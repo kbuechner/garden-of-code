@@ -13,17 +13,3 @@ child_process.exec(command, function (err, sdout, sderr) {
 	if (sderr) console.log(sderr);
 	else console.log(sdout);
 });
-
-// runs test on docker, passes test
-// docker run --rm --user=netuser --net=none --cap-drop all meredithroman/thisisfine:node node main.js --testId=1 --code="function something () {return 'Hello World';};"
-
-
-// code="function something () {return 'Hello World';};" ./node_modules/mocha/bin/mocha --grep "Hello World"
-
-
-// runs test on docker, passes test
-// docker run --rm --user=netuser --net=none --cap-drop all meredithroman/thisisfine:node node main.js --code="function something () {return 'Hello World';};"
-
-// docker run -t -i --rm --user=netuser --net=none --cap-drop all meredithroman/thisisfine:node bash
-
-// docker build -t meredithroman/thisisfine:node ./docker/node
