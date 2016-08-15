@@ -9,7 +9,7 @@ app.config(function ($stateProvider) {
 });
 
 app.controller('SignupCtrl', function ($scope, $http, AuthService, $state) {
-// AuthService, $state,
+
     $scope.login = {};
     $scope.error = null;
 
