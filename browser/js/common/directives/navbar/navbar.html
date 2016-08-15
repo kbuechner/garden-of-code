@@ -17,7 +17,7 @@
 </nav> -->
 
 <md-nav-bar nav-bar-aria-label="navigation links">
-	<md-nav-item md-nav-sref="{{ item.state }}" ng-show="!item.auth || isLoggedIn()" ng-repeat="item in items">
+	<md-nav-item ng-repeat="item in items" md-nav-sref="{{ item.state }}" ng-show="!item.auth || isLoggedIn()">
         {{ item.label }}
     </md-nav-item>
 
@@ -34,7 +34,7 @@
     // add correct state names once those are written
      -->
 	<md-button ng-show="user" ng-click="logout()">Logout</md-button>
-	<md-button ng-show="!user" ui-sref="signup">Sign Up</md-button>
+	<md-button ng-show="!user" ui-sref="signup">Signup</md-button>
 	<md-button ng-show="user" ui-sref="garden">Garden</md-button>
 </md-nav-bar>
 
