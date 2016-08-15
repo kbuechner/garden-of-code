@@ -40,7 +40,7 @@ router.get('/:userId', function (req, res, next) {
 //   .catch(next);
 // });
 
-router.post('/', function (req, res, next) {
+router.post('/', function (req, res, next) {debugger;
   console.log(Object.keys(req.body))
   if (!req.body.name) {req.body.name = req.body.userName}
   User.findOne({
