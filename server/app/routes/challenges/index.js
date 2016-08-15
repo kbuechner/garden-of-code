@@ -27,8 +27,8 @@ function runDocker(req, res) {
 	let testId = req.params.id;
 	let exeFile = 'docker';
 	let imgName = "meredithroman/thisisfine:" + path
-	// this will only work for Node container
-	// will need to be more clever after I add Python
+	// this will only work for the Node container
+	// I will need to be more clever after I add Python
 	let args = ['run', '--rm', '--user=netuser', '--net=none', '--cap-drop', 'all', imgName, 
 				'node', 'main.js', '--testId=' + testId, '--code=' + code];
 	child_process.execFile(exeFile, args,
@@ -39,19 +39,6 @@ function runDocker(req, res) {
 
 }
 
-function dockerHelloWorld(req, res) {
-	let exeFile = 'docker';
-	let args = ['run', '--rm', '--user=netuser', '--net=none', '--cap-drop', 'all', 
-				'meredithroman/thisisfine:node', 'node', 'main.js']
-	child_process.execFile(exeFile, args,
-		{timeout: TIMEOUT_SECS * 1000,
-		maxBuffer: 5000 * 1024,
-		killSignal: 'SIGINT'},
-		postExecHandler.bind(null, res));
-}
-
 router.post('/:path/:id', runDocker);
-router.get('/', dockerHelloWorld);
-
 
 module.exports = router;
