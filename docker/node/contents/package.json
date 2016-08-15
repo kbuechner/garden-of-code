@@ -8,5 +8,10 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {}
+  "dependencies": {
+    "chai": "^3.5.0",
+    "minimist": "^1.2.0",
+    "mocha": "^3.0.2",
+    "test-console": "^1.0.0"
+  }
 }
