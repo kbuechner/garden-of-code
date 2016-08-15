@@ -9,7 +9,7 @@ let testId = argv.testId;
 let command = 'code=' + '"' + code + '"' + ' ./node_modules/mocha/bin/mocha --grep "' + TESTS[testId] +'"'
 
 child_process.exec(command, function (err, sdout, sderr) {
-	if (err) console.log('aaaaaaaaaaaaaa');
+	if (err) console.log(err);
 	if (sderr) console.log(sderr);
 	else console.log(sdout);
 });
