@@ -2,7 +2,12 @@ app.config(function ($stateProvider) {
 	$stateProvider.state('paths', {
 		url: '/paths',
 		templateUrl: 'js/paths/paths.html',
-		controller: 'PathsCtrl'
+		controller: 'PathsCtrl',
+		resolve: {
+			allPaths: function(PathsFactory) {
+				return PathsFactory.fetchAll();
+			}
+		}
     });
 });
 
@@ -13,9 +18,6 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('PathsCtrl', function($scope, PathsFactory){
-	PathsFactory.fetchAll()
-	.then(function(res){
-		$scope.tiles = res;
-	});
+app.controller('PathsCtrl', function($scope, allPaths){
+	$scope.tiles = allPaths;
 });
