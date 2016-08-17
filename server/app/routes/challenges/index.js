@@ -2,8 +2,21 @@
 const router = require('express').Router();
 const child_process = require('child_process');
 const util = require('util');
+const db = require('../../../db');
+const Challenge = db.model('challenge');
 const TIMEOUT_SECS = 5;
 const SUPPORTED_LANGUAGES = ['node']
+
+router.get('/:id', function (req, res, next) {
+	console.log('did I do this right?')
+	let challengeId = req.params.id;
+	Challenge.findById(challengeId)
+	.then(function (challenge) {
+		if (!challenge) res.status(404).send();
+		else res.send(challenge);
+	})
+	.catch(next);
+});
 
 router.post('/:language/:id', runDocker);
 
