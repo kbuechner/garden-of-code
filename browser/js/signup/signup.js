@@ -33,7 +33,7 @@ app.controller('SignupCtrl', function ($scope, $http, $state, SignupFactory) {
     $scope.signupFacebook = function () {
         SignupFactory.signupFacebook($scope.signup.userName)
         .then(function () {
-            $state.go('home');
+            $state.go('dashboard');
         }).catch($scope.errorHandler);
 
     }
@@ -45,7 +45,7 @@ app.controller('SignupCtrl', function ($scope, $http, $state, SignupFactory) {
         loginInfo.userName = $scope.signup.userName;
         return SignupFactory.createUser(loginInfo)
         .then(function () {
-            $state.go('home');
+            $state.go('dashboard');
         }).catch($scope.errorHandler);
     };
 
