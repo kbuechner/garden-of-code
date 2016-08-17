@@ -16,7 +16,6 @@ app.controller('SignupCtrl', function ($scope, $http, $state, SignupFactory) {
     $scope.checkUsername = function(username){
         $scope.dupeName = null;
         $scope.checkedName = null;
-        console.log('userName matches pattern: '+ /^[a-zA-Z0-9\-\_]+$/.test(username))
         if(!$scope.usernameForm.$valid) {
             throw new Error('Validation error.')
         }
