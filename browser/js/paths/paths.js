@@ -13,10 +13,9 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('PathsCtrl', function($scope){
-	$scope.tiles = [
-		{title: 'Arrays'},
-		{title: 'Strings'},
-		{title: 'Data Types'}
-	];
+app.controller('PathsCtrl', function($scope, PathsFactory){
+	PathsFactory.fetchAll()
+	.then(function(res){
+		$scope.tiles = res;
+	});
 });
