@@ -1,4 +1,4 @@
-<nav class="navbar navbar-static-top">
+<!-- <nav class="navbar navbar-static-top">
     <div class="container">
         <div class="navbar-header">
             <fullstack-logo></fullstack-logo>
@@ -14,4 +14,29 @@
             <a ng-click="logout()">Logout</a>
         </div>
     </div>
-</nav>
+</nav> -->
+
+<md-nav-bar nav-bar-aria-label="navigation links">
+	<md-nav-item ng-repeat="item in items" md-nav-sref="{{ item.state }}" ng-show="!item.auth || isLoggedIn()">
+        {{ item.label }}
+    </md-nav-item>
+
+	<span flex></span>
+    
+    <!-- TO DO:
+    // buttons or nav items?
+    -->
+	<md-button ng-show="!user" ui-sref="login">Login</md-button>
+
+	<!-- TO DO:
+    // set up routes and logic for signup and garden
+    // adjust height imbalance on button text (related to use of ng-click vs ui-sref
+    // add correct state names once those are written
+     -->
+	<md-button ng-show="user" ng-click="logout()">Logout</md-button>
+	<md-button ng-show="!user" ui-sref="signup">Signup</md-button>
+	<md-button ng-show="user" ui-sref="garden">Garden</md-button>
+</md-nav-bar>
+
+
+
