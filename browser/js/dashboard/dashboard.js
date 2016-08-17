@@ -2,11 +2,11 @@ app.config(function ($stateProvider) {
 	$stateProvider.state('dashboard', {
 		url: '/dashboard',
 		templateUrl: 'js/dashboard/dashboard.html',
-		controller: 'HomeCtrl'
+		controller: 'DashboardCtrl'
     });
 });
 
-app.controller('HomeCtrl', function ($scope) {
+app.controller('DashboardCtrl', function ($scope) {
 
 	$scope.tiles = buildGridModel({
 		//icon : "avatar:svg-",

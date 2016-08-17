@@ -53,3 +53,8 @@ app.run(function ($rootScope, AuthService, $state) {
     });
 
 });
+
+app.config(function($mdThemingProvider) {
+  $mdThemingProvider.theme('default')
+    .primaryPalette('light-green');
+});
