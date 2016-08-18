@@ -1,11 +1,16 @@
 app.factory('PathsFactory', function ($http) {
+	function getData(res) { return res.data};
 
     return {
     	fetchAll: function() {
     		return $http.get('/api/paths')
-    		.then(function(res) {
-    			return res.data;
-    		})
+    		.then(getData);
+    	},
+    	getChallenges: function(id) {
+    		var url = '/api/paths/' + id + '/challenges';
+    		
+    		return $http.get(url)
+    		.then(getData);
     	}
     }
 

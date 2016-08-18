@@ -15,7 +15,6 @@ router.param('pathId', function (req, res, next, id) {
 	Path.findById(id)
 	.then(function (path) {
 		if (!path) res.status(404).send();
-		//else res.send(path);
 		req.track = path; // req.path is already a thing so I'm confusingly calling a path a "track" here
 		next();
 		return null;
@@ -25,7 +24,6 @@ router.param('pathId', function (req, res, next, id) {
 
 router.get('/:pathId', function(req, res) {
 	res.send(req.track);
-	
 });
 
 router.get('/:pathId/challenges', function (req, res, next){

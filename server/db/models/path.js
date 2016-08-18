@@ -22,7 +22,8 @@ module.exports = db.define('path', {
 			return db.model('challenge').findAll({
 				where: {
 					pathId: this.id
-				}
+				},
+				order: ['level', asc]
 			})
 		}
 	}
