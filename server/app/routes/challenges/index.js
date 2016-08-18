@@ -36,7 +36,6 @@ function runDocker(req, res) {
 		maxBuffer: 5000 * 1024,
 		killSignal: 'SIGINT'},
 		postExecHandler.bind(null, res));
-
 }
 
 function postExecHandler(res, err, stdout) {
