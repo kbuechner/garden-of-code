@@ -15,7 +15,7 @@ app.config(function ($stateProvider) {
 	$stateProvider.state('path', {
 		url: '/paths/:id',
 		templateUrl: 'js/paths/path.html'
-    });
+	});
 });
 
 app.controller('PathsCtrl', function($scope, allPaths){

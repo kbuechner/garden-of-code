@@ -16,4 +16,14 @@ module.exports = db.define('path', {
 		//kb 8/12
 		type: Sequelize.JSON,
 	},
+}, {
+	instanceMethods: {
+		getChallenges: function() {
+			return db.model('challenge').findAll({
+				where: {
+					pathId: this.id
+				}
+			})
+		}
+	}
 });
