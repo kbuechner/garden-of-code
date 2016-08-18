@@ -21,7 +21,7 @@ router.post('/:language/:id', runDocker);
 
 function runDocker(req, res) {
 	let language = req.params.language;
-	if (!SUPPORTED_LANGUAGES.includes(language)) res.send(404);
+	if (SUPPORTED_LANGUAGES.indexOf(language) === -1) res.send(404);
 
 	let code = req.body.code;
 	let testId = req.params.id;
