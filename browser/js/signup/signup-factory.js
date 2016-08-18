@@ -22,12 +22,6 @@ app.factory('SignupFactory',function($http, AuthService){
         },
         signupFacebook: function (userName) {
             return $http.get('/auth/facebook')
-            .then(function(createdUser){
-                return $http.put('/api/users/'+ createdUser.id, {userName: userName})
-            })
-            .then(function (updatedUser) {
-                console.log(updatedUser.userName ,"created!")
-            })
             .catch(function(err) {console.log(err)} );
         }
 
