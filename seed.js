@@ -177,7 +177,95 @@ var seedPaths = function() {
                 "greeting": "Hello, undefined! You have 3 unread messages.",
                 "favoriteFruit": "strawberry"
             }],
-    },];
+    }, {
+        name: 'Strings',
+        description: 'Learn all about Strings!',
+        plant: [{
+                "id": "57ae219f14d63b53fc330d45",
+                "friends": [{
+                    "id": 0,
+                    "name": "Talley Hammond"
+                }, {
+                    "id": 1,
+                    "name": "Irene Finley"
+                }, {
+                    "id": 2,
+                    "name": "Margarita Richardson"
+                }],
+                "greeting": "Hello, undefined! You have 10 unread messages.",
+                "favoriteFruit": "strawberry"
+            }, {
+                "id": "57ae219f759685658d2573ec",
+                "friends": [{
+                    "id": 0,
+                    "name": "Hensley Nguyen"
+                }, {
+                    "id": 1,
+                    "name": "Helga Grimes"
+                }, {
+                    "id": 2,
+                    "name": "Hannah Workman"
+                }],
+                "greeting": "Hello, undefined! You have 8 unread messages.",
+                "favoriteFruit": "apple"
+            }, {
+                "id": "57ae219f2328cb7ecb70ec07",
+                "friends": [{
+                    "id": 0,
+                    "name": "Turner Alvarez"
+                }, {
+                    "id": 1,
+                    "name": "Edwina Britt"
+                }, {
+                    "id": 2,
+                    "name": "Greer Hubbard"
+                }],
+                "greeting": "Hello, undefined! You have 1 unread messages.",
+                "favoriteFruit": "strawberry"
+            }, {
+                "id": "57ae219f71d9abb335354334",
+                "friends": [{
+                    "id": 0,
+                    "name": "Laura Barr"
+                }, {
+                    "id": 1,
+                    "name": "Tyler Conway"
+                }, {
+                    "id": 2,
+                    "name": "Howell Berger"
+                }],
+                "greeting": "Hello, undefined! You have 7 unread messages.",
+                "favoriteFruit": "strawberry"
+            }, {
+                "id": "57ae219f94f9191d6b2aa465",
+                "friends": [{
+                    "id": 0,
+                    "name": "Mcmahon Roberson"
+                }, {
+                    "id": 1,
+                    "name": "Gail Casey"
+                }, {
+                    "id": 2,
+                    "name": "Nancy Kaufman"
+                }],
+                "greeting": "Hello, undefined! You have 10 unread messages.",
+                "favoriteFruit": "apple"
+            }, {
+                "id": "57ae219f4e8f821700c089ed",
+                "friends": [{
+                    "id": 0,
+                    "name": "Essie Torres"
+                }, {
+                    "id": 1,
+                    "name": "Danielle Barber"
+                }, {
+                    "id": 2,
+                    "name": "Boone Hickman"
+                }],
+                "greeting": "Hello, undefined! You have 3 unread messages.",
+                "favoriteFruit": "strawberry"
+            }],
+    }];
 
     var creatingPaths = paths.map(function(pathObj) {
         return Path.create(pathObj);
