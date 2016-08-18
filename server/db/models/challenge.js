@@ -8,6 +8,10 @@ var Challenge = db.define('challenge', {
         type: Sequelize.STRING,
         allowNull: false
     },
+    language: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
     description: {
         type: Sequelize.TEXT,
     },
