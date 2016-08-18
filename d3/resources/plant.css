@@ -3,8 +3,8 @@
 }
 
 .node circle {
-  fill: #fff;
-  stroke: steelblue;
+  fill: #bbe81b;
+  stroke: #3cc995;
   stroke-width: 1.5px;
 }
 
@@ -14,6 +14,6 @@
 
 .link {
   fill: none;
-  stroke: #ccc;
-  stroke-width: 1.5px;
+  stroke: #168168;
+  stroke-width: 3px;
 }
