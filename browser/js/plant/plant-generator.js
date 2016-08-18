@@ -41,6 +41,12 @@ var i = 0;
 var tree = d3.layout.tree()
   .size([height, width]);
 var diagonal = d3.svg.diagonal()
+  .source(function(d){
+    return {"y": d.source.y, "x": d.source.x};
+  })
+  .target(function(d){
+    return {"x": d.target.x, "y": d.target.y}
+  })
   .projection(function(d) { return [d.x, d.y]; });
 var svg = d3.select("#plant").append("svg")
   .attr("width", width + margin.right + margin.left)
@@ -79,5 +85,8 @@ function update(source) {
   // Enter the links.
   link.enter().insert("path", "g")
     .attr("class", "link")
-    .attr("d", diagonal);
+    .attr("d", diagonal)
+    .transition()
+    .duration(750)
+    .delay(500)
 }

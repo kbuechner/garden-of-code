@@ -64,7 +64,7 @@ app.factory('PlantFactory', function ($http) {
 		  .size([height, width]);
 		var diagonal = d3.svg.diagonal()
 		  .projection(function(d) { return [d.x, d.y]; });
-		var svg = d3.select("#plant").append("svg")
+		var svg = d3.select("plant").append("svg")
 		  .attr("width", width + margin.right + margin.left)
 		  .attr("height", height + margin.top + margin.bottom)
 		  .append("g")
