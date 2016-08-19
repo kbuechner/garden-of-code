@@ -1,7 +1,7 @@
 .ace_editor {
-    height: calc(100vh - 300px);
-    width: 70vw;
-    font-size: 14px !important;
+    height: calc(100vh - 400px);
+    width: 98%;
+    font-size: 15px !important;
     font-family: 'Ubuntu Mono', "Lucida Console", Monaco, monospace !important;
     box-shadow: 3px 3px 10px lightgray;
     .ace_print-margin {
@@ -12,3 +12,21 @@
         z-index: 0;
     }
 }
+
+#ace_card {
+
+}
+
+#challenge-view md-card {
+    padding: 10px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    button {
+        margin-top: 10px ;
+        box-shadow: 1px 1px 3px lightgray;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+

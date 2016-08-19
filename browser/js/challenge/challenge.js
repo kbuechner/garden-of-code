@@ -14,7 +14,10 @@ app.controller('ChallengeCtrl', function ($scope, $stateParams, ChallengeFactory
 	.then(function (challenge) {
 		$scope.challenge = challenge;
 		$scope.runTests = function(code) {
-			ChallengeFactory.runTests(challenge.language, challenge.id, code);
+			ChallengeFactory.runTests(challenge.language, challenge.id, code)
+			.then(function(result){
+				$scope.results = result;
+			});
 		}
 	});
 
@@ -34,8 +37,8 @@ app.factory('ChallengeFactory', function ($http) {
 	factory.runTests = function (languageName, challengeId, challengeCode) {
 		return $http.post('/api/challenges/' + languageName + '/' + challengeId, {code: challengeCode})
 		.then(function (resp) {
-			console.log(resp.data);
-			challengeCode.results = resp.data;
+			// console.log(resp.data);
+			return resp.data;
 		});
 	}
 

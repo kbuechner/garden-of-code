@@ -1,15 +1,16 @@
-<section>
-	<div>
+<section id="challenge-view">
+	<md-card>
 		<div>Challenge Title: {{challenge.title}}</div>
 		<div>Challenge Language: {{challenge.language}}</div>
 		<div>Challenge Description: {{challenge.description}}</div>
 		<div>Examples: {{challenge.examples}}</div>
-	</div>
-	Enter Solution here: {{userCode}}
-	<form>
-		<button type="submit" ng-click="runTests(userCode)">Submit</button>
+	</md-card>
 
+	<md-card id="ace_card"><form>
+		<label>	Enter your solution below:</label>
 		<div ui-ace="{useWrapMode: true}" ng-model="userCode"></div>
-		Results: {{challenge.results}}
-	</form>
+		<md-button type="submit" ng-click="runTests(userCode)" class='deepBlue'>Submit</md-button>
+	</form></md-card>
+
+	<md-card>Results: {{results}}</md-card>
 </section>
