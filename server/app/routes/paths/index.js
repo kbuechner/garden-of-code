@@ -11,20 +11,28 @@ router.get('/', function(req, res, next) {
 	.catch(next)
 });
 
-router.get('/:id', function(req, res, next) {
-	let id = req.params.id;
+router.get('/:pathId', function(req, res, next) {
+	let id = req.params.pathId;
 	Path.findById(id)
 	.then(function (path) {
 		if (!path) res.status(404).send();
 		else res.send(path);
 	})
 	.catch(next);
+
+
 });
 
-// get all challenges by path
-	// api/paths/pathId (all of the challenges for the path)
-
-// get all paths
-	// api/paths/
+router.get('/:pathId/challenges', function (req, res, next){
+	Path.scope('allChallenges').findAll({
+		where: {
+			id: req.params.pathId
+		}
+	})
+	.then(function(path){
+		res.send(path)
+	})
+	.catch(next);
+});
 
 module.exports = router;
