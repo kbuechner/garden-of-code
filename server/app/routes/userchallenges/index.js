@@ -26,6 +26,39 @@ router.get('/:userId/challenges', function(req, res, next) {
     .catch(next);
 });
 
+router.get('/:userId/challenges/:challengeId', function(req, res, next){
+  UserChallenge.findAll({
+    where: {
+      userId: req.params.userId,
+      challengeId: req.params.challengeId
+    }
+  })
+  .then(function(challenge){
+    res.send(challenge)
+  })
+  .catch(next)
+})
+
+router.post('/:userId/challenges/:challengeId', function(req, res, next){
+  UserChallenge.findOrCreate({
+    where: {
+      userId: req.params.userId,
+      challengeId: req.params.challengeId
+    }
+  })
+  .then(function(challenge){
+    console.log(challenge)
+    // return challenge.update({
+    //   complete: req.body.complete,
+    //   userCode: req.body.userCode
+    //   })      
+    //   .then(function(challenge){
+    //       console.log(challenge.get({plain: true}))
+    //   })
+  })
+  .catch(next)
+})
+
 router.get('/:userId/path/:pathId', function(req, res, next) {
   UserChallenge.findAll({
     where: {
@@ -42,9 +75,32 @@ router.get('/:userId/path/:pathId', function(req, res, next) {
     })
     .catch(next);
 });
+//don't need as we are using findOrCreate
 
-router.post('/', function(req, res, next) {
-  
-})
+// router.put('/:id', function(req, res, next){
+//   UserChallenge.find({
+//     where: {
+//       userId: req.body.userId,
+//       challengeId: req.body.challengeId
+//     }
+//   })
+//   .then(function(challenge){
+//     if(!challenge){
+//       console.log("not found")
+//     }
+//     else
+//       return challenge.update({
+//         complete: req.body.complete,
+//         userCode: req.body.userCode
+//       })
+//       .then(function(challenge){
+//         console.log(challenge.get({plain: true}))
+//       })
+//   })
+//   .then(function(){
+//     return;
+//   })
+//   .catch(next)
+// })
 
 module.exports = router;
