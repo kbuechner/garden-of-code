@@ -10,21 +10,10 @@
 		<div ng-repeat="(key, value) in challenges | groupBy: 'level'">
 			<h3>Level {{ key }}</h3>
 			<md-list flex>
-				<md-list-item ng-repeat="challenge in value" ng-click="null">
-					<a  ui-sref="challenge({ id:challenge.id })">{{ challenge.title }}</a> 
+				<md-list-item ng-repeat="challenge in value" ui-sref="challenge({ id:challenge.id })">
+					{{ challenge.title }}
 				</md-list-item>
 			</ul>
 		</div>
-
-		<!-- <md-list flex>
-	        <md-subheader class="md-no-sticky">3 line item (with hover)</md-subheader>
-	        <md-list-item ng-repeat="challenge in challenges" ng-click="null">
-	          <div class="md-list-item-text" layout="column">
-	            <h3>{{ challenge.title }}</h3>
-	            <h4>{{ challenge.level }}</h4>
-	            <p>{{ challenge.description }}</p>
-	          </div>
-	        </md-list-item>
-        </md-list> -->
 	</div>
 </section>
