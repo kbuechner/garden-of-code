@@ -51,18 +51,21 @@ var seedChallenges = function() {
 
     var challenges = [{
         title: 'Add an element to an array.',
+        language: 'node',
         description: 'In Javascript, you can use several methods to add somthing to an array. here are some examples. Try it out yourself.',
         examples: 'use .push()',
         level: 1,
         pathId: 1
     },{
         title: 'Add an element to an array.',
+        language: 'node',
         description: 'In Javascript, you can use several methods to find somthing in an array. here are some examples. Try it out yourself.',
         examples: 'use .indexOf()',
         level: 1,
         pathId: 1
     },{
         title: 'remove an element to an array.',
+        language: 'node',
         description: 'In Javascript, you can use several methods to remove somthing from an array. here are some examples. Try it out yourself.',
         examples: 'use .pop()',
         level: 2,

@@ -1,0 +1,13 @@
+<section>
+	<div>
+		<div>Challenge Title: {{challenge.title}}</div>
+		<div>Challenge Language: {{challenge.language}}</div>
+		<div>Challenge Description: {{challenge.description}}</div>
+		<div>Examples: {{challenge.examples}}</div>
+	</div>
+	<form>
+		Enter Solution here: <input type="text" ng-model="challenge.code" />
+		<input type="submit" ng-click="runTests(challenge)">
+	</form>
+	Results: {{challenge.results}}
+</section>

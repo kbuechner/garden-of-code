@@ -10,7 +10,8 @@ var UserChallenge = require('./models/user-challenge');
 User.belongsToMany(Challenge, {through: UserChallenge});
 Challenge.belongsToMany(User, {through: UserChallenge});
 
-Challenge.belongsToMany(Path, {through: 'challenge_path'});
+//Challenge.belongsToMany(Path, {through: 'challenge_path'});
+Challenge.belongsTo(Path);
 Path.hasMany(Challenge);
 
 User.belongsToMany(Path, {through: 'user_path'});

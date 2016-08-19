@@ -1,0 +1,42 @@
+<form id="username-form" name="usernameForm" novalidate
+  ng-submit="usernameForm.$valid && checkUsername(signup.userName)">
+    <div class="form-group">
+        <label for="userName">Choose a username</label>
+        <input type="text" ng-model="signup.userName" id="userName" class="form-control"
+        placeholder="Enter a unique username" ng-change="clearChecked()" ng-pattern="/^[a-zA-Z0-9\-\_]+$/" required>
+
+        <button type="submit" class="btn btn-default" ng-hide="!dupeName && checkedName"
+            ng-disabled="usernameForm.$invalid">
+            Check Availability
+        </button>
+    </div>
+    <alert type="danger" ng-show="dupeName">{{ dupeName }}</alert>
+    <alert type="danger" ng-show="usernameForm.$error.pattern ">
+        Please use only letters, numbers, dash (-) and underscore (_). </alert>
+</form>
+
+<div ng-show="!dupeName && checkedName">
+    <h5>Great! The name {{signup.userName}} is available. To continue: </h5>
+    <img src="http://i.stack.imgur.com/ZW4QC.png"
+        ng-click="signupFacebook()" />
+    <h4>Or create an account below:</h4>
+</div>
+<form id="signup-form" name="signupForm" ng-show="!dupeName && checkedName"
+    ng-submit="signupForm.$valid && submitNewUser(signup)" novalidate>
+    <alert type="danger" ng-show="error">
+        {{ error }}
+    </alert>
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" ng-model="signup.name" class="form-control" id="name" placeholder="Your name (optional)">
+    </div>
+    <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="text" ng-model="signup.email" class="form-control" id="email" placeholder="Your email">
+    </div>
+    <div class="form-group">
+        <label for="signup-password">Password</label>
+        <input type="password" ng-model="signup.password" class="form-control" id="signup-password" placeholder="Password">
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>

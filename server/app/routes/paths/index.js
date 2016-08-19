@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
 	.catch(next)
 });
 
-router.param('pathId', function (req, res, next, id) {
+/*router.param('pathId', function (req, res, next, id) {
 	Path.findById(id)
 	.then(function (path) {
 		if (!path) res.status(404).send();
@@ -20,18 +20,37 @@ router.param('pathId', function (req, res, next, id) {
 		return null;
 	})
 	.catch(next);
-})
+})*/
 
-router.get('/:pathId', function(req, res) {
-	res.send(req.track);
+router.get('/:pathId', function(req, res, next) {
+	let id = req.params.pathId;
+	Path.findById(id)
+	.then(function (path) {
+		if (!path) res.status(404).send();
+		else res.send(path);
+	})
+	.catch(next);
+
+
 });
 
 router.get('/:pathId/challenges', function (req, res, next){
-	req.track.getChallenges()
+	/*req.track.allChallenges()
 	.then(function (challenges) {
 		res.json(challenges);
 	})
+	.catch(next);*/
+
+	Path.scope('allChallenges').findAll({
+		where: {
+			id: req.params.pathId
+		}
+	})
+	.then(function(path){
+		res.send(path)
+	})
 	.catch(next);
+
 })
 
 // get all challenges by path

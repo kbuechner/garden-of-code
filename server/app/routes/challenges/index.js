@@ -8,7 +8,6 @@ const TIMEOUT_SECS = 5;
 const SUPPORTED_LANGUAGES = ['node']
 
 router.get('/:id', function (req, res, next) {
-	console.log('did I do this right?')
 	let challengeId = req.params.id;
 	Challenge.findById(challengeId)
 	.then(function (challenge) {
@@ -21,9 +20,8 @@ router.get('/:id', function (req, res, next) {
 router.post('/:language/:id', runDocker);
 
 function runDocker(req, res) {
-	
 	let language = req.params.language;
-	if (!SUPPORTED_LANGUAGES.includes(language)) res.send(404);
+	if (SUPPORTED_LANGUAGES.indexOf(language) === -1) res.send(404);
 
 	let code = req.body.code;
 	let testId = req.params.id;

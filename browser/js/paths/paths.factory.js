@@ -10,7 +10,9 @@ app.factory('PathsFactory', function ($http) {
     		var url = '/api/paths/' + id + '/challenges';
     		
     		return $http.get(url)
-    		.then(getData);
+    		.then(function(res){
+    			return res.data[0];
+    		});
     	}
     }
 

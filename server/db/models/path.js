@@ -17,14 +17,24 @@ module.exports = db.define('path', {
 		type: Sequelize.JSON,
 	},
 }, {
-	instanceMethods: {
-		getChallenges: function() {
+	scopes: {
+		allChallenges: () => ({ // function form lets us use to-be-defined models
+	      	include: [{
+		        model: db.model('challenge')
+			}]
+		})
+	}
+	/*instanceMethods: {
+		allChallenges: function() {
 			return db.model('challenge').findAll({
 				where: {
 					pathId: this.id
 				},
-				order: ['level', asc]
+				include: [{
+					model: db.model('path')
+				}],
+				order: [['level']]
 			})
 		}
-	}
+	}*/
 });
