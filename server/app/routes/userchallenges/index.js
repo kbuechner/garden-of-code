@@ -8,10 +8,10 @@ var Promise = require('bluebird')
 
 router.get('/', function(req, res, next) {
   UserChallenge.findAll()
-    .then(function(userChallenges) {
-      res.send(userChallenges)
-    })
-    .catch(next);
+  .then(function(userChallenges) {
+    res.send(userChallenges)
+  })
+  .catch(next);
 });
 
 router.get('/:userId/challenges', function(req, res, next) {
@@ -46,20 +46,20 @@ router.post('/:userId/challenges/:challengeId', function(req, res, next){
       challengeId: req.params.challengeId
     }
   })
-  .then(function(challenge){
-    console.log(challenge)
-    // return challenge.update({
-    //   complete: req.body.complete,
-    //   userCode: req.body.userCode
-    //   })      
-    //   .then(function(challenge){
-    //       console.log(challenge.get({plain: true}))
-    //   })
+  .then(function (challenge){
+    // find or create returns an array containing the instance 
+    challenge = challenge[0]
+    return challenge.update(req.body)
+  })
+  .then(function (challenge){
+    res.send(challenge);
   })
   .catch(next)
 })
 
-router.get('/:userId/path/:pathId', function(req, res, next) {
+// view all challenges I've done in a path
+// this doesn't work yet
+/*router.get('/:userId/path/:pathId', function(req, res, next) {
   UserChallenge.findAll({
     where: {
       userId: req.params.userId,
@@ -74,33 +74,6 @@ router.get('/:userId/path/:pathId', function(req, res, next) {
       }
     })
     .catch(next);
-});
-//don't need as we are using findOrCreate
-
-// router.put('/:id', function(req, res, next){
-//   UserChallenge.find({
-//     where: {
-//       userId: req.body.userId,
-//       challengeId: req.body.challengeId
-//     }
-//   })
-//   .then(function(challenge){
-//     if(!challenge){
-//       console.log("not found")
-//     }
-//     else
-//       return challenge.update({
-//         complete: req.body.complete,
-//         userCode: req.body.userCode
-//       })
-//       .then(function(challenge){
-//         console.log(challenge.get({plain: true}))
-//       })
-//   })
-//   .then(function(){
-//     return;
-//   })
-//   .catch(next)
-// })
+});*/
 
 module.exports = router;
