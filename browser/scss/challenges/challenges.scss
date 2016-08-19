@@ -24,17 +24,14 @@
     }
     md-card {
         padding: 5px 10px 5px 10px;
-        button {
-            margin-top: 10px;
-            padding-left: 35px;
-            padding-right: 35px;
-        }
         md-card-header {
             margin: -10px -10px 0px -10px;
             background-color: lighten(rgb(139,195,74),35%)
         }
+        #btn1, #btn2 {
+            padding-left: 36px;
+            padding-right: 36px;
+        }
 
     }
-
-
 

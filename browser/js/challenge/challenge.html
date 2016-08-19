@@ -10,7 +10,9 @@
 		<md-card id="ace_card" ><form>
 			<md-card-header>	Enter your solution below:</md-card-header>
 			<div ui-ace="{useWrapMode: true}" ng-model="userCode"></div>
-			<md-button type="submit" ng-click="runTests(userCode)" class='deepBlue'>Submit</md-button>
+			<md-button type="submit" ng-click="runTests(userCode)" class='deepBlue' id='btn1'>Submit</md-button>
+			<md-button type="save" ng-click="saveCode(userCode)" class='md-warn' id='btn2'>Save Code</md-button>
+			<span ng-show="saved">Your code has been saved!</span>
 		</form></md-card>
 
 		<md-card id="results-card">
