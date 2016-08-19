@@ -16,4 +16,12 @@ module.exports = db.define('path', {
 		//kb 8/12
 		type: Sequelize.JSON,
 	},
+}, {
+	scopes: {
+		allChallenges: () => ({ // function form lets us use to-be-defined models
+	      	include: [{
+		        model: db.model('challenge')
+			}]
+		})
+	}
 });
