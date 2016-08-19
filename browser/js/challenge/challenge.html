@@ -5,9 +5,11 @@
 		<div>Challenge Description: {{challenge.description}}</div>
 		<div>Examples: {{challenge.examples}}</div>
 	</div>
+	Enter Solution here: {{userCode}}
 	<form>
-		Enter Solution here: <input type="text" ng-model="challenge.code" />
-		<input type="submit" ng-click="runTests(challenge)">
+		<button type="submit" ng-click="runTests(userCode)">Submit</button>
+
+		<div ui-ace="{useWrapMode: true}" ng-model="userCode"></div>
+		Results: {{challenge.results}}
 	</form>
-	Results: {{challenge.results}}
 </section>
