@@ -1,16 +1,21 @@
-<section id="challenge-view">
-	<md-card>
-		<div>Challenge Title: {{challenge.title}}</div>
-		<div>Challenge Language: {{challenge.language}}</div>
-		<div>Challenge Description: {{challenge.description}}</div>
+<section id="challenge-view" layout="row" class="yellow">
+	<md-card flex="33" flex-xs="25">
+		<md-card-header>Challenge: {{challenge.title}}</md-card-header>
+		<div><small>Language: {{challenge.language}}</small></div>
+		<div>Description: {{challenge.description}}</div>
 		<div>Examples: {{challenge.examples}}</div>
 	</md-card>
 
-	<md-card id="ace_card"><form>
-		<label>	Enter your solution below:</label>
-		<div ui-ace="{useWrapMode: true}" ng-model="userCode"></div>
-		<md-button type="submit" ng-click="runTests(userCode)" class='deepBlue'>Submit</md-button>
-	</form></md-card>
+	<div flex="66" flex-xs="100">
+		<md-card id="ace_card" ><form>
+			<md-card-header>	Enter your solution below:</md-card-header>
+			<div ui-ace="{useWrapMode: true}" ng-model="userCode"></div>
+			<md-button type="submit" ng-click="runTests(userCode)" class='deepBlue'>Submit</md-button>
+		</form></md-card>
 
-	<md-card>Results: {{results}}</md-card>
+		<md-card id="results-card">
+			<md-card-header> Results:  </md-card-header>
+			{{results}}
+		</md-card>
+	</div>
 </section>
