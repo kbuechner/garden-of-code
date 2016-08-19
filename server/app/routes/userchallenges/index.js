@@ -2,7 +2,8 @@
 var router = require('express').Router();
 var User = require('../../../db/models/user');
 var Challenge = require('../../../db/models/challenge');
-var UserChallenge = require('../../../db/models/userchallenge')
+var UserChallenge = require('../../../db/models/user-challenge')
+var Path = require('../../../db/models/path')
 var Promise = require('bluebird')
 
 router.get('/', function(req, res, next) {
@@ -13,19 +14,19 @@ router.get('/', function(req, res, next) {
     .catch(next);
 });
 
-router.get('/users/:userId/challenges', function(req, res, next) {
+router.get('/:userId/challenges', function(req, res, next) {
   UserChallenge.findAll({
     where: {
       userId: req.params.userId
     }
   })
-    .then(function(userChallenges) {
-      res.send(userChallenges);
+    .then(function(challenges) {
+      res.send(challenges);
     })
     .catch(next);
 });
 
-router.get('/username/path/:id', function(req, res, next) {
+router.get('/:userId/path/:pathId', function(req, res, next) {
   UserChallenge.findAll({
     where: {
       userId: req.params.userId,
@@ -44,8 +45,6 @@ router.get('/username/path/:id', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
   
-  }
 })
-
 
 module.exports = router;

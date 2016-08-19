@@ -146,7 +146,20 @@ var seedChallenges = function() {
 };
 var seedUserChallenges = function() {
 
-    var userChallenges = [ ];
+    var userChallenges = [
+    {
+        complete: false,
+        userCode: "console.log('helo world')",
+        userId: 2,
+        challengeId: 1
+    },
+    {
+        complete: true,
+        userCode: "",
+        userId: 2,
+        challengeId: 2
+    }
+    ];
 
     var creatingUserChallenges = userChallenges.map(function(userChallengeObj) {
         return UserChallenge.create(userChallengeObj);
