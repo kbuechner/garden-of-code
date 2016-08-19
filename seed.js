@@ -49,27 +49,92 @@ var seedUsers = function() {
 };
 var seedChallenges = function() {
 
-    var challenges = [{
+    var challenges = [
+    {
+        title: 'Welcome to JavaScript!',
+        language: 'node',
+        description: 'JavaScript is the most commonly used programming language on the web. Learn all about it here!',
+        examples: null,
+        level: 1,
+        pathId: 1
+    },
+    {
+        title: 'Print a string to the console',
+        language: 'node',
+        description: 'Print "Hello World" to the console',
+        examples: 'Use console.log',
+        level: 2,
+        pathId: 1
+    },
+    {
+        title: 'Variables',
+        language: 'node',
+        description: 'Assign things to variables',
+        examples: 'x = 1',
+        level: 2,
+        pathId: 1
+    },
+    {
+        title: 'Numbers and Math',
+        language: 'node',
+        description: 'Do some math',
+        examples: 'Mathy math',
+        level: 2,
+        pathId: 1
+    },
+    {
+        title: 'Functions',
+        language: 'node',
+        description: 'Functions with side effects',
+        examples: 'no examples for you',
+        level: 3,
+        pathId: 1
+    },
+    {
+        title: 'Functions that return values',
+        language: 'node',
+        description: 'Functions can return things',
+        examples: 'no examples here either',
+        level: 3,
+        pathId: 1
+    },
+    {
+        title: 'Assign the results of a function to a variable',
+        language: 'node',
+        description: 'Blah blah blah',
+        examples: 'blah blah',
+        level: 3,
+        pathId: 1
+    },
+    {
+        title: 'Booleans',
+        language: 'node',
+        description: 'True and False, 0 and 1, all that binary stuff',
+        examples: 'true & false',
+        level: 4,
+        pathId: 1
+    },
+    {
         title: 'Add an element to an array.',
         language: 'node',
         description: 'In Javascript, you can use several methods to add somthing to an array. here are some examples. Try it out yourself.',
         examples: 'use .push()',
         level: 1,
-        pathId: 1
+        pathId: 2
     },{
         title: 'Add an element to an array.',
         language: 'node',
         description: 'In Javascript, you can use several methods to find somthing in an array. here are some examples. Try it out yourself.',
         examples: 'use .indexOf()',
         level: 1,
-        pathId: 1
+        pathId: 2
     },{
         title: 'remove an element to an array.',
         language: 'node',
         description: 'In Javascript, you can use several methods to remove somthing from an array. here are some examples. Try it out yourself.',
         examples: 'use .pop()',
         level: 2,
-        pathId: 1
+        pathId: 2
     },];
 
     var creatingChallenges = challenges.map(function(challengeObj) {
@@ -93,6 +158,10 @@ var seedUserChallenges = function() {
 var seedPaths = function() {
 
     var paths = [{
+        name: 'JavaScript Basics',
+        description: 'Learn the basics of programming using JavaScript!',
+        plant: null // don't know how this works, don't need it right now
+    },{
         name: 'Arrays',
         description: 'Learn all about Arrays!',
         plant: [{
