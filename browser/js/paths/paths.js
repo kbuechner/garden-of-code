@@ -29,6 +29,6 @@ app.config(function ($stateProvider) {
 });
 
 app.controller('PathCtrl', function($scope, allChallenges){
-	$scope.pathName = allChallenges.name;
+	$scope.pathInfo = allChallenges;
 	$scope.challenges = allChallenges.challenges;
 });

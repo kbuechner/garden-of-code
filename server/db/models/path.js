@@ -24,17 +24,4 @@ module.exports = db.define('path', {
 			}]
 		})
 	}
-	/*instanceMethods: {
-		allChallenges: function() {
-			return db.model('challenge').findAll({
-				where: {
-					pathId: this.id
-				},
-				include: [{
-					model: db.model('path')
-				}],
-				order: [['level']]
-			})
-		}
-	}*/
 });
