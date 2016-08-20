@@ -10,6 +10,13 @@ app.controller('ChallengeCtrl', function ($scope, $stateParams, ChallengeFactory
 
 	let challengeId = $stateParams.id;
 
+	let editor = ace.edit("editor");
+	ace.config.loadModule('ace/ext/language_tools', function() {
+		editor.setTheme("ace/theme/clouds");
+		editor.getSession().setMode("ace/mode/javascript");
+		editor.setValue("the new text here");
+	});
+
 	AuthService.getLoggedInUser()
 	.then(function (user) {
 		$scope.user = user;
