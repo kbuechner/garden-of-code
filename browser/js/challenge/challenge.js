@@ -9,6 +9,12 @@ app.config(function ($stateProvider) {
 app.controller('ChallengeCtrl', function ($scope, $stateParams, ChallengeFactory, $timeout){
 
 	let id = $stateParams.id;
+	var editor = ace.edit("editor");
+		ace.config.loadModule('ace/ext/language_tools', function() {
+			editor.setTheme("ace/theme/clouds");
+			editor.getSession().setMode("ace/mode/javascript");
+			editor.setValue("the new text here");
+		});
 
 	ChallengeFactory.getChallenge(id)
 	.then(function (challenge) {
