@@ -16,7 +16,7 @@ app.controller('ChallengeCtrl', function ($scope, $stateParams, ChallengeFactory
 		$scope.runTests = function(code) {
 			ChallengeFactory.runTests(challenge.language, challenge.id, code)
 			.then(function(result){
-				$scope.results = result;
+				$scope.results = result.output;
 			});
 		};
 		return AuthService.getLoggedInUser()

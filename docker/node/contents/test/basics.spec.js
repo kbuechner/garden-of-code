@@ -1,6 +1,9 @@
 const expect = require('chai').expect;
 const stdout = require("test-console").stdout;
 
+// eval here, unless we're console logging
+if (!process.env.code.match(/console\.log/)) eval(process.env.code);
+
 // challenge solution:
 // console.log('Hello World');
 
@@ -26,8 +29,6 @@ describe('Hello World', function () {
 
 describe('Intro to Variables', function () {
 
-	eval(process.env.code);
-
 	it('variables have the correct values', function () {
 		expect(x).to.equal(1);
 		expect(y).to.equal(2);
@@ -40,8 +41,6 @@ describe('Intro to Variables', function () {
 // var plus = 2 + 2; var minus = 3 - 5; var times = 8 * 2; var divided = 12 / 6; var mod = 12 % 5;
 
 describe('Let\'s Do Some Math!', function () {
-
-	eval(process.env.code);
 
 	it('variables have the expected values', function () {
 		expect(plus).to.equal(2 + 2)
@@ -67,8 +66,6 @@ describe('Let\'s Do Some Math!', function () {
 
 describe('Functions with Side Effects', function () {
 
-	eval(process.env.code);
-
 	it('addOne function increments num', function () {
 		expect(num).to.equal(1);
 		addOne();
@@ -82,8 +79,6 @@ describe('Functions with Side Effects', function () {
 
 describe('Functions that Return Values', function () {
 
-	eval(process.env.code);
-
 	it('returns the string "Hello"', function () {
 		expect(returnsHello()).to.equal('Hello');
 	});
@@ -95,8 +90,6 @@ describe('Functions that Return Values', function () {
 
 describe('Assign the Results of a Function to a Variable', function () {
 
-	eval(process.env.code);
-
 	it('the variable is equal to the return value of the function', function () {
 		expect(returnsOne()).to.equal(one);
 	});
@@ -107,8 +100,6 @@ describe('Assign the Results of a Function to a Variable', function () {
 // var thisIsTrue = true; var thisIsFalse = false;
 
 describe('Booleans', function() {
-
-	eval(process.env.code);
 
 	it('true is true and false is false', function () {
 		expect(thisIsTrue).to.be.true;
