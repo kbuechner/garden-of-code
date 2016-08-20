@@ -17,19 +17,18 @@
 
 <div ng-show="!dupeName && checkedName">
     <h5>Great! The name {{signup.userName}} is available. To continue: </h5>
-    <img src="http://i.stack.imgur.com/ZW4QC.png"
-        ng-click="signupFacebook()" />
-    <h4>Or create an account below:</h4>
+    <!-- <img src="http://i.stack.imgur.com/ZW4QC.png" ng-click="signupFacebook()" />
+    <h4>Or create an account below:</h4> -->
 </div>
 <form id="signup-form" name="signupForm" ng-show="!dupeName && checkedName"
     ng-submit="signupForm.$valid && submitNewUser(signup)" novalidate>
     <alert type="danger" ng-show="error">
         {{ error }}
     </alert>
-    <div class="form-group">
+    <!-- <div class="form-group">
         <label for="name">Name</label>
         <input type="text" ng-model="signup.name" class="form-control" id="name" placeholder="Your name (optional)">
-    </div>
+    </div> -->
     <div class="form-group">
         <label for="email">Email address</label>
         <input type="text" ng-model="signup.email" class="form-control" id="email" placeholder="Your email">

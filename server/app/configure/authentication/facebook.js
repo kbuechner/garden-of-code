@@ -12,11 +12,12 @@ module.exports = function (app, db) {
         clientID: facebookConfig.clientID,
         clientSecret: facebookConfig.clientSecret,
         callbackURL: facebookConfig.callbackURL,
-        scope: 'profile,email'
+        scope: 'profile,email',
+        profileFields: ['id', 'emails', 'displayName']
     };
 
     var verifyCallback = function (accessToken, refreshToken, profile, done) {
-        console.log("FB PROFILE:",Object.keys(profile))
+        console.log("FB PROFILE:",profile)
         User.findOne({
                 where: {
                     facebook_id: profile.id
@@ -28,7 +29,7 @@ module.exports = function (app, db) {
                 } else {
                     return User.create({
                         facebook_id: profile.id,
-                        email: profile.email,
+                        email: profile.emails[0].value,
                         userName: profile.displayName
                     });
                 }
@@ -45,12 +46,22 @@ module.exports = function (app, db) {
 
     passport.use(new FacebookStrategy(facebookCredentials, verifyCallback));
 
-    app.get('/auth/facebook', passport.authenticate('facebook', { scope: 'email' } ));
+    var user;
+
+    app.get('/auth/facebook',
+        passport.authenticate('facebook', { scope: 'email' } )/*,*/
+        // function (req, res, next) {
+        //     user = req.query.uName;
+        //     next();
+        // }
+    );
 
     app.get('/auth/facebook/callback',
         passport.authenticate('facebook', {failureRedirect: '/login'}),
         function (req, res) {
-            // console.log('req: '+req+'\n###\nres: '+ res)
+            console.log('####### fb callback #######' + req.session.user )
+            console.log('-------- passed through -------' + user)
+            // User.update({userName: req.session.uName}, {where: {id: req.session.user.id}})
             res.redirect('/');
         });
 
