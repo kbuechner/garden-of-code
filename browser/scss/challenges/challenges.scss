@@ -1,0 +1,37 @@
+.ace_editor {
+    height: calc(100vh - 300px);
+    font-size: 14px !important;
+    font-family: 'Ubuntu Mono', "Lucida Console", Monaco, monospace !important;
+    box-shadow: 3px 3px 6px lightgray;
+    .ace_print-margin {
+        //removes vertical split line
+        display: none;
+    }
+    .ace-layer {
+        z-index: 0;
+    }
+}
+
+#results-card {
+    height: 150px;
+    max-height: calc(100vh - 200px);
+
+}
+
+#challenge-view
+    div {
+        padding: 0px 0px 5px 0px;
+    }
+    md-card {
+        padding: 5px 10px 5px 10px;
+        md-card-header {
+            margin: -10px -10px 0px -10px;
+            background-color: lighten(rgb(139,195,74),35%)
+        }
+        #btn1, #btn2 {
+            padding-left: 36px;
+            padding-right: 36px;
+        }
+
+    }
+
