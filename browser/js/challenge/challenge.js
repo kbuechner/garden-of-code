@@ -6,9 +6,15 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('ChallengeCtrl', function ($scope, $stateParams, ChallengeFactory, $timeout, AuthService, $sce){
+app.controller('ChallengeCtrl', function ($state, $scope, $stateParams, ChallengeFactory, $timeout, AuthService, $sce){
 
 	let challengeId = $stateParams.id;
+
+	// this sends me to the correct URL but doesn't update the page
+	// I will fix it on Monday
+	$scope.nextChallenge = function () {
+		$state.go('challenge', {id: ++$stateParams.id});
+	}
 
 	ChallengeFactory.getChallenge(challengeId)
 	.then(function (challenge) {
@@ -29,9 +35,8 @@ app.controller('ChallengeCtrl', function ($scope, $stateParams, ChallengeFactory
 		$scope.saveCode = function(code, completed) {
 			ChallengeFactory.saveCode($scope.challenge.id, user.id, code, completed)
 			.then(function (result){
-				if (result.status === 200) {
-					$scope.saved = true;
-				}
+				if (result.status === 200) $scope.saved = true;
+				$scope.complete = result.data.complete
 				$timeout(function () {$scope.saved = false}, 6000)
 			});
 		}
