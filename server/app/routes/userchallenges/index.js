@@ -58,22 +58,32 @@ router.post('/:userId/challenges/:challengeId', function(req, res, next){
 })
 
 // view all challenges I've done in a path
-// this doesn't work yet
-/*router.get('/:userId/path/:pathId', function(req, res, next) {
-  UserChallenge.findAll({
-    where: {
-      userId: req.params.userId,
-      pathId: req.params.pathId
-    }
-  })
-    .then(function(res) {
-      if (res) {
-        res.send(res.data);
-      } else {
-        res.status(404).send('This user has no active challenges for this path')
-      }
+router.get('/:userId/path/:pathId', function(req, res, next) {
+  Path.findOne({
+    where: {id: req.params.pathId},
+    include: [ Challenge ]
     })
-    .catch(next);
-});*/
+  .then(function (path) {
+    let userChallengePromises = path.challenges.map(function (challenge) {
+      return UserChallenge.findOne({
+        where: {
+          userId: req.params.userId,
+          challengeId: challenge.id
+        }
+      })
+    });
+    return Promise.all(userChallengePromises)
+  })
+  .then(function (userChallenges) {
+    // filter out some null objects
+    userChallenges = userChallenges.filter(function (usrChal) {
+      return usrChal;
+    });
+    if (userChallenges.length) res.send(userChallenges);
+    else res.status(404).send('This user has no active challenges for this path')
+  })
+  .catch(next);
+
+});
 
 module.exports = router;
