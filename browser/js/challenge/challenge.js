@@ -14,6 +14,7 @@ app.controller('ChallengeCtrl', function ($scope, $stateParams, ChallengeFactory
 	.then(function (challenge) {
 		$scope.challenge = challenge;
 		$scope.runTests = function(code) {
+			console.log(challenge.language, challenge.id);
 			ChallengeFactory.runTests(challenge.language, challenge.id, code)
 			.then(function(result){
 				let results = result.output.replace(/\n/g, "<br />");
@@ -70,7 +71,7 @@ app.factory('ChallengeFactory', function ($http) {
 	}
 
 	factory.saveCode = function(challengeId, userId, code) {
-		return $http.post('/api/userchallenges/' + userId + 
+		return $http.post('/api/userchallenges/' + userId +
 			'/challenges/' + challengeId, {userCode: code})
 	}
 

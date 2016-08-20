@@ -61,87 +61,85 @@ var seedChallenges = function() {
     {
         title: 'Print a string to the console',
         language: 'node',
-        description: 'Print "Hello World" to the console',
-        examples: 'Use console.log',
+        description: 'We can print information in the console by using console.log.  As your code gets more complex, logging is very useful for finding bugs in your program. \nTry it out: log out the phrase "Hello World"!',
+        examples: 'console.log("Message")',
         level: 2,
         pathId: 1
     },
     {
         title: 'Variables',
         language: 'node',
-        description: 'Assign things to variables',
-        examples: 'x = 1',
+        description: 'Variables are containers that hold values.  \nCreate three variables called x, y, and z.  The value of x should be the number 1; y should be 2; and z should have the word "foo".',
+        examples: 'var monkey = "Awesome"',
         level: 2,
         pathId: 1
     },
     {
         title: 'Numbers and Math',
         language: 'node',
-        description: 'Do some math',
+        description: 'JavaScript is good at math. \n\nDefine five variables: \n1) "plus" should add 2 + 2, \n2) "minus" should equal 3 - 5, \n3)"times" should be 8 * 2, \n4)"divided" should be 12/6 and \n5)"mod" (aka modulo) should equal the remainder of 12/5. (Hint: the symbol for modulo is %)',
         examples: 'Mathy math',
         level: 2,
         pathId: 1
     },
     {
-        title: 'Functions',
+        title: 'Functions with side effects',
         language: 'node',
-        description: 'Functions with side effects',
-        examples: 'no examples for you',
+        description: 'Functions have "side effects" if they change an outside value. \n\nStart by assigning the variable "num" the value of 1.  Then, write a function called "addOne" that increases num by 1 each time it is run.',
+        examples: 'var x = 1000; \nfunction makeXEqualZero() {\nx = 0; \n}',
         level: 3,
         pathId: 1
     },
     {
         title: 'Functions that return values',
         language: 'node',
-        description: 'Functions can return things',
-        examples: 'no examples here either',
+        description: 'Functions can return a value, which may be used in another part of your code.  \n\nWrite a function called "returnsHello" that returns the string "Hello".',
+        examples: 'function getOne() {\nreturn 1; \n}',
         level: 3,
         pathId: 1
     },
     {
-        title: 'Assign the results of a function to a variable',
+        title: 'Saving function results',
         language: 'node',
-        description: 'Blah blah blah',
-        examples: 'blah blah',
+        description: 'You can set a variable equal to a function - the variable\'s value will be whatever the function returns. \n\nCreate a variable called "one" and assign it a function that returns the number 1.  The variable will now equal 1!',
+        examples: 'var myAge = function () {\nlastYearsAge += 1; \n}',
         level: 3,
         pathId: 1
     },
     {
         title: 'Booleans',
         language: 'node',
-        description: 'True and False, 0 and 1, all that binary stuff',
-        examples: 'true & false',
+        description: 'The words "true" and "false" (without quotes) are special values in JavaScript called Booleans.  Create variables called "thisIsTrue" and "thisIsFalse" and assign them the values of true and false.',
+        examples: 'thisIsTrue should be true.',
         level: 4,
         pathId: 1
     },
     {
         title: 'Add an element to an array.',
         language: 'node',
-        description: 'In Javascript, you can use several methods to add somthing to an array. here are some examples. Try it out yourself.',
+        description: 'In Javascript, you can use several methods to add something to an array. here are some examples. Try it out yourself.',
         examples: 'use .push()',
         level: 1,
         pathId: 2
     },{
-        title: 'Add an element to an array.',
+        title: 'Find an element in an array.',
         language: 'node',
-        description: 'In Javascript, you can use several methods to find somthing in an array. here are some examples. Try it out yourself.',
+        description: 'In Javascript, you can use several methods to find something in an array. here are some examples. Try it out yourself.',
         examples: 'use .indexOf()',
         level: 1,
         pathId: 2
     },{
-        title: 'remove an element to an array.',
+        title: 'Remove an element from an array.',
         language: 'node',
-        description: 'In Javascript, you can use several methods to remove somthing from an array. here are some examples. Try it out yourself.',
-        examples: 'use .pop()',
+        description: 'In Javascript, you can use several methods to remove something from an array. here are some examples. Write a function that takes an array, removes the last element, and returns the new array.',
+        examples: 'Try .pop()',
         level: 2,
         pathId: 2
     },];
 
-    var creatingChallenges = challenges.map(function(challengeObj) {
-        return Challenge.create(challengeObj);
+    return Promise.mapSeries(challenges, function (challenge) {
+        return Challenge.create(challenge);
     });
-
-    return Promise.all(creatingChallenges);
 
 };
 var seedUserChallenges = function() {
