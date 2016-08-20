@@ -159,11 +159,9 @@ var seedUserChallenges = function() {
     }
     ];
 
-    var creatingUserChallenges = userChallenges.map(function(userChallengeObj) {
+    return Promise.map(userChallenges, function(userChallengeObj){
         return UserChallenge.create(userChallengeObj);
     });
-
-    return Promise.all(creatingUserChallenges);
 
 };
 var seedPaths = function() {
@@ -350,11 +348,9 @@ var seedPaths = function() {
             }],
     }];
 
-    var creatingPaths = paths.map(function(pathObj) {
+    return Promise.map(paths, function(pathObj) {
         return Path.create(pathObj);
     });
-
-    return Promise.all(creatingPaths);
 
 };
 
