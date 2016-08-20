@@ -16,9 +16,11 @@ app.controller('ChallengeCtrl', function ($scope, $stateParams, ChallengeFactory
 		$scope.runTests = function(code) {
 			ChallengeFactory.runTests(challenge.language, challenge.id, code)
 			.then(function(result){
-				let results = result.output.replace(/\n/g, "<br />");
-				$scope.results = $sce.trustAsHtml(results)
-				console.log($scope.results)
+				console.log(result)
+				let outputHTML = result.output.replace(/\n/g, "<br />");
+				result.output = $sce.trustAsHtml(outputHTML);
+				$scope.results = result;
+				/*$scope.saveCode(challenge.id, $scope.user.id, $scope.userCode);*/
 			});
 		};
 		return AuthService.getLoggedInUser()
@@ -38,7 +40,7 @@ app.controller('ChallengeCtrl', function ($scope, $stateParams, ChallengeFactory
 	.then(function () {
 		ChallengeFactory.getCode($scope.user.id, $scope.challenge.id)
 		.then(function (code) {
-			let loadText = code ? code : 'wedlhgfdlglkgflkdfkjglfdk';
+			let loadText = code ? code : '';
 
 			let editor = ace.edit("editor");
 			ace.config.loadModule('ace/ext/language_tools', function() {
