@@ -8,7 +8,6 @@ const TIMEOUT_SECS = 5;
 const SUPPORTED_LANGUAGES = ['node']
 
 router.get('/:id', function (req, res, next) {
-	console.log(req.user)
 	let challengeId = req.params.id;
 	Challenge.findById(challengeId)
 	.then(function (challenge) {
