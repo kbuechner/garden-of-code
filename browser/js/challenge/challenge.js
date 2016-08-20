@@ -16,19 +16,18 @@ app.controller('ChallengeCtrl', function ($scope, $stateParams, ChallengeFactory
 		$scope.runTests = function(code) {
 			ChallengeFactory.runTests(challenge.language, challenge.id, code)
 			.then(function(result){
-				console.log(result)
 				let outputHTML = result.output.replace(/\n/g, "<br />");
 				result.output = $sce.trustAsHtml(outputHTML);
 				$scope.results = result;
-				/*$scope.saveCode(challenge.id, $scope.user.id, $scope.userCode);*/
+				if (result.passed) $scope.saveCode($scope.userCode, result.passed);
 			});
 		};
 		return AuthService.getLoggedInUser()
 	})
 	.then(function (user) {
 		$scope.user = user;
-		$scope.saveCode = function(code) {
-			ChallengeFactory.saveCode($scope.challenge.id, user.id, code)
+		$scope.saveCode = function(code, completed) {
+			ChallengeFactory.saveCode($scope.challenge.id, user.id, code, completed)
 			.then(function (result){
 				if (result.status === 200) {
 					$scope.saved = true;
@@ -71,9 +70,10 @@ app.factory('ChallengeFactory', function ($http) {
 		});
 	}
 
-	factory.saveCode = function(challengeId, userId, code) {
+	factory.saveCode = function(challengeId, userId, code, completed) {
+		let complete = completed ? true : false;
 		return $http.post('/api/userchallenges/' + userId + 
-			'/challenges/' + challengeId, {userCode: code})
+			'/challenges/' + challengeId, {userCode: code, complete: complete})
 	}
 
 	factory.getCode = function (userId, challengeId) {
