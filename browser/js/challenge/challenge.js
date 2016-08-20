@@ -6,11 +6,16 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('ChallengeCtrl', function ($scope, $stateParams, ChallengeFactory, $timeout){
+app.controller('ChallengeCtrl', function ($scope, $stateParams, ChallengeFactory, $timeout, AuthService){
 
-	let id = $stateParams.id;
+	let challengeId = $stateParams.id;
 
-	ChallengeFactory.getChallenge(id)
+	AuthService.getLoggedInUser()
+	.then(function (user) {
+		$scope.user = user;
+	})
+
+	ChallengeFactory.getChallenge(challengeId)
 	.then(function (challenge) {
 		$scope.challenge = challenge;
 		$scope.runTests = function(code) {
@@ -19,11 +24,18 @@ app.controller('ChallengeCtrl', function ($scope, $stateParams, ChallengeFactory
 				$scope.results = result;
 			});
 		};
+		return AuthService.getLoggedInUser()
+	})
+	.then(function (user) {
+		$scope.user = user;
 		$scope.saveCode = function(code) {
-			ChallengeFactory.saveCode(challenge.id, code)
+			ChallengeFactory.saveCode($scope.challenge.id, user.id, code)
+			.then(function(result) {
+				console.log(result);
+			})
 			// .then(function(result){
-				$scope.saved = true;
-				$timeout(function () {$scope.saved = false}, 6000)
+				/*$scope.saved = true;
+				$timeout(function () {$scope.saved = false}, 6000)*/
 			// });
 		}
 	});
@@ -48,9 +60,9 @@ app.factory('ChallengeFactory', function ($http) {
 			return resp.data;
 		});
 	}
-	factory.saveCode = function(challengeId,code) {
-		console.log("we'll save the code some other time!")
-		return 1
+	factory.saveCode = function(challengeId, userId, code) {
+		return $http.post('/api/userchallenges/' + userId + 
+			'/challenges/' + challengeId, {userCode: code})
 	}
 	return factory;
 });
