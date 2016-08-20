@@ -6,7 +6,7 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('ChallengeCtrl', function ($scope, $stateParams, ChallengeFactory, $timeout, AuthService){
+app.controller('ChallengeCtrl', function ($scope, $stateParams, ChallengeFactory, $timeout, AuthService, $sce){
 
 	let challengeId = $stateParams.id;
 
@@ -16,7 +16,9 @@ app.controller('ChallengeCtrl', function ($scope, $stateParams, ChallengeFactory
 		$scope.runTests = function(code) {
 			ChallengeFactory.runTests(challenge.language, challenge.id, code)
 			.then(function(result){
-				$scope.results = result.output;
+				let results = result.output.replace(/\n/g, "<br />");
+				$scope.results = $sce.trustAsHtml(results)
+				console.log($scope.results)
 			});
 		};
 		return AuthService.getLoggedInUser()
