@@ -14,7 +14,6 @@ app.controller('ChallengeCtrl', function ($scope, $stateParams, ChallengeFactory
 	.then(function (challenge) {
 		$scope.challenge = challenge;
 		$scope.runTests = function(code) {
-			console.log(challenge.language, challenge.id);
 			ChallengeFactory.runTests(challenge.language, challenge.id, code)
 			.then(function(result){
 				let results = result.output.replace(/\n/g, "<br />");
