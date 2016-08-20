@@ -27,7 +27,7 @@ router.get('/:userId/challenges', function(req, res, next) {
 });
 
 router.get('/:userId/challenges/:challengeId', function(req, res, next){
-  UserChallenge.findAll({
+  UserChallenge.findOne({
     where: {
       userId: req.params.userId,
       challengeId: req.params.challengeId
