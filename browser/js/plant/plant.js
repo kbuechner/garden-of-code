@@ -1,63 +1,201 @@
-app.directive('plantDirective', function(){
+app.factory('PlantFactory', function() {
 	return {
-		restrict: 'E',
-		templateUrl: 'js/plant/plant.html'
+		getUserChallenge: function() {
+			return {
+				"name": "0",
+				"parent": "null",
+				"children": [{
+					"name:": "1",
+					"parent": "0",
+					"children": [{
+						"parent": "1",
+						"text": "Hello, World!",
+						"leafsize": "20"
+					}, {
+						"parent": "1",
+						"text": "Variables",
+						"leafsize": "20"
+					}, {
+						"name": "2",
+						"text": "",
+						"children": [{
+							"parent": "2",
+							"text": "Functions",
+							"leafsize": "15"
+						}, {
+							"name": "3",
+							"parent": "2",
+							"children": [{
+								"parent": "3",
+								"text": "Booleans",
+								"leafsize": "10"
+							}],
+							"text": "",
+							"leafsize": "0"
+						}, {
+							"parent": "2",
+							"text": "Returning values",
+							"leafsize": "15"
+						}, {
+							"parent": "2",
+							"text": "Functions and Variables",
+							"leafsize": "15"
+						}],
+						"leaf-size": "0"
+					}, {
+						"parent": "1",
+						"text": "Numbers and Math",
+						"leafsize": "20"
+					}],
+					"text": "Welcome to Javascript!",
+					"leafsize": "25"
+				}],
+				"text": "",
+				"leafsize": "0"
+			}
+		}
 	}
 })
 
-// app.config(function ($stateProvider) {
-// 	$stateProvider.state('plant', {
-// 		url: '/challenges/:id',
-// 		templateUrl: 'js/challenge/challenge.html',
-// 		controller: 'PlantCtrl'
-//     });
-// });
-// app.controller('PlantCtrl', function ($scope, $stateParams, ChallengeFactory, $timeout){
+app.directive('plantDirective', function(PlantFactory) {
+	return {
+		restrict: 'EA',
+		// scope: '=',
+		link: function(s, e, a) {
+			console.log("HERE'S PLANT FACTORY: ", PlantFactory.getUserChallenge());
+			var margin = {
+					top: 140,
+					right: 10,
+					bottom: 140,
+					left: 10
+				},
+				width = 240 - margin.left - margin.right,
+				height = 500 - margin.top - margin.bottom;
 
-// 	let id = $stateParams.id;
+			var orientation = {
+				"bottom-to-top": {
+					size: [width, height],
+					x: function(d) {
+						return d.x;
+					},
+					y: function(d) {
+						return height - d.y;
+					}
+				}
+			};
 
 
-// 	ChallengeFactory.getChallenge(id)
-// 	.then(function (challenge) {
-// 		$scope.challenge = challenge;
-// 		$scope.runTests = function(code) {
-// 			ChallengeFactory.runTests(challenge.language, challenge.id, code)
-// 			.then(function(result){
-// 				$scope.results = result;
-// 			});
-// 		};
-// 		$scope.saveCode = function(code) {
-// 			ChallengeFactory.saveCode(challenge.id, code)
-// 			// .then(function(result){
-// 				$scope.saved = true;
-// 				$timeout(function () {$scope.saved = false}, 6000)
-// 			// });
-// 		}
-// 	});
+			var svg = d3.select("body").selectAll("svg")
+				.data(d3.entries(orientation))
+				.enter().append("svg")
+				.attr("width", width + margin.left + margin.right)
+				.attr("height", height + margin.top + margin.bottom)
+				.append("g")
+				.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-// });
 
-// app.factory('ChallengeFactory', function ($http) {
 
-// 	let factory = {};
+			var root = {
+				"name": "0",
+				"parent": "null",
+				"children": [{
+					"name:": "1",
+					"parent": "0",
+					"children": [{
+						"parent": "1",
+						"text": "Hello, World!",
+						"leafsize": "20"
+					}, {
+						"parent": "1",
+						"text": "Variables",
+						"leafsize": "20"
+					}, {
+						"name": "2",
+						"text": "",
+						"children": [{
+							"parent": "2",
+							"text": "Functions",
+							"leafsize": "15"
+						}, {
+							"name": "3",
+							"parent": "2",
+							"children": [{
+								"parent": "3",
+								"text": "Booleans",
+								"leafsize": "10"
+							}],
+							"text": "",
+							"leafsize": "0"
+						}, {
+							"parent": "2",
+							"text": "Returning values",
+							"leafsize": "15"
+						}, {
+							"parent": "2",
+							"text": "Functions and Variables",
+							"leafsize": "15"
+						}],
+						"leaf-size": "0"
+					}, {
+						"parent": "1",
+						"text": "Numbers and Math",
+						"leafsize": "20"
+					}],
+					"text": "Welcome to Javascript!",
+					"leafsize": "25"
+				}],
+				"text": "",
+				"leafsize": "0"
+			}
 
-// 	factory.getChallenge = function (id) {
-// 		return $http.get('/api/challenges/' + id)
-// 		.then(function (resp) {
-// 			return resp.data;
-// 		});
-// 	}
+			svg.each(function(orientation) {
+				var svg = d3.select(this),
+					o = orientation.value;
 
-// 	factory.runTests = function (languageName, challengeId, challengeCode) {
-// 		return $http.post('/api/challenges/' + languageName + '/' + challengeId, {code: challengeCode})
-// 		.then(function (resp) {
-// 			// console.log(resp.data);
-// 			return resp.data;
-// 		});
-// 	}
-// 	factory.saveCode = function(challengeId,code) {
-// 		console.log("we'll save the code some other time!")
-// 		return 1
-// 	}
-// 	return factory;
-// });
+				// Compute the layout.
+				var tree = d3.layout.tree().size(o.size),
+					nodes = tree.nodes(root),
+					links = tree.links(nodes);
+
+				// Create the link lines.
+				svg.selectAll(".link")
+					.data(links)
+					.enter().append("path")
+					.attr("class", "link")
+					.attr("d", d3.svg.diagonal().projection(function(d) {
+						return [o.x(d), o.y(d)];
+					}));
+
+				// Create the node circles.
+
+				svg.selectAll(".node")
+					.data(nodes)
+					.enter().append("image")
+					.attr('xlink:href', '../../images/small_leaf.png')
+					.attr("height", function(d) {
+						return d.leafsize
+					})
+					.attr("width", function(d) {
+						return d.leafsize
+					})
+					.attr("x", o.x)
+					.attr("y", o.y)
+					.attr("transform", "translate(0, -10)");
+				svg.selectAll("text")
+					.data(nodes)
+					.enter()
+					.append("text")
+					.attr("x", o.x)
+					.attr("y", o.y)
+					.attr("transform", "translate(0, 20)")
+					.text(function(d) {
+						return d.text
+					});
+
+			});
+
+
+		},
+		templateUrl: 'js/plant/plant.html',
+	}
+})
