@@ -17,20 +17,21 @@ router.get('/:id', function (req, res, next) {
 	.catch(next);
 });
 
-router.post('/:language/:id', runDocker);
+router.post('/:language/', runDocker);
 
 function runDocker(req, res) {
 	let language = req.params.language;
 	if (SUPPORTED_LANGUAGES.indexOf(language) === -1) res.send(404);
 
 	let code = req.body.code;
-	let testId = req.params.id;
+	let testName = req.body.test;
+	/*let testId = req.params.id;*/
 	let exeFile = 'docker';
 	let imgName = "meredithroman/thisisfine:" + language
 	// this will only work for the Node container
 	// I will need to be more clever after I add Python
 	let args = ['run', '--rm', '--user=netuser', '--net=none', '--cap-drop', 'all', imgName, 
-				'node', 'main.js', '--testId=' + testId, '--code=' + code];
+				'node', 'main.js', '--testName=' + testName, '--code=' + code];
 	child_process.execFile(exeFile, args,
 		{timeout: TIMEOUT_SECS * 1000,
 		maxBuffer: 5000 * 1024,

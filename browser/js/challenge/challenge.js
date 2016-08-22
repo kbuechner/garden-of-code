@@ -31,8 +31,8 @@ app.controller('ChallengeCtrl', function ($state, $scope, $stateParams, challeng
 	$scope.challenge = challenge;
 	$scope.user = user;
 
-	$scope.runTests = function(code) {
-		ChallengeFactory.runTests(challenge.language, challenge.id, code)
+	$scope.runTests = function (usrCode) {
+		ChallengeFactory.runTests(challenge, usrCode)
 		.then(function(result){
 			let outputHTML = result.output.replace(/\n/g, "<br />");
 			result.output = $sce.trustAsHtml(outputHTML);
@@ -67,8 +67,8 @@ app.factory('ChallengeFactory', function ($http) {
 		});
 	}
 
-	factory.runTests = function (languageName, challengeId, challengeCode) {
-		return $http.post('/api/challenges/' + languageName + '/' + challengeId, {code: challengeCode})
+	factory.runTests = function (challenge, challengeCode) {
+		return $http.post('/api/challenges/' + challenge.language, {code: challengeCode, test: challenge.title})
 		.then(function (resp) {
 			return resp.data;
 		});
