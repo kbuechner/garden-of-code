@@ -67,8 +67,8 @@ var seedChallenges = function() {
     {
         title: 'Intro to Variables',
         language: 'node',
-        description: 'Variables are containers that hold values.  \nCreate three variables called x, y, and z.  The value of x should be the number 1; y should be 2; and z should have the word "foo".',
-        examples: 'var monkey = "Awesome";',
+        description: '<p>Variables are containers that hold values.</p><p>Create three variables called <code>x</code>, <code>y</code>, and <code>z</code>.  The value of <code>x</code> should be the number 1; <code>y</code> should be 2; and <code>z</code> should have the word "foo".</p>',
+        examples: '<code>var monkey = "Awesome";</code>',
         level: 2,
         pathId: 1
     },
@@ -143,15 +143,33 @@ var seedUserChallenges = function() {
 
     var userChallenges = [
     {
-        complete: false,
+        complete: true,
         userCode: "console.log('helo world')",
         userId: 2,
         challengeId: 1
     },
     {
         complete: true,
-        userCode: "",
+        userCode: "var x = 1; var y = 2; var z = 'foo'",
         userId: 2,
+        challengeId: 2
+    },
+    {
+        complete: false,
+        userCode: "var add = 'I have no idea what I am doing';",
+        userId: 2,
+        challengeId: 3
+    },
+    {
+        complete: true,
+        userCode: "console.log('Hello World')",
+        userId: 1,
+        challengeId: 1
+    },
+    {
+        complete: false,
+        userCode: "var huh = '???';",
+        userId: 1,
         challengeId: 2
     }
     ];
