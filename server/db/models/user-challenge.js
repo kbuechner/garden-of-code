@@ -15,6 +15,12 @@ var userChallenge = db.define('user_challenge', {
     userCode: {
         type: Sequelize.TEXT,
     },
+}, {
+    hooks: {
+        beforeUpdate: function(userchallenge) {
+            if (userchallenge.complete) userchallenge.dateCompleted = new Date().toString()
+        }
+    }
 });
 
 module.exports = userChallenge;
