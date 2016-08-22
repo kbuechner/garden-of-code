@@ -6,7 +6,7 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('DashboardCtrl', function ($scope) {
+app.controller('DashboardCtrl', function ($scope, DashboardFactory) {
 
 	$scope.tiles = buildGridModel({
 		//icon : "avatar:svg-",
