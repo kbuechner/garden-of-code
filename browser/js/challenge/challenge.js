@@ -2,37 +2,57 @@ app.config(function ($stateProvider) {
 	$stateProvider.state('challenge', {
 		url: '/challenges/:id',
 		templateUrl: 'js/challenge/challenge.html',
-		controller: 'ChallengeCtrl'
+		controller: 'ChallengeCtrl',
+		resolve: {
+			challenge: function(ChallengeFactory, $stateParams) {
+				return ChallengeFactory.getChallenge($stateParams.id);
+			},
+			user: function (AuthService) {
+				return AuthService.getLoggedInUser()
+			},
+			code: function (ChallengeFactory, challenge, user) {
+				return ChallengeFactory.getCode(user.id, challenge.id);
+			}
+		}
     });
 });
 
-app.controller('ChallengeCtrl', function ($scope, $stateParams, ChallengeFactory, $timeout){
+app.controller('ChallengeCtrl', function ($state, $scope, $stateParams, challenge, user, code, ChallengeFactory, $timeout, $sce){
 
-	let id = $stateParams.id;
-	var editor = ace.edit("editor");
-		ace.config.loadModule('ace/ext/language_tools', function() {
-			editor.setTheme("ace/theme/clouds");
-			editor.getSession().setMode("ace/mode/javascript");
-			editor.setValue("the new text here");
-		});
-
-	ChallengeFactory.getChallenge(id)
-	.then(function (challenge) {
-		$scope.challenge = challenge;
-		$scope.runTests = function(code) {
-			ChallengeFactory.runTests(challenge.language, challenge.id, code)
-			.then(function(result){
-				$scope.results = result;
-			});
-		};
-		$scope.saveCode = function(code) {
-			ChallengeFactory.saveCode(challenge.id, code)
-			// .then(function(result){
-				$scope.saved = true;
-				$timeout(function () {$scope.saved = false}, 6000)
-			// });
-		}
+	// editor config
+	let loadText = code ? code : '';
+	let editor = ace.edit("editor");
+	ace.config.loadModule('ace/ext/language_tools', function() {
+		editor.setTheme("ace/theme/clouds");
+		editor.getSession().setMode("ace/mode/javascript");
+		editor.setValue(loadText);
 	});
+
+	$scope.challenge = challenge;
+	$scope.user = user;
+
+	$scope.runTests = function (usrCode) {
+		ChallengeFactory.runTests(challenge, usrCode)
+		.then(function(result){
+			let outputHTML = result.output.replace(/\n/g, "<br />");
+			result.output = $sce.trustAsHtml(outputHTML);
+			$scope.results = result;
+			if (result.passed) $scope.saveCode($scope.userCode, result.passed);
+		});
+	};
+
+	$scope.nextChallenge = function () {
+		$state.go('challenge', {id: Number($stateParams.id) + 1});
+	}
+
+	$scope.saveCode = function(code, completed) {
+		ChallengeFactory.saveCode(challenge.id, user.id, code, completed)
+		.then(function (result){
+			if (result.status === 200) $scope.saved = true;
+			$scope.complete = result.data.complete
+			$timeout(function () {$scope.saved = false}, 6000)
+		});
+	}
 
 });
 
@@ -47,16 +67,26 @@ app.factory('ChallengeFactory', function ($http) {
 		});
 	}
 
-	factory.runTests = function (languageName, challengeId, challengeCode) {
-		return $http.post('/api/challenges/' + languageName + '/' + challengeId, {code: challengeCode})
+	factory.runTests = function (challenge, challengeCode) {
+		return $http.post('/api/challenges/' + challenge.language, {code: challengeCode, test: challenge.title})
 		.then(function (resp) {
-			// console.log(resp.data);
 			return resp.data;
 		});
 	}
-	factory.saveCode = function(challengeId,code) {
-		console.log("we'll save the code some other time!")
-		return 1
+
+	factory.saveCode = function(challengeId, userId, code, completed) {
+		let complete = completed ? true : false;
+		return $http.post('/api/userchallenges/' + userId + 
+			'/challenges/' + challengeId, {userCode: code, complete: complete})
 	}
+
+	factory.getCode = function (userId, challengeId) {
+		return $http.get('/api/userchallenges/' + userId + '/challenges/' + challengeId)
+		.then(function (resp) {
+			let code = resp.data.userCode;
+			return code;
+		})
+	}
+
 	return factory;
 });
