@@ -19,19 +19,24 @@
 }
 
 #challenge-view
+    {background-color: darken(#FFFBD1,7%)}
     div {
         padding: 0px 0px 5px 0px;
     }
     code {
         font-size: 1.2em;
         font-weight: 500;
-        color: #001144;
+        color: #113366;
     }
     md-card {
         padding: 5px 10px 5px 10px;
+        background-color: lighten(rgb(139,195,74),41%);
+        md-card {
+            background-color: white;
+        }
         md-card-header {
             margin: -10px -10px 0px -10px;
-            background-color: lighten(rgb(139,195,74),35%)
+            background-color: lighten(rgb(139,195,74),28%)
         }
         #btn1, #btn2 {
             padding-left: 36px;
@@ -40,3 +45,7 @@
 
     }
 
+.mono {
+    font-family: "Lucida Console", Monaco, monospace;
+    white-space: pre;
+}

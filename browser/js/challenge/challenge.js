@@ -32,6 +32,7 @@ app.controller('ChallengeCtrl', function ($state, $scope, $stateParams, challeng
 	$scope.challenge.description = $sce.trustAsHtml($scope.challenge.description);
 	$scope.challenge.examples = $sce.trustAsHtml($scope.challenge.examples);
 	$scope.user = user;
+	$scope.showHint = false;
 
 	$scope.runTests = function (usrCode) {
 		ChallengeFactory.runTests(challenge, usrCode)
@@ -54,6 +55,10 @@ app.controller('ChallengeCtrl', function ($state, $scope, $stateParams, challeng
 			$scope.complete = result.data.complete
 			$timeout(function () {$scope.saved = false}, 6000)
 		});
+	}
+
+	$scope.toggleHint = function() {
+		$scope.showHint = !$scope.showHint;
 	}
 
 });
