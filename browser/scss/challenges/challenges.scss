@@ -1,7 +1,7 @@
 .ace_editor {
-    height: calc(100vh - 300px);
+    height: calc(100vh - 325px);
     font-size: 14px !important;
-    font-family: 'Ubuntu Mono', "Lucida Console", Monaco, monospace !important;
+    font-family: "Ubuntu Mono", "Lucida Console", Monaco, monospace !important;
     box-shadow: 3px 3px 6px lightgray;
     .ace_print-margin {
         //removes vertical split line
@@ -13,20 +13,23 @@
 }
 
 #results-card {
-    height: 150px;
-    max-height: calc(100vh - 200px);
+    height: 140px;
+    max-height: calc(100vh - 300px);
+    margin-top: 11px;
 
 }
 
-#challenge-view
-    {background-color: darken(#FFFBD1,7%)}
+#challenge-view{
+        background-color: darken(#FFFBD1,7%);
+        height: 100%;
+
     div {
         padding: 0px 0px 5px 0px;
     }
     code {
         font-size: 1.2em;
         font-weight: 500;
-        color: #113366;
+        color: #335577;
     }
     md-card {
         padding: 5px 10px 5px 10px;
@@ -36,7 +39,7 @@
         }
         md-card-header {
             margin: -10px -10px 0px -10px;
-            background-color: lighten(rgb(139,195,74),28%)
+            background-color: lighten(rgb(139,195,74),25%)
         }
         #btn1, #btn2 {
             padding-left: 36px;
@@ -44,8 +47,8 @@
         }
 
     }
-
+}
 .mono {
-    font-family: 'Ubuntu Mono','Lucida Console', Monaco, monospace;
+    font-family: "Ubuntu Mono", "Lucida Console", Monaco, monospace !important;
     white-space: pre;
 }
