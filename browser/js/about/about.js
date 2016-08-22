@@ -1,6 +1,5 @@
 app.config(function ($stateProvider) {
 
-    // Register our *about* state.
     $stateProvider.state('about', {
         url: '/about',
         controller: 'AboutController',
@@ -10,7 +9,5 @@ app.config(function ($stateProvider) {
 });
 
 app.controller('AboutController', function ($scope, DevTeam) {
-	
 	$scope.developers = DevTeam;
-	console.log(DevTeam);
 });

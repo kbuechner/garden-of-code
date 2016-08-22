@@ -1,7 +1,7 @@
 <section id="challenge-view" layout="row" class="yellow">
 	<md-card flex="33" flex-xs="25">
 		<md-card-header>Challenge: {{challenge.title}}</md-card-header>
-		<div><small>Language: {{challenge.language}}</small></div>
+		<div>Language: {{challenge.language}}</div>
 		<div>Description: {{challenge.description}}</div>
 		<div>Examples: {{challenge.examples}}</div>
 		<div>Level: {{challenge.level}}</div>
@@ -22,14 +22,15 @@
 					ng-model="userCode" id="editor" ng-show="challenge.level !== 1"></div>
 
 			<md-button type="submit" ng-click="runTests(userCode)" class='deepBlue' id='btn1'>Submit</md-button>
-			<md-button type="save" ng-show="challenge.level !== 1" ng-click="saveCode(userCode)" class='md-warn' id='btn2'>Save Code</md-button>
+			<md-button type="save" ng-show="challenge.level !== 1&&!complete" ng-click="saveCode(userCode)" class='md-warn' id='btn2'>Save Code</md-button>
+			<md-button type="next" ng-show="complete" ng-click="nextChallenge()" class='deepBlue' id='btn2'>Next Challenge</md-button>
 			<span ng-show="saved">Your code has been saved!</span>
 		</form></md-card>
 
 		<md-card id="results-card" ng-show="challenge.level !== 1">
 			<md-card-header> Results:  </md-card-header>
 
-			{{results}}
+			<div ng-bind-html="results.output"></div>
 		</md-card>
 	</div>
 </section>
