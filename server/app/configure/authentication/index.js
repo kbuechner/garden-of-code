@@ -5,10 +5,10 @@ var passport = require('passport');
 var SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 var ENABLED_AUTH_STRATEGIES = [
-    'local',
-    //'twitter',
-    'facebook',
-    'google'
+    'local'
+    //, 'twitter'
+    //, 'facebook'
+    //, 'google'
 ];
 
 module.exports = function (app, db) {
