@@ -1,13 +1,14 @@
 const expect = require('chai').expect;
 const stdout = require("test-console").stdout;
 
-// eval here, unless we're console logging
-if (!process.env.code.match(/console\.log/)) eval(process.env.code);
+eval(process.env.code);
 
 // challenge solution:
 // console.log('Hello World');
 
-describe('Hello World', function () {
+/*describe('Hello World', function () {
+
+	eval(process.env.code);
 
 	let output = stdout.inspectSync(function() {
 		eval(process.env.code);
@@ -17,7 +18,7 @@ describe('Hello World', function () {
 		expect(output[0]).to.equal('Hello World\n');
 	});
 
-});
+});*/
 
 // challenge solution:
 // var x = 1; var y = 2; var z = 'foo';

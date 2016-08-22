@@ -58,16 +58,16 @@ var seedChallenges = function() {
         level: 1,
         pathId: 1
     },
-    {
-        title: 'Print a string to the console',
+    /*{
+        title: 'Hello World',
         language: 'node',
         description: 'Print "Hello World" to the console',
         examples: 'Use console.log',
         level: 2,
         pathId: 1
-    },
+    },*/
     {
-        title: 'Variables',
+        title: 'Intro to Variables',
         language: 'node',
         description: 'Assign things to variables',
         examples: 'x = 1',
@@ -75,7 +75,7 @@ var seedChallenges = function() {
         pathId: 1
     },
     {
-        title: 'Numbers and Math',
+        title: 'Let\'s Do Some Math!',
         language: 'node',
         description: 'Do some math',
         examples: 'Mathy math',
@@ -83,7 +83,15 @@ var seedChallenges = function() {
         pathId: 1
     },
     {
-        title: 'Functions',
+        title: 'Booleans',
+        language: 'node',
+        description: 'True and False, 0 and 1, all that binary stuff',
+        examples: 'true & false',
+        level: 2,
+        pathId: 1
+    },
+    {
+        title: 'Functions with Side Effects',
         language: 'node',
         description: 'Functions with side effects',
         examples: 'no examples for you',
@@ -91,7 +99,7 @@ var seedChallenges = function() {
         pathId: 1
     },
     {
-        title: 'Functions that return values',
+        title: 'Functions that Return Values',
         language: 'node',
         description: 'Functions can return things',
         examples: 'no examples here either',
@@ -99,19 +107,11 @@ var seedChallenges = function() {
         pathId: 1
     },
     {
-        title: 'Assign the results of a function to a variable',
+        title: 'Assign the Results of a Function to a Variable',
         language: 'node',
         description: 'Blah blah blah',
         examples: 'blah blah',
         level: 3,
-        pathId: 1
-    },
-    {
-        title: 'Booleans',
-        language: 'node',
-        description: 'True and False, 0 and 1, all that binary stuff',
-        examples: 'true & false',
-        level: 4,
         pathId: 1
     },
     {
