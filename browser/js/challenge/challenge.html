@@ -1,10 +1,15 @@
 <section id="challenge-view" layout="row" class="yellow">
 	<md-card flex="33" flex-xs="25">
 		<md-card-header>Challenge: {{challenge.title}}</md-card-header>
-		<div>Language: {{challenge.language}}</div>
-		<div>Description: {{challenge.description}}</div>
-		<div>Examples: {{challenge.examples}}</div>
-		<div>Level: {{challenge.level}}</div>
+		<md-card>Language: {{challenge.language}}</samp><span>Level {{challenge.level}}</span></md-card>
+		<md-card>Description: <p>{{challenge.description}}</p></md-card>
+
+		<md-card >
+			<md-card-header ng-hide="showHint" ng-click="toggleHint()">Show Hint</md-card-header>
+			<md-card-header ng-show="showHint" ng-click="toggleHint()">Hint:</md-card-header>
+			<p ng-show="showHint">{{challenge.examples}}</p>
+		</md-card>
+
 	</md-card>
 
 	<div flex="66" flex-xs="100">
