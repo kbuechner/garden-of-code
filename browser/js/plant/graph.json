@@ -1,0 +1,52 @@
+{
+    "name": "0",
+    "parent": "null",
+    "children": [{
+        "name:": "1",
+        "parent": "0",
+        "children": [{
+            "parent": "1",
+            "text": "Hello, World!",
+            "leafsize": "20"
+        },{
+            "parent": "1",
+            "text": "Variables",
+            "leafsize": "20"
+        },{
+            "name": "2",
+            "text": "",
+            "children": [{
+                "parent": "2",
+                "text": "Functions",
+                "leafsize": "15"
+            }, {
+                "name": "3",
+                "parent": "2",
+                "children": [{
+                  "parent": "3",
+                  "text": "Booleans",
+                  "leafsize": "10"
+                }],
+                "text": "",
+                "leafsize": "0"
+            },{
+                "parent": "2",
+                "text": "Returning values",
+                "leafsize": "15"
+            }, {
+                "parent": "2",
+                "text": "Functions and Variables",
+                "leafsize": "15"
+            }],
+            "leaf-size": "0"
+        },{
+            "parent": "1",
+            "text": "Numbers and Math",
+            "leafsize": "20"
+        }],
+        "text": "Welcome to Javascript!",
+        "leafsize": "25"
+    }],
+    "text": "",
+    "leafsize": "0"
+}
