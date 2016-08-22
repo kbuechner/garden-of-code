@@ -2,34 +2,38 @@ app.config(function ($stateProvider) {
 	$stateProvider.state('challenge', {
 		url: '/challenges/:id',
 		templateUrl: 'js/challenge/challenge.html',
-		controller: 'ChallengeCtrl'
+		controller: 'ChallengeCtrl',
+		resolve: {
+			challenge: function(ChallengeFactory, $stateParams) {
+				return ChallengeFactory.getChallenge($stateParams.id);
+			}
+		}
     });
 });
 
-app.controller('ChallengeCtrl', function ($state, $scope, $stateParams, ChallengeFactory, $timeout, AuthService, $sce){
+app.controller('ChallengeCtrl', function ($state, $scope, $stateParams, challenge, 
+										ChallengeFactory, $timeout, AuthService, $sce, $rootScope){
 
-	let challengeId = $stateParams.id;
-
-	// this sends me to the correct URL but doesn't update the page
-	// I will fix it on Monday
 	$scope.nextChallenge = function () {
-		$state.go('challenge', {id: ++$stateParams.id});
+		$state.go('challenge', {id: Number($stateParams.id) + 1});
 	}
 
-	ChallengeFactory.getChallenge(challengeId)
-	.then(function (challenge) {
-		$scope.challenge = challenge;
-		$scope.runTests = function(code) {
-			ChallengeFactory.runTests(challenge.language, challenge.id, code)
-			.then(function(result){
-				let outputHTML = result.output.replace(/\n/g, "<br />");
-				result.output = $sce.trustAsHtml(outputHTML);
-				$scope.results = result;
-				if (result.passed) $scope.saveCode($scope.userCode, result.passed);
-			});
-		};
-		return AuthService.getLoggedInUser()
-	})
+	
+	$scope.challenge = challenge;
+	$scope.runTests = function(code) {
+		ChallengeFactory.runTests(challenge.language, challenge.id, code)
+		.then(function(result){
+			let outputHTML = result.output.replace(/\n/g, "<br />");
+			result.output = $sce.trustAsHtml(outputHTML);
+			$scope.results = result;
+			if (result.passed) $scope.saveCode($scope.userCode, result.passed);
+		});
+	};
+
+	// resolve logged in user
+	// resolve code
+
+	AuthService.getLoggedInUser()
 	.then(function (user) {
 		$scope.user = user;
 		$scope.saveCode = function(code, completed) {
