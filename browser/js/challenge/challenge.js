@@ -9,12 +9,24 @@ app.config(function ($stateProvider) {
 			},
 			user: function (AuthService) {
 				return AuthService.getLoggedInUser()
+			},
+			code: function (ChallengeFactory, challenge, user) {
+				return ChallengeFactory.getCode(user.id, challenge.id);
 			}
 		}
     });
 });
 
-app.controller('ChallengeCtrl', function ($state, $scope, $stateParams, challenge, user, ChallengeFactory, $timeout, $sce){
+app.controller('ChallengeCtrl', function ($state, $scope, $stateParams, challenge, user, code, ChallengeFactory, $timeout, $sce){
+
+	// editor config
+	let loadText = code ? code : '';
+	let editor = ace.edit("editor");
+	ace.config.loadModule('ace/ext/language_tools', function() {
+		editor.setTheme("ace/theme/clouds");
+		editor.getSession().setMode("ace/mode/javascript");
+		editor.setValue(loadText);
+	});
 
 	$scope.challenge = challenge;
 	$scope.user = user;
@@ -41,18 +53,6 @@ app.controller('ChallengeCtrl', function ($state, $scope, $stateParams, challeng
 			$timeout(function () {$scope.saved = false}, 6000)
 		});
 	}
-
-	ChallengeFactory.getCode(user.id, challenge.id)
-	.then(function (code) {
-		let loadText = code ? code : '';
-
-		let editor = ace.edit("editor");
-		ace.config.loadModule('ace/ext/language_tools', function() {
-			editor.setTheme("ace/theme/clouds");
-			editor.getSession().setMode("ace/mode/javascript");
-			editor.setValue(loadText);
-		});
-	})
 
 });
 
