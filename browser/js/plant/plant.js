@@ -61,18 +61,22 @@ app.factory('PlantFactory', function($http) {
 	PlantFactory.getData = function(res){
 		return res;
 	}
-
+	PlantFactory.getChallenge = function (userId, challengeId) {
+		return $http.get('/api/userchallenges/' + userId + '/challenges/' + challengeId)
+		.then(getData(res))
+	}
 
 	PlantFactory.getAll = function(id){
-		var url = '/api/userchallenges/'
+		return $http.get('/api/userchallenges/' + userId + '/challenges')
+		.then(getData(res))
 	}
 
-	PlantFactory.getUserPath = function(id){
-		var url = '/api'
-	}
-
-	PlantFactory.getUserChallenge = function(challengeId){
-
+	PlantFactory.getUserPath = function(userId, pathId){
+		return $http.get('/api/userchallenges/' + userId + '/path/' + pathId)
+		.then(getData(res))
+		.then(function(data){
+			console.log(data)
+		})
 	}
 
 	PlantFactory.parseData = function(userChallenges) {
