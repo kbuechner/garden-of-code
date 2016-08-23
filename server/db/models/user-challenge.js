@@ -20,6 +20,20 @@ var userChallenge = db.define('user_challenge', {
         beforeUpdate: function(userchallenge) {
             if (userchallenge.complete) userchallenge.dateCompleted = new Date().toString()
         }
+    },
+    scopes: {
+        paths: {
+            include: [{
+                model: db.model('challenge'),
+                attributes: ['pathId'],
+                where: { challengeId: db.model('challenge').id }
+            }] 
+        }
+
+
+
+            
+    
     }
 });
 

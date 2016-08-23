@@ -8,6 +8,17 @@ app.config(function ($stateProvider) {
 
 app.controller('DashboardCtrl', function ($scope, DashboardFactory) {
 
+  DashboardFactory.getLatest()
+  .then(function(challenge){
+    $scope.latest = challenge;
+    console.log(challenge);
+  })
+
+
+
+
+
+
 	$scope.tiles = buildGridModel({
 		//icon : "avatar:svg-",
 		title: "Svg-",
