@@ -110,29 +110,63 @@ var seedChallenges = function() {
         description: 'You can set a variable equal to a function call - the variable\'s value will be whatever the function returns.</p> <p>Create a function called <code>getOne</code> that returns the number 1.</p> <p>Now declare a variable called <code>one</code> and assign it to the function call getOne().  The variable will now equal 1!',
         examples: '<code>var getAge = function () {<br>&nbsp;&nbsp;lastYearsAge += 1; <br>}</p> <p>var myAge = getAge();</code>',level: 3,
         pathId: 1
-    },
-    {
-        title: 'Add an element to an array.',
-        language: 'node',
-        description: 'In Javascript, you can use several methods to add something to an array. Here are some examples. Try it out yourself.',
-        examples: 'use <code>.push()</code>',
-        level: 1,
-        pathId: 2
     },{
-        title: 'Add an element to an array.',
+        title: 'Welcome to JavaScript Arrays',
         language: 'node',
-        description: 'In Javascript, you can use several methods to find something in an array. Here are some examples. Try it out yourself.',
-        examples: 'use <code>.indexOf()</code>',
+        description: '',
+        examples: '',
         level: 1,
-        pathId: 2
+        pathId: 2,
+        startCode: '[1, 2, 3, 4]\n\n'
     },{
-        title: 'remove an element to an array.',
+        title: 'Array.prototype.push',
         language: 'node',
-        description: 'In Javascript, you can use several methods to remove something from an array. Here are some examples. Try it out yourself.',
-        examples: 'use <code>.pop()</code>',
+        description: '',
+        examples: '',
         level: 2,
-        pathId: 2
-    },];
+        pathId: 2,
+        startCode: '[1, 2, 3, 4]\n\n'
+    },{
+        title: 'Array.prototype.pop',
+        language: 'node',
+        description: '',
+        examples: '',
+        level: 2,
+        pathId: 2,
+        startCode: '[1, 2, 3, 4]\n\n'
+    },{
+        title: 'Array.prototype.shift',
+        language: 'node',
+        description: '',
+        examples: '',
+        level: 2,
+        pathId: 2,
+        startCode: '[1, 2, 3, 4]\n\n'
+    },{
+        title: 'Array.prototype.concat',
+        language: 'node',
+        description: '',
+        examples: '',
+        level: 3,
+        pathId: 2,
+        startCode: '[1, 2, 3, 4]\n\n'
+    },{
+        title: 'Array.prototype.filter',
+        language: 'node',
+        description: '',
+        examples: '',
+        level: 3,
+        pathId: 2,
+        startCode: '[1, 2, 3, 4]\n\n'
+    },{
+        title: 'Array.prototype.forEach',
+        language: 'node',
+        description: '',
+        examples: '',
+        level: 3,
+        pathId: 2,
+        startCode: ''
+    }];
 
     return Promise.mapSeries(challenges, function (challenge) {
         return Challenge.create(challenge);
@@ -274,7 +308,41 @@ var seedPaths = function() {
                 "greeting": "Hello, undefined! You have 3 unread messages.",
                 "favoriteFruit": "strawberry"
             }],
-    }, {
+    }/*, {
+        name: 'Strings',
+        description: 'Learn all about Strings!',
+        plant: [{
+                "id": "57ae219f14d63b53fc330d45",
+                "friends": [{
+                    "id": 0,
+                    "name": "Talley Hammond"
+                }, {
+                    "id": 1,
+                    "name": "Irene Finley"
+                }, {
+                    "id": 2,
+                    "name": "Margarita Richardson"
+                }],
+                "greeting": "Hello, undefined! You have 10 unread messages.",
+                "favoriteFruit": "strawberry"
+            }, {
+                "id": "57ae219f759685658d2573ec",
+                "friends": [{
+                    "id": 0,
+                    "name": "Hensley Nguyen"
+                }, {
+                    "id": 1,
+                    "name": "Helga Grimes"
+                }, {
+                    "id": 2,
+                    "name": "Hannah Workman"
+                }],
+                "greeting": "Hello, undefined! You have 8 unread messages.",
+                "favoriteFruit": "apple"
+            }, {
+                "id": "57ae219f2328cb7ecb70ec07",
+                "friends": [{
+                    ", {
         name: 'Strings',
         description: 'Learn all about Strings!',
         plant: [{
@@ -362,7 +430,61 @@ var seedPaths = function() {
                 "greeting": "Hello, undefined! You have 3 unread messages.",
                 "favoriteFruit": "strawberry"
             }],
-    }];
+    }id": 0,
+                    "name": "Turner Alvarez"
+                }, {
+                    "id": 1,
+                    "name": "Edwina Britt"
+                }, {
+                    "id": 2,
+                    "name": "Greer Hubbard"
+                }],
+                "greeting": "Hello, undefined! You have 1 unread messages.",
+                "favoriteFruit": "strawberry"
+            }, {
+                "id": "57ae219f71d9abb335354334",
+                "friends": [{
+                    "id": 0,
+                    "name": "Laura Barr"
+                }, {
+                    "id": 1,
+                    "name": "Tyler Conway"
+                }, {
+                    "id": 2,
+                    "name": "Howell Berger"
+                }],
+                "greeting": "Hello, undefined! You have 7 unread messages.",
+                "favoriteFruit": "strawberry"
+            }, {
+                "id": "57ae219f94f9191d6b2aa465",
+                "friends": [{
+                    "id": 0,
+                    "name": "Mcmahon Roberson"
+                }, {
+                    "id": 1,
+                    "name": "Gail Casey"
+                }, {
+                    "id": 2,
+                    "name": "Nancy Kaufman"
+                }],
+                "greeting": "Hello, undefined! You have 10 unread messages.",
+                "favoriteFruit": "apple"
+            }, {
+                "id": "57ae219f4e8f821700c089ed",
+                "friends": [{
+                    "id": 0,
+                    "name": "Essie Torres"
+                }, {
+                    "id": 1,
+                    "name": "Danielle Barber"
+                }, {
+                    "id": 2,
+                    "name": "Boone Hickman"
+                }],
+                "greeting": "Hello, undefined! You have 3 unread messages.",
+                "favoriteFruit": "strawberry"
+            }],
+    }*/];
 
     return Promise.map(paths, function(pathObj) {
         return Path.create(pathObj);
