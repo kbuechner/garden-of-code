@@ -1,21 +1,3 @@
-<!-- <nav class="navbar navbar-static-top">
-    <div class="container">
-        <div class="navbar-header">
-            <fullstack-logo></fullstack-logo>
-        </div>
-        <ul class="nav navbar-nav">
-            <li ng-repeat="item in items" ng-show="!item.auth || isLoggedIn()">
-                <a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label }}</a>
-            </li>
-        </ul>
-        <button ng-show="!user" ui-sref="login" class="btn login-button">Login</button>
-        <div ng-show="user" class="welcome">
-            <span>Welcome, {{ user.email }}!</span>
-            <a ng-click="logout()">Logout</a>
-        </div>
-    </div>
-</nav> -->
-
 <md-nav-bar nav-bar-aria-label="navigation links">
     <md-nav-item md-nav-sref="dashboard" id="logo">
         <img src="/images/garden-of-code-logo-2.svg">
@@ -29,10 +11,6 @@
     <md-nav-item ng-show="!user" md-nav-sref="login">Login</md-nav-item>
     <md-nav-item ng-show="user" md-nav-click="logout()">Logout</md-nav-item>
     <md-nav-item ng-show="!user" md-nav-sref="signup">Signup</md-nav-item>
-
-<!-- 	<md-button ng-show="user" ng-click="logout()">Logout</md-button>
-	<md-button ng-show="!user" ui-sref="signup">Signup</md-button>
-	<md-button ng-show="user" ui-sref="garden">Garden</md-button> -->
 </md-nav-bar>
 
 
