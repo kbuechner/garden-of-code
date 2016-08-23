@@ -84,7 +84,7 @@ app.directive('plantDirective', function(PlantFactory) {
 					}
 				}
 			};
-
+///asl;fkja;sldkjf;asdkjf;aksdjf
 
 			var svg = d3.selectAll("#plant")
 				.data(d3.entries(orientation))
