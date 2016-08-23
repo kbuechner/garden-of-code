@@ -2,12 +2,12 @@
 	<md-card flex="33" flex-xs="25">
 		<md-card-header>Challenge: {{challenge.title}}</md-card-header>
 		<md-card>Language: {{challenge.language}}</samp><span>Level {{challenge.level}}</span></md-card>
-		<md-card>Description: <p>{{challenge.description}}</p></md-card>
+		<md-card><md-card-header>Description:</md-card-header> <p ng-bind-html="challenge.description"></p></md-card>
 
 		<md-card >
 			<md-card-header ng-hide="showHint" ng-click="toggleHint()">Show Hint</md-card-header>
 			<md-card-header ng-show="showHint" ng-click="toggleHint()">Hint:</md-card-header>
-			<p ng-show="showHint">{{challenge.examples}}</p>
+			<p ng-show="showHint" ng-bind-html="challenge.examples"></p>
 		</md-card>
 
 	</md-card>
