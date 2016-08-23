@@ -2,22 +2,22 @@ app.config(function ($stateProvider) {
 	$stateProvider.state('dashboard', {
 		url: '/dashboard',
 		templateUrl: 'js/dashboard/dashboard.html',
-		controller: 'DashboardCtrl'
-    });
+		controller: 'DashboardCtrl',
+    resolve: {
+      user: function (AuthService) {
+        return AuthService.getLoggedInUser()
+      },
+      latestChallenge: function (user, DashboardFactory) {
+        return DashboardFactory.getLatest(user.id);
+      }
+    }
+  });
 });
 
-app.controller('DashboardCtrl', function ($scope, DashboardFactory) {
+app.controller('DashboardCtrl', function ($scope, latestChallenge) {
 
-  DashboardFactory.getLatest()
-  .then(function(challenge){
-    $scope.latest = challenge;
-    console.log(challenge);
-  })
-
-
-
-
-
+  $scope.latestChallenge = latestChallenge;
+  console.log($scope.latestChallenge)
 
 	$scope.tiles = buildGridModel({
 		//icon : "avatar:svg-",

@@ -14,22 +14,6 @@ router.get('/', function(req, res, next) {
   .catch(next);
 });
 
-router.get('/latest', function(req, res, next) {
-  if(req.user){
-    UserChallenge.scope('paths').findOne({
-      where: {
-        userId: req.user.id,
-        complete: 'false'
-      },
-      order: [['updatedAt', 'DESC']]
-    })
-    .then(function(userChallenge) {
-      res.send(userChallenge)
-    })
-    .catch(next);
-  }
-})
-
 router.get('/:userId/challenges', function(req, res, next) {
   UserChallenge.findAll({
     where: {
