@@ -14,16 +14,23 @@ router.get('/', function(req, res, next) {
   .catch(next);
 });
 
+// add path
 router.get('/:userId/challenges', function(req, res, next) {
   UserChallenge.findAll({
     where: {
       userId: req.params.userId
-    }
+    },
+    include: [
+      {
+        model: Challenge,
+        include: [Path]
+      }
+    ]
   })
-    .then(function(challenges) {
-      res.send(challenges);
-    })
-    .catch(next);
+  .then(function(challenges) {
+    res.send(challenges);
+  })
+  .catch(next);
 });
 
 router.get('/:userId/challenges/:challengeId', function(req, res, next){
