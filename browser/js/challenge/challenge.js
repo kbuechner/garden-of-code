@@ -29,7 +29,10 @@ app.controller('ChallengeCtrl', function ($state, $scope, $stateParams, challeng
 	});
 
 	$scope.challenge = challenge;
+	$scope.challenge.description = $sce.trustAsHtml($scope.challenge.description);
+	$scope.challenge.examples = $sce.trustAsHtml($scope.challenge.examples);
 	$scope.user = user;
+	$scope.showHint = false;
 
 	$scope.runTests = function (usrCode) {
 		ChallengeFactory.runTests(challenge, usrCode)
@@ -54,6 +57,10 @@ app.controller('ChallengeCtrl', function ($state, $scope, $stateParams, challeng
 		});
 	}
 
+	$scope.toggleHint = function() {
+		$scope.showHint = !$scope.showHint;
+	}
+
 });
 
 app.factory('ChallengeFactory', function ($http) {
@@ -76,7 +83,7 @@ app.factory('ChallengeFactory', function ($http) {
 
 	factory.saveCode = function(challengeId, userId, code, completed) {
 		let complete = completed ? true : false;
-		return $http.post('/api/userchallenges/' + userId + 
+		return $http.post('/api/userchallenges/' + userId +
 			'/challenges/' + challengeId, {userCode: code, complete: complete})
 	}
 
