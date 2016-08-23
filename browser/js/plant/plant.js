@@ -1,77 +1,138 @@
-app.factory('PlantFactory', function() {
-	return {
-		getUserChallenge: function() {
-			return {
-				"name": "0",
-				"parent": "null",
-				"children": [{
-					"name:": "1",
-					"parent": "0",
-					"children": [{
-						"parent": "1",
-						"text": "Hello, World!",
-						"leafsize": "20"
-					}, {
-						"parent": "1",
-						"text": "Variables",
-						"leafsize": "20"
-					}, {
-						"name": "2",
-						"text": "",
-						"children": [{
-							"parent": "2",
-							"text": "Functions",
-							"leafsize": "15"
-						}, {
-							"name": "3",
-							"parent": "2",
-							"children": [{
-								"parent": "3",
-								"text": "Booleans",
-								"leafsize": "10"
-							}],
-							"text": "",
-							"leafsize": "0"
-						}, {
-							"parent": "2",
-							"text": "Returning values",
-							"leafsize": "15"
-						}, {
-							"parent": "2",
-							"text": "Functions and Variables",
-							"leafsize": "15"
-						}],
-						"leaf-size": "0"
-					}, {
-						"parent": "1",
-						"text": "Numbers and Math",
-						"leafsize": "20"
-					}],
-					"text": "Welcome to Javascript!",
-					"leafsize": "25"
-				}],
-				"text": "",
-				"leafsize": "0"
+app.factory('PlantFactory', function($http) {
+	var PlantFactory = {}
+	var root = {
+		name: "0",
+		parent: null,
+		children: [],
+		text: "",
+		imgSize: 0,
+		imgType: "leaf",
+		show: true,
+		level: 0
+	}
+	var firstStem = {
+		name: "1",
+		parent: "0",
+		children: [],
+		text: "",
+		imgSize: 0,
+		imgType: "leaf",
+		show: true,
+		level: 1
+	}
+	var secondStem = {
+		name: "2",
+		parent: "1",
+		children: [],
+		text: "",
+		imgSize: 0,
+		imgType: "leaf",
+		show: false,
+		level: 2
+	}
+	var thirdStem = {
+		name: "3",
+		parent: "2",
+		children: [],
+		text: "",
+		imgSize: 0,
+		imgType: "leaf",
+		show: false,
+		level: 3
+	}
+	var fourthStem = {
+		name: "4",
+		parent: "3",
+		children: [],
+		text: "",
+		imgSize: 0,
+		imgType: "leaf",
+		show: false,
+		level: 4
+	}
+	var blossomNode = {
+		name: "blossom",
+		text: "",
+		imgSize: 40,
+		imgType: "flower",
+		show: false,
+	}
+
+	PlantFactory.getData = function(res){
+		return res;
+	}
+
+
+	PlantFactory.getAll = function(id){
+		var url = '/api/userchallenges/'
+	}
+
+	PlantFactory.getUserPath = function(id){
+		var url = '/api'
+	}
+
+	PlantFactory.getUserChallenge = function(challengeId){
+
+	}
+
+	PlantFactory.parseData = function(userChallenges) {
+			var levelOne = [];
+			var levelTwo = [];
+			var levelThree = [];
+			var levelFour = [];
+			var treeObj = {};
+
+
+		function makeNode(challengeData, level) {
+			var returnObj = {}
+			returnObj.parent = level.toString(),
+			returnObj.text = challengeData.title;
+			returnObj.imgSize = (4 - level) * 7;
+			returnObj.imgType = "leaf",
+			returnObj.show = challengeData.complete;
+
+			return returnObj
+		}
+
+		for (var x = 0; x < userChallenges.length; x++) {
+			if (userChallenges[x].level === 1) {
+				firstStem.children.push(makeNode(userChallenges[x], 1))
+				if (x === userChallenges.length - 1) {
+					blossomNode.parent = "1"
+				}
+			} else if (userChallenges[x].level === 2) {
+				secondStem.children.push(makeNode(userChallenges[x], 2))
+
+				if (x === userChallenges.length - 1) {
+					blossomNode.parent = "2"
+				}
+			} else if (userChallenges[x].level === 3) {
+				thirdStem.children.push(makeNode(userChallenges[x], 3))
+
+				if (x === userChallenges.length - 1) {
+					blossomNode.parent = "3"
+				}
+			} else if (userChallenges[x].level === 4) {
+				fourthStem.children.push(makeNode(userChallenges[x], 4))
+
+				if (x === userChallenges.length - 1) {
+					blossomNode.parent = "3"
+				}
 			}
 		}
+	return angular.toJson(treeObj, true, 4)
 	}
-})
 
-app.directive('plantDirective', function(PlantFactory) {
-	return {
-		restrict: 'EA',
-		// scope: '=',
-		link: function(s, e, a) {
-			console.log("HERE'S PLANT FACTORY: ", PlantFactory.getUserChallenge());
+	PlantFactory.buildTree = function(challengeData) {
+		var margin = {
+			top: 40,
+			right: 10,
+			bottom: 40,
+			left: 10
+		}
 
-			var margin = {
-					top: 140,
-					right: 10,
-					bottom: 140,
-					left: 10
-				},
-				width = 240 - margin.left - margin.right,
-				height = 500 - margin.top - margin.bottom;
+			var width = 240 - margin.left - margin.right;
+			var height = 400 - margin.top - margin.bottom;
 
 			var orientation = {
 				"bottom-to-top": {
@@ -84,9 +145,8 @@ app.directive('plantDirective', function(PlantFactory) {
 					}
 				}
 			};
-///asl;fkja;sldkjf;asdkjf;aksdjf
 
-			var svg = d3.selectAll("#plant")
+			var svg = d3.select("#plant").selectAll("svg")
 				.data(d3.entries(orientation))
 				.enter().append("svg")
 				.attr("width", width + margin.left + margin.right)
@@ -94,18 +154,79 @@ app.directive('plantDirective', function(PlantFactory) {
 				.append("g")
 				.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+			var root = {
+				"name": "0",
+				"parent": "null",
+				"children": [{
+					"name:": "1",
+					"parent": "0",
+					"children": [{
+						"parent": "1",
+						"text": "Hello, World!",
+						"imgSize": "50",
+						"imgType": "leaf"
+					}, {
+						"parent": "1",
+						"text": "Variables",
+						"imgSize": "50",
+						"imgType": "leaf"
+					}, {
 
-
-			var root = PlantFactory.getUserChallenge()
+						"parent": "1",
+						"name": "2",
+						"text": "",
+						"children": [{
+							"parent": "2",
+							"text": "Functions",
+							"imgSize": "35",
+						"imgType": "leaf"
+						}, {
+							"name": "3",
+							"parent": "2",
+							"children": [{
+								"parent": "3",
+								"text": "Booleans",
+								"imgSize": "60",
+						"imgType": "flower"
+							}],
+							"text": "",
+							"imgSize": "0",
+						"imgType": "leaf"
+						}, {
+							"parent": "2",
+							"text": "Returning values",
+							"imgSize": "35",
+						"imgType": "leaf"
+						}, {
+							"parent": "2",
+							"text": "Functions and Variables",
+							"imgSize": "35",
+						"imgType": "leaf"
+						}],
+						"imgSize": "0"
+					}, {
+						"parent": "1",
+						"text": "Numbers and Math",
+						"imgSize": "50",
+						"imgType": "leaf"
+					}],
+					"text": "Welcome to Javascript!",
+					"imgSize": "65",
+						"imgType": "leaf"
+				}],
+				"text": "",
+				"imgSize": "0",
+						"imgType": "leaf"
+			}
 
 			svg.each(function(orientation) {
-				var svg = d3.select(this),
-					o = orientation.value;
+				var svg = d3.select(this);
+				var o = orientation.value;
 
 				// Compute the layout.
-				var tree = d3.layout.tree().size(o.size),
-					nodes = tree.nodes(root),
-					links = tree.links(nodes);
+				var tree = d3.layout.tree().size(o.size);
+				var nodes = tree.nodes(root);
+				var links = tree.links(nodes);
 
 				// Create the link lines.
 				svg.selectAll(".link")
@@ -121,31 +242,51 @@ app.directive('plantDirective', function(PlantFactory) {
 				svg.selectAll(".node")
 					.data(nodes)
 					.enter().append("image")
-					.attr('xlink:href', '../../images/small_leaf.png')
+					.attr('xlink:href', function(d){
+						if(d.imgType==="leaf")
+							return '../../images/small_leaf.png'
+						else
+							return '../../images/pink-flower-th.png'
+					})
 					.attr("height", function(d) {
-						return d.leafsize
+						return d.imgSize
 					})
 					.attr("width", function(d) {
-						return d.leafsize
+						return d.imgSize
 					})
 					.attr("x", o.x)
 					.attr("y", o.y)
-					.attr("transform", "translate(0, -10)");
+					.attr("transform", function(d){
+						var x = -d.imgSize/2
+						var y = -d.imgSize/2
+						return "translate(" + x + ", " + y + ")"
+					})
+				// svg.selectAll("text")
+				// 	.data(nodes)
+				// 	.enter()
+				// 	.append("text")
+				// 	.attr("x", o.x)
+				// 	.attr("y", o.y)
+				// 	.attr("transform", function(d){
+				// 		var x = -d.imgSize/2
+				// 		var y = -d.imgSize/2
+				// 		return "translate(" + x + ", " + y + ")"
+				// 	})
+				// 	.text(function(d) {
+				// 		return d.text
+				// });
+		});
+	}
+	return PlantFactory;
+})
 
-				svg.selectAll("text")
-					.data(nodes)
-					.enter()
-					.append("text")
-					.attr("x", o.x)
-					.attr("y", o.y)
-					.attr("transform", "translate(0, 20)")
-					.text(function(d) {
-						return d.text
-					});
 
-			});
-
-
+app.directive('plantDirective', function(PlantFactory) {
+	return {
+		restrict: 'EA',
+		scope: {},
+		link: function(s, e, a) {
+			console.log("HERE'S PLANT FACTORY: ", PlantFactory.buildTree())
 		},
 		templateUrl: 'js/plant/plant.html',
 	}
