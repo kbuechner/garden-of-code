@@ -1,5 +1,30 @@
-<section id="home">
-    <!-- <fullstack-logo></fullstack-logo>
-    <rando-greeting></rando-greeting> -->
-    <h1>Log in or Sign up to get started</h1>
+<section id="home" flex>
+	<md-content class="md-padding" layout-xs="column" layout="column">
+		<div flex-xs flex-gt-xs="100" layout="column">
+			<md-card>
+				<md-card-title>
+					<md-card-title-media>
+						<div class="md-media-xl card-media">
+							<plant-directive></plant-directive>
+						</div>
+					</md-card-title-media>
+					<div>
+						<md-card-title-text>
+							<span class="md-headline">How does your Garden of Code grow?</span>
+							<span class="md-subhead">Log in or sign up to get started!</b></span>
+						</md-card-title-text>
+					</div>
+					<md-container>
+						<md-card>
+						<md-card-header>Log in here</md-card-header>
+						<login-form></login-form>
+						</md-card><md-card>
+						<md-card-header>or, sign up to get started:</md-card-header>
+						<signup-form></signup-form>
+						</md-card>
+					</md-container>
+				</md-card-title>
+			</md-card>
+		</div>
+	</md-content>
 </section>
