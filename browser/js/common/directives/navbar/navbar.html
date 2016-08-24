@@ -1,5 +1,5 @@
 <md-nav-bar nav-bar-aria-label="navigation links">
-    <md-nav-item md-nav-sref="dashboard" id="logo">
+    <md-nav-item md-nav-click="goHome()" id="logo">
         <img src="/images/garden-of-code-logo-2.svg">
     </md-nav-item>
 	<md-nav-item ng-repeat="item in items" md-nav-sref="{{ item.state }}" ng-show="!item.auth || isLoggedIn()">
