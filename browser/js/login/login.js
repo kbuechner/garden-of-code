@@ -26,3 +26,12 @@ app.controller('LoginCtrl', function ($scope, AuthService, $state) {
     };
 
 });
+
+app.directive('loginForm', function(){
+    return {
+        restrict: 'E',
+        templateUrl: 'js/login/login.html',
+        controller: 'LoginCtrl'
+    }
+
+})

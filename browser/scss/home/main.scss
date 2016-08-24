@@ -1,4 +1,11 @@
 #home {
+  md-card-title-text {
+  	padding-top: 20px
+  }
+  md-card-header {
+background-color: lighten(rgb(139,195,74),25%);
+  }
+
   fullstack-logo {
     padding-top: 30px;
     width: 150px;
@@ -8,4 +15,9 @@
     margin-top: 40px;
     text-align: center;
   }
+  md-input-container {
+  	margin-left: 20px;
+  }
+
+
 }
