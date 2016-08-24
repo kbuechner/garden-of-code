@@ -53,35 +53,39 @@ describe('Array.prototype.shift', function () {
 describe('Array.prototype.concat', function () {
 
 	it('the arrays concatenated', function () {
-		expect(newArray).to.equal([1,2,3,4,5,6,7]);
+		expect(newArray[0]).to.equal(1);
+		expect(newArray[1]).to.equal(2);
+		expect(newArray[2]).to.equal(3);
+		expect(newArray[3]).to.equal(4);
+		expect(newArray[4]).to.equal(5);
+		expect(newArray[5]).to.equal(6);
+		expect(newArray[6]).to.equal(7);
 	});
 
 });
 
 // solution:
+// newArray = array.filter(function (item) { return item % 2 === 0 })
 
 describe('Array.prototype.filter', function () {
 
-	it('', function () {
-		expect().to.equal();
-	});
-
-	it('', function () {
-		expect().to.equal();
+	it('filters out odd numbers', function () {
+		expect(newArray[0]).to.equal(2);
+		expect(newArray[1]).to.equal(4);
 	});
 
 });
 
 // solution:
+// array.forEach(function (item, index) { array[index] = item + 1 })
 
 describe('Array.prototype.forEach', function () {
 
-	it('', function () {
-		expect().to.equal();
-	});
-
-	it('', function () {
-		expect().to.equal();
+	it('the numbers incremented', function () {
+		expect(array[0]).to.equal(2);
+		expect(array[1]).to.equal(3);
+		expect(array[2]).to.equal(4);
+		expect(array[3]).to.equal(5);
 	});
 
 });
