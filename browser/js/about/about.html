@@ -11,10 +11,10 @@
 				<div class="md-list-item-text">
 					<h3>{{ developer.name }}</h3>
 					<p>{{ developer.bio }}</p>
-					<md-button ng-href="{{ developer.github }}" target="_blank">
+					<md-button ng-href="{{ developer.github }}" target="_blank" aria-label="Github for {{ developer.name }}">
 						<md-icon md-svg-src="/images/github-mark.svg"></md-icon>
 					</md-button>
-					<md-button ng-href="{{ developer.linkedin }}" target="_blank">
+					<md-button ng-href="{{ developer.linkedin }}" target="_blank" aria-label="LinkedIn for {{ developer.name }}">
 						<md-icon md-svg-src="/images/linkedin.svg"></md-icon>
 					</md-button>
 	            </div>

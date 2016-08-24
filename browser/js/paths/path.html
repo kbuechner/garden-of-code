@@ -1,18 +1,26 @@
-<section id="path" class="" flex layout-gt-sm="row">
-	<div flex="50">
-		<plant-directive></plant-directive>
-	</div>
-	<div flex="50">
-		<h2>{{ pathInfo.name }}</h2>
-		<p>{{ pathInfo.description }}</p>
 
-		<div ng-repeat="(key, value) in challenges | groupBy: 'level'">
-			<h3>Level {{ key }}</h3>
+<section id="path" class="" flex layout-gt-sm="row" >
+	<md-card flex="33" flex-sm="100">
+		<md-card id="plant-card">
+			<md-card-header >Your plant's progress:</md-card-header>
+			<plant-directive path="pathInfo.id"></plant-directive>
+		</md-card>
+	</md-card>
+	<md-card flex="100" flex-sm="100">
+		<md-card-header>
+			<h2>{{ pathInfo.name }}</h2>
+			<p>{{ pathInfo.description }}</p>
+		</md-card-header>
+
+		<md-card ng-repeat="(key, value) in challenges | groupBy: 'level'">
+			<md-card-header>Level {{ key }}</md-card-header>
 			<md-list flex>
+			<div>
 				<md-list-item ng-repeat="challenge in value" ui-sref="challenge({ id:challenge.id })">
 					{{ challenge.title }}
 				</md-list-item>
-			</ul>
-		</div>
-	</div>
+			</div>
+			</md-list>
+		</md-card>
+	</md-card>
 </section>

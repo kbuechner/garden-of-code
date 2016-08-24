@@ -22,6 +22,9 @@ var Challenge = db.define('challenge', {
         type: Sequelize.INTEGER,
         defaultValue: 1
     },
+    startCode: {
+        type: Sequelize.STRING,
+    }
 });
 
 module.exports = Challenge;

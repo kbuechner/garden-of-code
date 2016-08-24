@@ -110,29 +110,63 @@ var seedChallenges = function() {
         description: 'You can set a variable equal to a function call - the variable\'s value will be whatever the function returns.</p> <p>Create a function called <code>getOne</code> that returns the number 1.</p> <p>Now declare a variable called <code>one</code> and assign it to the function call getOne().  The variable will now equal 1!',
         examples: '<code>var getAge = function () {<br>&nbsp;&nbsp;lastYearsAge += 1; <br>}</p> <p>var myAge = getAge();</code>',level: 3,
         pathId: 1
-    },
-    {
-        title: 'Add an element to an array.',
-        language: 'node',
-        description: 'In Javascript, you can use several methods to add something to an array. Here are some examples. Try it out yourself.',
-        examples: 'use <code>.push()</code>',
-        level: 1,
-        pathId: 2
     },{
-        title: 'Add an element to an array.',
+        title: 'Welcome to JavaScript Arrays',
         language: 'node',
-        description: 'In Javascript, you can use several methods to find something in an array. Here are some examples. Try it out yourself.',
-        examples: 'use <code>.indexOf()</code>',
+        description: '',
+        examples: '',
         level: 1,
-        pathId: 2
+        pathId: 2,
+        startCode: 'var array = [1, 2, 3, 4]\n\n'
     },{
-        title: 'remove an element to an array.',
+        title: 'Array.prototype.push',
         language: 'node',
-        description: 'In Javascript, you can use several methods to remove something from an array. Here are some examples. Try it out yourself.',
-        examples: 'use <code>.pop()</code>',
+        description: 'The Array prototype comes with a variety of methods built in, meaning you can call them on any array. </p><p>The variable <code>array</code> has been assigned for you.  Use the array method <code>.push()</code> to add the number <code>5</code> to the end of the array.',
+        examples: '<code>[].push("Hello")</code> results in <code>["Hello"]</code>',
         level: 2,
-        pathId: 2
-    },];
+        pathId: 2,
+        startCode: 'var array = [1, 2, 3, 4]\n\n'
+    },{
+        title: 'Array.prototype.pop',
+        language: 'node',
+        description: 'The method <code>.pop()</code> removes the last value and returns it.  </p> Set the variable <code>popped</code> to equal the last value in the <code>array</code> using <code>.pop()</code> The array length should now have 3 items.<p>',
+        examples: 'Remember that <code>pop</code> returns the value it removes, so you can assign that value to a variable.',
+        level: 2,
+        pathId: 2,
+        startCode: 'var array = [1, 2, 3, 4]\n\n'
+    },{
+        title: 'Array.prototype.shift',
+        language: 'node',
+        description: 'The method <code>.shift()</code> works like <code>.pop()</code>, except that removes the first item in the array.  </p><p>Set <code>shifted</code> to the first array value, removing the first value in the array.',
+        examples: 'Remember that <code>shift</code> returns the value it removes, so you can assign that value to a variable.',
+        level: 2,
+        pathId: 2,
+        startCode: 'var array = [1, 2, 3, 4]\n\n'
+    },{
+        title: 'Array.prototype.concat',
+        language: 'node',
+        description: 'You can combine two or more arrays using <code>.concat()</code>.  Each array will be added to the end of the original array. </p><p>Concatenate the array [5,6,7] to the given <code>array</code> variable.',
+        examples: 'Your <code>array</code> should now be [1,2,3,4,5,6,7].',
+        level: 3,
+        pathId: 2,
+        startCode: 'var array = [1, 2, 3, 4]\n\n'
+    },{
+        title: 'Array.prototype.filter',
+        language: 'node',
+        description: 'The <code>.filter()</code> method takes in a testing function.  It passes each array value into the function you specify. If the function returns <code>true</code>, it keeps that value.  <code>.filter()</code> doesn\'t change the original array, but returns a new one with only the <code>true</code> values.  </p><p>Using <code>.filter()</code>, set the variable <code>newArray</code> to contain all the even numbers in <code>array</code>.',
+        examples: 'Remember to pass in a function that returns true for an even number.  You can use <code>%2</code> to test if a number is divisible by two.',
+        level: 3,
+        pathId: 2,
+        startCode: 'var array = [1, 2, 3, 4]\n\n'
+    },{
+        title: 'Array.prototype.forEach',
+        language: 'node',
+        description: 'The method <code>.forEach()</code> takes in a function that you want to execute for each value in an array. It returns an array of the results.</p><p>Using <code>.forEach()</code>, return an array where every value is 1 more than the original array value.',
+        examples: 'Pass in a function that takes a value and returns the value plus 1.',
+        level: 3,
+        pathId: 2,
+        startCode: 'var array = [1, 2, 3, 4]\n\n'
+    }];
 
     return Promise.mapSeries(challenges, function (challenge) {
         return Challenge.create(challenge);
@@ -274,7 +308,41 @@ var seedPaths = function() {
                 "greeting": "Hello, undefined! You have 3 unread messages.",
                 "favoriteFruit": "strawberry"
             }],
-    }, {
+    }/*, {
+        name: 'Strings',
+        description: 'Learn all about Strings!',
+        plant: [{
+                "id": "57ae219f14d63b53fc330d45",
+                "friends": [{
+                    "id": 0,
+                    "name": "Talley Hammond"
+                }, {
+                    "id": 1,
+                    "name": "Irene Finley"
+                }, {
+                    "id": 2,
+                    "name": "Margarita Richardson"
+                }],
+                "greeting": "Hello, undefined! You have 10 unread messages.",
+                "favoriteFruit": "strawberry"
+            }, {
+                "id": "57ae219f759685658d2573ec",
+                "friends": [{
+                    "id": 0,
+                    "name": "Hensley Nguyen"
+                }, {
+                    "id": 1,
+                    "name": "Helga Grimes"
+                }, {
+                    "id": 2,
+                    "name": "Hannah Workman"
+                }],
+                "greeting": "Hello, undefined! You have 8 unread messages.",
+                "favoriteFruit": "apple"
+            }, {
+                "id": "57ae219f2328cb7ecb70ec07",
+                "friends": [{
+                    ", {
         name: 'Strings',
         description: 'Learn all about Strings!',
         plant: [{
@@ -362,7 +430,61 @@ var seedPaths = function() {
                 "greeting": "Hello, undefined! You have 3 unread messages.",
                 "favoriteFruit": "strawberry"
             }],
-    }];
+    }id": 0,
+                    "name": "Turner Alvarez"
+                }, {
+                    "id": 1,
+                    "name": "Edwina Britt"
+                }, {
+                    "id": 2,
+                    "name": "Greer Hubbard"
+                }],
+                "greeting": "Hello, undefined! You have 1 unread messages.",
+                "favoriteFruit": "strawberry"
+            }, {
+                "id": "57ae219f71d9abb335354334",
+                "friends": [{
+                    "id": 0,
+                    "name": "Laura Barr"
+                }, {
+                    "id": 1,
+                    "name": "Tyler Conway"
+                }, {
+                    "id": 2,
+                    "name": "Howell Berger"
+                }],
+                "greeting": "Hello, undefined! You have 7 unread messages.",
+                "favoriteFruit": "strawberry"
+            }, {
+                "id": "57ae219f94f9191d6b2aa465",
+                "friends": [{
+                    "id": 0,
+                    "name": "Mcmahon Roberson"
+                }, {
+                    "id": 1,
+                    "name": "Gail Casey"
+                }, {
+                    "id": 2,
+                    "name": "Nancy Kaufman"
+                }],
+                "greeting": "Hello, undefined! You have 10 unread messages.",
+                "favoriteFruit": "apple"
+            }, {
+                "id": "57ae219f4e8f821700c089ed",
+                "friends": [{
+                    "id": 0,
+                    "name": "Essie Torres"
+                }, {
+                    "id": 1,
+                    "name": "Danielle Barber"
+                }, {
+                    "id": 2,
+                    "name": "Boone Hickman"
+                }],
+                "greeting": "Hello, undefined! You have 3 unread messages.",
+                "favoriteFruit": "strawberry"
+            }],
+    }*/];
 
     return Promise.map(paths, function(pathObj) {
         return Path.create(pathObj);

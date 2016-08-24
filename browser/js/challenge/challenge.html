@@ -1,6 +1,6 @@
 <section id="challenge-view" layout="row" class="yellow">
 	<md-card flex="33" flex-xs="25">
-		<md-card-header>Challenge: {{challenge.title}}</md-card-header>
+		<md-card-header><h2>{{challenge.title}}</h2></md-card-header>
 		<md-card>Language: {{challenge.language}}</samp><span>Level {{challenge.level}}</span></md-card>
 		<md-card><md-card-header>Description:</md-card-header> <p ng-bind-html="challenge.description"></p></md-card>
 
@@ -10,7 +10,7 @@
 			<p ng-show="showHint" ng-bind-html="challenge.examples"></p>
 		</md-card>
 		<md-card ><md-card-header>Your Plant:</md-card-header>
-		<plant-directive></plant-directive>
+		<plant-directive path="challenge.pathId">{{challenge.path}}</plant-directive>
 		</md-card>
 
 	</md-card>
@@ -25,11 +25,12 @@
 						showGutter: true,
 						theme:'clouds',
 						mode: 'javascript',
-						firstLineNumber: 1
+						firstLineNumber: 1,
+						onLoad: aceLoaded
 						}"
-					ng-model="userCode" id="editor" ng-show="challenge.level !== 1"></div>
+					ng-model="userCode" ng-show="challenge.level !== 1"></div>
 
-			<md-button type="submit" ng-click="runTests(userCode)" class='deepBlue' id='btn1'>Submit</md-button>
+			<md-button type="submit" ng-click="challenge.level === 1 ? complete = true : runTests(userCode)" class='deepBlue' id='btn1'>Submit</md-button>
 			<md-button type="save" ng-show="challenge.level !== 1&&!complete" ng-click="saveCode(userCode)" class='md-warn' id='btn2'>Save Code</md-button>
 			<md-button type="next" ng-show="complete" ng-click="nextChallenge()" class='deepBlue' id='btn2'>Next Challenge</md-button>
 			<span ng-show="saved">Your code has been saved!</span>

@@ -19,20 +19,13 @@ app.config(function ($stateProvider) {
 
 app.controller('ChallengeCtrl', function ($state, $scope, $stateParams, challenge, user, code, ChallengeFactory, $timeout, $sce){
 
-	// editor config
-	let loadText = code ? code : '';
-	let editor = ace.edit("editor");
-	ace.config.loadModule('ace/ext/language_tools', function() {
-		editor.setTheme("ace/theme/clouds");
-		editor.getSession().setMode("ace/mode/javascript");
-		editor.setValue(loadText);
-	});
-
+	$scope.userCode = code||challenge.startCode||'';
 	$scope.challenge = challenge;
 	$scope.challenge.description = $sce.trustAsHtml($scope.challenge.description);
 	$scope.challenge.examples = $sce.trustAsHtml($scope.challenge.examples);
 	$scope.user = user;
 	$scope.showHint = false;
+	$scope.challenge.pathId = challenge.pathId
 
 	$scope.runTests = function (usrCode) {
 		ChallengeFactory.runTests(challenge, usrCode)
