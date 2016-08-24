@@ -198,7 +198,49 @@ var seedUserChallenges = function() {
         complete: true,
         userCode: "console.log('Hello World')",
         userId: 1,
+        challengeId: 8
+    },
+        {
+        complete: true,
+        userCode: "console.log('Hello World')",
+        userId: 1,
+        challengeId: 9
+    },
+        {
+        complete: true,
+        userCode: "console.log('Hello World')",
+        userId: 1,
+        challengeId: 10
+    },
+        {
+        complete: true,
+        userCode: "console.log('Hello World')",
+        userId: 1,
+        challengeId: 11
+    },
+        {
+        complete: true,
+        userCode: "console.log('Hello World')",
+        userId: 1,
+        challengeId: 12
+    },
+        {
+        complete: true,
+        userCode: "console.log('Hello World')",
+        userId: 1,
         challengeId: 1
+    },
+        {
+        complete: true,
+        userCode: "console.log('Hello World')",
+        userId: 1,
+        challengeId: 13
+    },
+        {
+        complete: true,
+        userCode: "console.log('Hello World')",
+        userId: 1,
+        challengeId: 14
     },
     {
         complete: false,
