@@ -1,5 +1,5 @@
 app.factory('PathsFactory', function ($http) {
-	function getData(res) { return res.data};
+    function getData(res) { return res.data};
 
 		return {
 			fetchAll: function() {
