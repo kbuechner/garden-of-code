@@ -1,8 +1,31 @@
-<section id="dashboard" class="tiles" flex="">
+<!-- <section id="dashboard" class="tiles" flex="">
 	<md-grid-list md-cols="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="6" md-row-height-gt-md="1:1" md-row-height="4:3" md-gutter="8px" md-gutter-gt-sm="4px">
 		<md-grid-tile ng-repeat="tile in tiles" md-rowspan="{{tile.span.row}}" md-colspan="{{tile.span.col}}" md-colspan-sm="1" md-colspan-xs="1" ng-class="tile.background">
 			<md-icon md-svg-src="/images/ic_spa_black_24px.svg"></md-icon>
 			<md-grid-tile-footer><h3>{{tile.title}}</h3></md-grid-tile-footer>
 		</md-grid-tile>
 	</md-grid-list>
+</section> -->
+
+<section id="dashboard" flex>
+	<md-content class="md-padding" layout-xs="column" layout="row">
+		<div flex-xs flex-gt-xs="100" layout="column">
+			<md-card>
+				<md-card-title>
+					<md-card-title-media>
+						<div class="md-media-lg card-media">
+							<!-- <plant-directive></plant-directive> -->
+						</div>
+					</md-card-title-media>
+					<md-card-title-text>
+						<span class="md-headline">{{ dashHero.headline }}</span>
+						<span class="md-subhead">{{ dashHero.subheadIntro}} <b>{{ dashHero.challenge.title}}</b> in <b>{{ dashHero.challenge.path.name }}</b></span>
+					</md-card-title-text>
+				</md-card-title>
+				<md-card-actions layout="row" layout-align="end center">
+					<md-button ui-sref="challenge({id: dashHero.challengeId})">Continue</md-button>
+				</md-card-actions>
+			</md-card>
+		</div>
+	</md-content>
 </section>

@@ -17,4 +17,4 @@ Path.hasMany(Challenge);
 User.belongsToMany(Path, {through: 'user_path'});
 Path.belongsToMany(User, {through: 'user_path'});
 
-UserChallenge.belongsTo(Challenge)
+UserChallenge.belongsTo(Challenge);
