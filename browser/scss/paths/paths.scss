@@ -1,0 +1,30 @@
+#results-card {
+    height: 140px;
+    max-height: calc(100vh - 300px);
+    margin-top: 11px;
+}
+
+#path {
+        background-color: darken(#FFFBD1,7%);
+        height: 100%;
+
+    md-card {
+        background-color: lighten(rgb(139,195,74),41%);
+
+        md-card {
+            background-color: white;
+        }
+
+        md-card-header {
+            padding: 8px 0px 8px 16px;
+            background-color: lighten(rgb(139,195,74),25%);
+            display: block;
+        }
+
+        md-list-item {
+            padding-left: 24px;
+            height: 24px;
+        }
+
+    }
+}
