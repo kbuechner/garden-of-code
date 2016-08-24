@@ -121,48 +121,48 @@ var seedChallenges = function() {
     },{
         title: 'Array.prototype.push',
         language: 'node',
-        description: '',
-        examples: '',
+        description: 'The Array prototype comes with a variety of methods built in, meaning you can call them on any array. </p><p>The variable <code>array</code> has been assigned for you.  Use the array method <code>.push()</code> to add the number <code>5</code> to the end of the array.',
+        examples: '<code>[].push("Hello")</code> results in <code>["Hello"]</code>',
         level: 2,
         pathId: 2,
         startCode: 'var array = [1, 2, 3, 4]\n\n'
     },{
         title: 'Array.prototype.pop',
         language: 'node',
-        description: '',
-        examples: '',
+        description: 'The method <code>.pop()</code> removes the last value and returns it.  </p> Set the variable <code>popped</code> to equal the last value in the <code>array</code> using <code>.pop()</code> The array length should now have 3 items.<p>',
+        examples: 'Remember that <code>pop</code> returns the value it removes, so you can assign that value to a variable.',
         level: 2,
         pathId: 2,
         startCode: 'var array = [1, 2, 3, 4]\n\n'
     },{
         title: 'Array.prototype.shift',
         language: 'node',
-        description: '',
-        examples: '',
+        description: 'The method <code>.shift()</code> works like <code>.pop()</code>, except that removes the first item in the array.  </p><p>Set <code>shifted</code> to the first array value, removing the first value in the array.',
+        examples: 'Remember that <code>shift</code> returns the value it removes, so you can assign that value to a variable.',
         level: 2,
         pathId: 2,
         startCode: 'var array = [1, 2, 3, 4]\n\n'
     },{
         title: 'Array.prototype.concat',
         language: 'node',
-        description: '',
-        examples: '',
+        description: 'You can combine two or more arrays using <code>.concat()</code>.  Each array will be added to the end of the original array. </p><p>Concatenate the array [5,6,7] to the given <code>array</code> variable.',
+        examples: 'Your <code>array</code> should now be [1,2,3,4,5,6,7].',
         level: 3,
         pathId: 2,
         startCode: 'var array = [1, 2, 3, 4]\n\n'
     },{
         title: 'Array.prototype.filter',
         language: 'node',
-        description: '',
-        examples: '',
+        description: 'The <code>.filter()</code> method takes in a testing function.  It passes each array value into the function you specify. If the function returns <code>true</code>, it keeps that value.  <code>.filter()</code> doesn\'t change the original array, but returns a new one with only the <code>true</code> values.  </p><p>Using <code>.filter()</code>, set the variable <code>newArray</code> to contain all the even numbers in <code>array</code>.',
+        examples: 'Remember to pass in a function that returns true for an even number.  You can use <code>%2</code> to test if a number is divisible by two.',
         level: 3,
         pathId: 2,
         startCode: 'var array = [1, 2, 3, 4]\n\n'
     },{
         title: 'Array.prototype.forEach',
         language: 'node',
-        description: '',
-        examples: '',
+        description: 'The method <code>.forEach()</code> takes in a function that you want to execute for each value in an array. It returns an array of the results.</p><p>Using <code>.forEach()</code>, return an array where every value is 1 more than the original array value.',
+        examples: 'Pass in a function that takes a value and returns the value plus 1.',
         level: 3,
         pathId: 2,
         startCode: 'var array = [1, 2, 3, 4]\n\n'
