@@ -14,32 +14,52 @@ app.config(function ($stateProvider) {
   });
 });
 
-app.controller('DashboardCtrl', function ($scope, allChallenges) {
+app.controller('DashboardCtrl', function ($scope, allChallenges, PathsFactory) {
 
   $scope.allChallenges = allChallenges;
 
-  // if allChallenges = []
-  // run getNewPath to build out dashHero
   if ($scope.allChallenges.length === 0){
     $scope.dashHero = getNewPath();
   }
 
   var sortedChallenges = $scope.allChallenges.slice();
 
-  // complete needs to be false
   for (var i = sortedChallenges.length - 1; i >= 0; i--) {
     if (sortedChallenges[i].complete === false) {
       $scope.dashHero = sortedChallenges[i];
       $scope.dashHero.headline = "Resume Learning!";
       $scope.dashHero.subheadIntro = "Continue working on ";
-      /*console.log($scope.dashHero);*/
       return;
+    }
+    if (i === 0 && $scope.dashHero === undefined){
+      var pathNum = sortedChallenges[sortedChallenges.length-1].challenge.pathId;
+
+      var nextChallenge = sortedChallenges[sortedChallenges.length-1].challengeId + 1;
+
+      console.log('nextChallenge', nextChallenge);
+
+      PathsFactory.getChallenges(pathNum)
+      .then(function (path) {
+        for (var i = 0; i < path.challenges.length; i++) {
+          if (path.challenges[i].id === nextChallenge) {
+            $scope.dashHero = {
+              challenge: {
+                title: path.challenges[i].title,
+                path: {
+                  name: path.name
+                }
+              },
+              challengeId: path.challenges[i].id
+            };
+            $scope.dashHero.headline = "Resume Learning!";
+            $scope.dashHero.subheadIntro = "Begin working on ";
+          }
+        }
+      })
     }
   }
 
-
   function getNewPath () {
-    // look for another path that the user hasn't started
     $scope.dashHero = {
       challenge: {
         title: "Welcome to JavaScript!",
@@ -54,7 +74,4 @@ app.controller('DashboardCtrl', function ($scope, allChallenges) {
 
     return $scope.dashHero;
   }
-
-
-  //$scope.dashHero = sortedChallenges[sortedChallenges.length-1];
 });
