@@ -49,7 +49,8 @@ app.controller('DashboardCtrl', function ($scope, allChallenges, PathsFactory) {
                   name: path.name
                 }
               },
-              challengeId: path.challenges[i].id
+              challengeId: path.challenges[i].id,
+              pathId: path.id
             };
             $scope.dashHero.headline = "Resume Learning!";
             $scope.dashHero.subheadIntro = "Begin working on ";
