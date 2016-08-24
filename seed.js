@@ -117,7 +117,7 @@ var seedChallenges = function() {
         examples: '',
         level: 1,
         pathId: 2,
-        startCode: '[1, 2, 3, 4]\n\n'
+        startCode: 'var array = [1, 2, 3, 4]\n\n'
     },{
         title: 'Array.prototype.push',
         language: 'node',
@@ -125,7 +125,7 @@ var seedChallenges = function() {
         examples: '',
         level: 2,
         pathId: 2,
-        startCode: '[1, 2, 3, 4]\n\n'
+        startCode: 'var array = [1, 2, 3, 4]\n\n'
     },{
         title: 'Array.prototype.pop',
         language: 'node',
@@ -133,7 +133,7 @@ var seedChallenges = function() {
         examples: '',
         level: 2,
         pathId: 2,
-        startCode: '[1, 2, 3, 4]\n\n'
+        startCode: 'var array = [1, 2, 3, 4]\n\n'
     },{
         title: 'Array.prototype.shift',
         language: 'node',
@@ -141,7 +141,7 @@ var seedChallenges = function() {
         examples: '',
         level: 2,
         pathId: 2,
-        startCode: '[1, 2, 3, 4]\n\n'
+        startCode: 'var array = [1, 2, 3, 4]\n\n'
     },{
         title: 'Array.prototype.concat',
         language: 'node',
@@ -149,7 +149,7 @@ var seedChallenges = function() {
         examples: '',
         level: 3,
         pathId: 2,
-        startCode: '[1, 2, 3, 4]\n\n'
+        startCode: 'var array = [1, 2, 3, 4]\n\n'
     },{
         title: 'Array.prototype.filter',
         language: 'node',
@@ -157,7 +157,7 @@ var seedChallenges = function() {
         examples: '',
         level: 3,
         pathId: 2,
-        startCode: '[1, 2, 3, 4]\n\n'
+        startCode: 'var array = [1, 2, 3, 4]\n\n'
     },{
         title: 'Array.prototype.forEach',
         language: 'node',
@@ -165,7 +165,7 @@ var seedChallenges = function() {
         examples: '',
         level: 3,
         pathId: 2,
-        startCode: ''
+        startCode: 'var array = [1, 2, 3, 4]\n\n'
     }];
 
     return Promise.mapSeries(challenges, function (challenge) {
