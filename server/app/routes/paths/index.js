@@ -19,8 +19,6 @@ router.get('/:pathId', function(req, res, next) {
 		else res.send(path);
 	})
 	.catch(next);
-
-
 });
 
 router.get('/:pathId/challenges', function (req, res, next){
