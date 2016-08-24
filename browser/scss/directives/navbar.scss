@@ -4,6 +4,11 @@ navbar {
   background: white;
   border-bottom: 1px solid black;
   box-shadow: 1px 1px 14px -3px black; */
+  
+  #logo img {
+    width: 200px;
+    margin-top: -15px;
+  }
 
   .container {
     width: 91%;
@@ -14,7 +19,7 @@ navbar {
   fullstack-logo {
     margin-top: 5px;
     margin-right: 20px;
-    width: 40px;
+    width: 100px;
   }
 
   a {
