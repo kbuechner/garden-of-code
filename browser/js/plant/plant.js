@@ -137,7 +137,8 @@ app.factory('PlantFactory', function($http, $q) {
 					break
 				}
 			}
-			if(x===6){
+
+			if(x===5){
 				blossomNode.show=true;
 			}
 		}

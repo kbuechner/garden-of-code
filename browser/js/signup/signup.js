@@ -58,3 +58,12 @@ app.controller('SignupCtrl', function ($scope, $http, $state, SignupFactory) {
     }
 });
 
+
+app.directive('signupForm', function(){
+    return {
+        restrict: 'E',
+        templateUrl: 'js/signup/signup.html',
+        controller: 'SignupCtrl'
+    }
+
+})

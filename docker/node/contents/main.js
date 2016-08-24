@@ -7,6 +7,6 @@ let command = 'code=' + '"' + code + '"' + ' ./node_modules/mocha/bin/mocha --gr
 
 child_process.exec(command, function (err, sdout, sderr) {
 	let passed = err ? false : true;
-	sdout = sdout.trim().replace(/\n/g, "\\n");
+	sdout = sdout.trim().replace(/\n/g, "\\n").replace(/'/g, "\\'").replace(/"/g, '\\"');
 	console.log('{"passed": ' + passed + ', "output": "' + sdout + '"}');
 });

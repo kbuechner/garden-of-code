@@ -107,7 +107,7 @@ var seedChallenges = function() {
     {
         title: 'Assign the Results of a Function to a Variable',
         language: 'node',
-        description: 'You can set a variable equal to a function call - the variable\'s value will be whatever the function returns.</p> <p>Create a function called <code>getOne</code> that returns the number 1.</p> <p>Now declare a variable called <code>one</code> and assign it to the function call getOne().  The variable will now equal 1!',
+        description: 'You can set a variable equal to a function call - the variable\'s value will be whatever the function returns.</p> <p>Create a function called <code>returnsOne</code> that returns the number 1.</p> <p>Now declare a variable called <code>one</code> and assign it to the function call getOne().  The variable will now equal 1!',
         examples: '<code>var getAge = function () {<br>&nbsp;&nbsp;lastYearsAge += 1; <br>}</p> <p>var myAge = getAge();</code>',level: 3,
         pathId: 1
     },{
