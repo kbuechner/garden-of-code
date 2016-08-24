@@ -120,7 +120,7 @@ app.factory('PlantFactory', function($http, $q) {
 				}
 			} else if (x >= 2 && x < 4) {
 				levelTwo.push(makeNode(userChallenges[x].data, "2", 50))
-				if (x === 4)
+				if (x === 3)
 					levelTwo.push(secondStem)
 				if (x === userChallenges.length - 1) {
 					blossomNode.parent = "1"
@@ -129,7 +129,7 @@ app.factory('PlantFactory', function($http, $q) {
 				}
 			} else if (x >= 4) {
 				levelThree.push(makeNode(userChallenges[x].data, 3, 35))
-				if (x === 5)
+				if (x === 4)
 					levelThree.push(thirdStem)
 				if (x === userChallenges.length - 1) {
 					blossomNode.parent = "1"
@@ -137,7 +137,7 @@ app.factory('PlantFactory', function($http, $q) {
 					break
 				}
 			}
-			if(x===7){
+			if(x===5){
 				blossomNode.show=true;
 			}
 		}
