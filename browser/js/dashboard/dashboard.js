@@ -1,68 +1,60 @@
 app.config(function ($stateProvider) {
 	$stateProvider.state('dashboard', {
-		url: '/dashboard',
+    url: '/dashboard',
 		templateUrl: 'js/dashboard/dashboard.html',
 		controller: 'DashboardCtrl',
     resolve: {
-      user: function (AuthService) {
+    user: function (AuthService) {
         return AuthService.getLoggedInUser()
       },
-      latestChallenge: function (user, DashboardFactory) {
+      allChallenges: function (user, DashboardFactory) {
         return DashboardFactory.getLatest(user.id);
       }
     }
   });
 });
 
-app.controller('DashboardCtrl', function ($scope, latestChallenge) {
+app.controller('DashboardCtrl', function ($scope, allChallenges) {
 
-  $scope.latestChallenge = latestChallenge;
-  console.log($scope.latestChallenge)
+  $scope.allChallenges = allChallenges;
 
-	$scope.tiles = buildGridModel({
-		//icon : "avatar:svg-",
-		title: "Svg-",
-		background: ""
-	});
+  // if allChallenges = []
+  // run getNewPath to build out dashHero
+  if ($scope.allChallenges.length === 0){
+    $scope.dashHero = getNewPath();
+  }
 
-	function buildGridModel(tileTmpl){
-		var it, results = [ ];
+  var sortedChallenges = $scope.allChallenges.slice();
 
-		for (var j=0; j<11; j++) {
-
-        it = angular.extend({},tileTmpl);
-        //it.icon  = it.icon + (j+1);
-        it.title = it.title + (j+1);
-        it.span  = { row : 1, col : 1 };
-
-        switch(j+1) {
-          case 1:
-            it.background = "red";
-            it.span.row = it.span.col = 2;
-            break;
-
-          case 2: it.background = "green";         break;
-          case 3: it.background = "darkBlue";      break;
-          case 4:
-            it.background = "blue";
-            it.span.col = 2;
-            break;
-
-          case 5:
-            it.background = "yellow";
-            it.span.row = it.span.col = 2;
-            break;
-
-          case 6: it.background = "pink";          break;
-          case 7: it.background = "darkBlue";      break;
-          case 8: it.background = "purple";        break;
-          case 9: it.background = "deepBlue";      break;
-          case 10: it.background = "lightPurple";  break;
-          case 11: it.background = "yellow";       break;
-        }
-
-        results.push(it);
-      }
-      return results;
+  // complete needs to be false
+  for (var i = sortedChallenges.length - 1; i >= 0; i--) {
+    if (sortedChallenges[i].complete === false) {
+      $scope.dashHero = sortedChallenges[i];
+      $scope.dashHero.headline = "Resume Learning!";
+      $scope.dashHero.subheadIntro = "Continue working on ";
+      /*console.log($scope.dashHero);*/
+      return;
     }
+  }
+
+
+  function getNewPath () {
+    // look for another path that the user hasn't started
+    $scope.dashHero = {
+      challenge: {
+        title: "Welcome to JavaScript!",
+        path: {
+          name: "JavaScript Basics"
+        }
+      },
+      challengeId: 1
+    };
+    $scope.dashHero.headline = "Start Learning!";
+    $scope.dashHero.subheadIntro = "Begin working on ";
+
+    return $scope.dashHero;
+  }
+
+
+  //$scope.dashHero = sortedChallenges[sortedChallenges.length-1];
 });

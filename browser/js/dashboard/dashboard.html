@@ -9,19 +9,21 @@
 
 <section id="dashboard" flex>
 	<md-content class="md-padding" layout-xs="column" layout="row">
-		<div flex-xs flex-gt-xs="50" layout="column">
+		<div flex-xs flex-gt-xs="100" layout="column">
 			<md-card>
 				<md-card-title>
 					<md-card-title-media>
-						<div class="md-media-lg card-media"></div>
+						<div class="md-media-lg card-media">
+							<!-- <plant-directive></plant-directive> -->
+						</div>
 					</md-card-title-media>
 					<md-card-title-text>
-						<span class="md-headline">Resume learning</span>
-						<span class="md-subhead">Large</span>
+						<span class="md-headline">{{ dashHero.headline }}</span>
+						<span class="md-subhead">{{ dashHero.subheadIntro}} <b>{{ dashHero.challenge.title}}</b> in <b>{{ dashHero.challenge.path.name }}</b></span>
 					</md-card-title-text>
 				</md-card-title>
 				<md-card-actions layout="row" layout-align="end center">
-					<md-button>Continue</md-button>
+					<md-button ui-sref="challenge({id: dashHero.challengeId})">Continue</md-button>
 				</md-card-actions>
 			</md-card>
 		</div>
