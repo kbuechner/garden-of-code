@@ -135,8 +135,8 @@ app.factory('PlantFactory', function($http) {
 			left: 10
 		}
 
-			var width = 240 - margin.left - margin.right;
-			var height = 400 - margin.top - margin.bottom;
+			var width = 340 - margin.left - margin.right;
+			var height = 340 - margin.top - margin.bottom;
 
 			var orientation = {
 				"bottom-to-top": {
@@ -157,7 +157,7 @@ app.factory('PlantFactory', function($http) {
 				.attr("height", height + margin.top + margin.bottom)
 				.append("g")
 				.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
+			
 			var root = {
 				"name": "0",
 				"parent": "null",
@@ -190,8 +190,8 @@ app.factory('PlantFactory', function($http) {
 							"children": [{
 								"parent": "3",
 								"text": "Booleans",
-								"imgSize": "60",
-						"imgType": "flower"
+								"imgSize": "75",
+								"imgType": "flower"
 							}],
 							"text": "",
 							"imgSize": "0",
