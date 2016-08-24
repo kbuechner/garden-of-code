@@ -25,6 +25,7 @@ app.controller('ChallengeCtrl', function ($state, $scope, $stateParams, challeng
 	$scope.challenge.examples = $sce.trustAsHtml($scope.challenge.examples);
 	$scope.user = user;
 	$scope.showHint = false;
+	$scope.challenge.pathId = challenge.pathId
 
 	$scope.runTests = function (usrCode) {
 		ChallengeFactory.runTests(challenge, usrCode)
