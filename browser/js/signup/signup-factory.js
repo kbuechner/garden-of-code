@@ -4,7 +4,7 @@ app.factory('SignupFactory',function($http, AuthService){
             return $http.post('/api/users', loginInfo)
             .then(function (user) {
             if(user) {
-                AuthService.login(loginInfo)}
+                return AuthService.login(loginInfo)}
             else {
                 throw new Error('Unable to create account.')}
             })
