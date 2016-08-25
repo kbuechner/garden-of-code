@@ -65,7 +65,8 @@ app.controller('DashboardCtrl', function ($scope, allChallenges, PathsFactory) {
       challenge: {
         title: "Welcome to JavaScript!",
         path: {
-          name: "JavaScript Basics"
+          name: "JavaScript Basics",
+          id: 1
         }
       },
       challengeId: 1
