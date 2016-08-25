@@ -173,7 +173,7 @@ var seedChallenges = function() {
     });
 
 };
-/*var seedUserChallenges = function() {
+var seedUserChallenges = function() {
 
     var userChallenges = [
     {
@@ -197,65 +197,22 @@ var seedChallenges = function() {
     {
         complete: true,
         userCode: "console.log('Hello World')",
-        userId: 1,
+        userId: 2,
         challengeId: 8
     },
         {
         complete: true,
         userCode: "console.log('Hello World')",
-        userId: 1,
+        userId: 2,
         challengeId: 9
-    },
-        {
-        complete: true,
-        userCode: "console.log('Hello World')",
-        userId: 1,
-        challengeId: 10
-    },
-        {
-        complete: true,
-        userCode: "console.log('Hello World')",
-        userId: 1,
-        challengeId: 11
-    },
-        {
-        complete: true,
-        userCode: "console.log('Hello World')",
-        userId: 1,
-        challengeId: 12
-    },
-        {
-        complete: true,
-        userCode: "console.log('Hello World')",
-        userId: 1,
-        challengeId: 1
-    },
-        {
-        complete: true,
-        userCode: "console.log('Hello World')",
-        userId: 1,
-        challengeId: 13
-    },
-        {
-        complete: true,
-        userCode: "console.log('Hello World')",
-        userId: 1,
-        challengeId: 14
-    },
-    {
-        complete: false,
-        userCode: "var huh = '???';",
-        userId: 1,
-        challengeId: 2
-    }
-    ];
+    },]
 
     return Promise.map(userChallenges, function(userChallengeObj){
         return UserChallenge.create(userChallengeObj);
     });
 
 
-};*/
+};
 var seedPaths = function() {
 
     var paths = [{

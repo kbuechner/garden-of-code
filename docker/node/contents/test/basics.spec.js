@@ -6,7 +6,7 @@ eval(process.env.code);
 // challenge solution:
 // console.log('Hello World');
 
-/*describe('Hello World', function () {
+describe('Hello World', function () {
 
 	eval(process.env.code);
 
@@ -18,7 +18,7 @@ eval(process.env.code);
 		expect(output[0]).to.equal('Hello World\n');
 	});
 
-});*/
+});
 
 // challenge solution:
 // var x = 1; var y = 2; var z = 'foo';

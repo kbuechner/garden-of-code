@@ -14,13 +14,6 @@ app.factory('PlantFactory', function($http, $q) {
 				return $q.all(returnChallenges)
 			})
 	}
-	// PlantFactory.getPathLength = function(pathId) {
-	// 	return $http.get('/api/paths/' + pathId + "/challenges")
-	// 		.then(function(res){
-	// 			console.log(res.data[0].challenges.length)
-	// 			return(res.data[0].challenges.length)
-	// 		})
-	// }
 
 	PlantFactory.buildTree = function(userChallenges, pathId) {
 		var levelOne = [];
