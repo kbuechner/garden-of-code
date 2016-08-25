@@ -264,6 +264,7 @@ app.directive('plantDirective', function(PlantFactory, AuthService) {
 		link: function(scope, e, a) {
 			AuthService.getLoggedInUser()
 				.then(function(user) {
+					if (!user) {return false; }
 					PlantFactory.getUserPath(user.id, scope.path)
 						.then(function(plantData) {
 							PlantFactory.buildTree(plantData, scope.path)

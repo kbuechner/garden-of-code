@@ -54,7 +54,7 @@ router.post('/:userId/challenges/:challengeId', function(req, res, next){
     }
   })
   .then(function (challenge){
-    // find or create returns an array containing the instance 
+    // find or create returns an array containing the instance
     challenge = challenge[0]
     return challenge.update(req.body)
   })
@@ -87,7 +87,8 @@ router.get('/:userId/path/:pathId', function(req, res, next) {
       return usrChal;
     });
     if (userChallenges.length) res.send(userChallenges);
-    else res.status(404).send('This user has no active challenges for this path')
+    // else res.status(404).send('This user has no active challenges for this path')
+    else res.send({userId: req.params.userId, challengeId: 1})
   })
   .catch(next);
 
