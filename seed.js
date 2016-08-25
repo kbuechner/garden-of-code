@@ -173,7 +173,7 @@ var seedChallenges = function() {
     });
 
 };
-var seedUserChallenges = function() {
+/*var seedUserChallenges = function() {
 
     var userChallenges = [
     {
@@ -255,7 +255,7 @@ var seedUserChallenges = function() {
     });
 
 
-};
+};*/
 var seedPaths = function() {
 
     var paths = [{
@@ -546,9 +546,9 @@ db.sync({
     .then(function() {
         return seedChallenges();
     })
-    .then(function() {
+/*    .then(function() {
         return seedUserChallenges();
-    })
+    })*/
     .then(function() {
         console.log(chalk.green('Seed successful!'));
         process.exit(0);
