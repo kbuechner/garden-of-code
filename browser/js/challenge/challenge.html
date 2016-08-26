@@ -1,7 +1,7 @@
 <section id="challenge-view" layout="row" class="yellow">
 	<md-card flex="33" flex-xs="25">
 		<md-card-header><h2>{{challenge.title}}</h2></md-card-header>
-		<md-card>Language: {{challenge.language}}</samp><span>Level {{challenge.level}}</span></md-card>
+		<!-- <md-card>Language: {{challenge.language}}</samp><span>Level {{challenge.level}}</span></md-card> -->
 		<md-card><md-card-header>Description:</md-card-header> <p ng-bind-html="challenge.description"></p></md-card>
 
 		<md-card >
@@ -17,7 +17,10 @@
 
 	<div flex="66" flex-xs="100">
 		<md-card id="ace_card" ><form>
-			<md-card-header ng-show="challenge.level !== 1">Enter your solution below:</md-card-header>
+			<md-card-header ng-show="challenge.level !== 1">Enter your solution below:
+				<span flex></span>
+				Level {{challenge.level}} {{challenge.language}}
+			</md-card-header>
 			<md-card-header ng-show="challenge.level === 1">Click Submit to move on to your first coding challenge</md-card-header>
 			<div ui-ace="{
 						require: ['ace/ext/language_tools'],

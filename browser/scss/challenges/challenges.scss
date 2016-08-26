@@ -1,5 +1,5 @@
 .ace_editor {
-    height: calc(100vh - 325px);
+    height: calc(100vh - 405px);
     font-size: 14px !important;
     font-family: "Ubuntu Mono", "Lucida Console", Monaco, monospace !important;
     box-shadow: 3px 3px 6px lightgray;
@@ -12,10 +12,10 @@
     }
 }
 
-#results-card {
-    height: 140px;
+md-card#results-card {
+    height: 230px;
     max-height: calc(100vh - 300px);
-    margin-top: 11px;
+    margin-top: 12px;
 
 }
 
@@ -34,12 +34,13 @@
     md-card {
         padding: 5px 10px 5px 10px;
         background-color: lighten(rgb(139,195,74),41%);
+            margin-top: 12px;
         md-card {
             background-color: white;
         }
         md-card-header {
             margin: -10px -10px 0px -10px;
-            background-color: lighten(rgb(139,195,74),25%)
+            background-color: lighten(rgb(139,195,74),20%)
         }
         #btn1, #btn2 {
             padding-left: 36px;
