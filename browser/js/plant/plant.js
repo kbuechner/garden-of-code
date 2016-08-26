@@ -6,90 +6,110 @@ app.factory('PlantFactory', function($http, $q) {
 			.then(function(res) {
 				return res.data
 			})
-			.then(function(challenges) {
-				var returnChallenges = [];
-				for (var x = 0; x < challenges.length; x++) {
-					returnChallenges.push($http.get('api/userChallenges/' + userId + '/challenges/' + challenges[x].challengeId))
-				}
-				return $q.all(returnChallenges)
-			})
+			// .then(function(challenges) {
+			// 	var returnChallenges = [];
+			// 	for (var x = 0; x < challenges.length; x++) {
+			// 		returnChallenges.push($http.get('api/userChallenges/' + userId + '/challenges/' + challenges[x].challengeId))
+			// 	}
+			// 	return $q.all(returnChallenges)
+			// })
 	}
 
 	PlantFactory.buildTree = function(userChallenges, pathId) {
-		var levelOne = [];
-		var levelTwo = [];
-		var levelThree = [];
-		var levelFour = [];
+		// console.log(userChallenges)
+		var createNodes = userChallenges.forEach(function(item, index){
+			console.log(item)
+			item.parent = item.challenge.level ? item.challenge.level-1 : null,
+			item.show = item.complete,
+			item.name = item.challenge.title,
+			item.imgSize = 65,
+			item.imgType = "leaf"
+		})
 
-		var root = {
-			name: "root",
-			parent: null,
-			children: [],
-			text: "",
-			imgSize: 200,
-			imgType: "grass",
-			show: true,
-		}
+		var levels = _.groupBy(userChallenges, x=>x.challenge.level)
+		var levelNodes = Object.keys(levels)
+								.map((level, index) => ({
+									name: index,
+									parent: index ? index-1 : null,
+									children: levels[level]
+									.map(userChallenge=>({
+										name: userChallenge.challenge.title,
+										parent: index,
+										children: [],
+										show: userChallenge.complete,
+										imgSize: 65,
+										imgType: "leaf",
+										userChallenge
+									}))
+								}))
+		// console.log("Level Nodes: ", levelNodes)
 
-		var initial = {
-			name: "0",
-			parent: "root",
-			children: [],
-			text: "",
-			imgSize: 65,
-			imgType: "leaf",
-			show: true,
-		}
-		var firstStem = {
-			name: "1",
-			parent: "0",
-			text: "",
-			imgSize: 50,
-			imgType: "leaf",
-			show: true,
-		}
+var data = userChallenges
+
+// *********** Convert flat data into a nice tree ***************
+// create a name: node map
+var dataMap = data.reduce(function(map, node) {
+	map[node.name] = node;
+	return map;
+}, {});
+
+// create the tree array
+var treeData = [];
+data.forEach(function(node) {
+	// add to parent
+	var parent = dataMap[node.parent];
+	if (parent) {
+		// create child array if it doesn't exist
+		(parent.children || (parent.children = []))
+			// add node to child array
+			.push(node);
+	} else {
+		// parent is null or missing
+		treeData.push(node);
+	}
+});
+console.log(treeData)
 
 
-		var secondStem = {
-			name: "2",
-			parent: "1",
-			children: [],
-			text: "",
-			imgSize: 0,
-			imgType: "leaf",
-			show: false,
-		}
-		secondStem.children = levelTwo
 
-		var thirdStem = {
-			name: "3",
-			parent: "2",
-			children: [],
-			text: "",
-			imgSize: 0,
-			imgType: "leaf",
-			show: false,
-		}
-		thirdStem.children = levelThree
 
-		var fourthStem = {
-			name: "4",
-			parent: "3",
-			children: [],
-			text: "",
-			imgSize: 0,
-			imgType: "leaf",
-			show: false,
-		}
-		fourthStem.children = levelFour;
-
-		var blossomNode = {
-			name: "blossom",
-			text: "",
-			imgSize: 75,
-			imgType: "flower",
-			show: false,
-		}
+		var root = treeData
+		// var root = {
+		// "name": "0",
+		// "parent": "null",
+		// "children": [{
+		// 	//level one center
+		// 	"name:": "1",
+		// 	"parent": "0",
+		// 	"children": [{
+		// 		"parent": "1",
+		// 		"name": "2",
+		// 		"text": "",
+		// 		"children": [{
+		// 			"name": "3",
+		// 			"parent": "2",
+		// 			"children": [{
+		// 				"parent": "3",
+		// 				"text": "",
+		// 				"imgSize": "75",
+		// 				"imgType": "flower",
+		// 			}],
+		// 			"text": "",
+		// 			"imgSize": "0",
+		// 			"imgType": "leaf"
+		// 		}],
+		// 		"imgSize": "0"
+		// 	}],
+		// 	"text": "Welcome to Javascript!",
+		// 	"imgSize": "65",
+		// 	"imgType": "leaf",
+		// 	"show": "true"
+		// }],
+		// "text": "",
+		// "imgSize": "200",
+		// "imgType": "grass",
+		// "show": "true"
+		// }
 
 		function makeNode(challengeData, level, size) {
 			var returnObj = {}
@@ -101,50 +121,50 @@ app.factory('PlantFactory', function($http, $q) {
 			return returnObj
 		}
 
-		for (var x = 0; x < userChallenges.length; x++) {
-			if (x < 2) {
-				levelOne.push(makeNode(userChallenges[x].data, "1", 50))
-				if (x === 1)
-					levelOne.push(firstStem)
-				if (x === userChallenges.length - 1) {
-					blossomNode.parent = "1"
-					levelOne.push(blossomNode);
-					break
-				}
-			} else if (x >= 2 && x < 4) {
-				levelTwo.push(makeNode(userChallenges[x].data, "2", 50))
-				if (x === 3)
-					levelTwo.push(secondStem)
-				if (x === userChallenges.length - 1) {
-					blossomNode.parent = "1"
-					levelTwo.push(blossomNode);
-					break
-				}
-			} else if (x >= 4) {
-				levelThree.push(makeNode(userChallenges[x].data, 3, 35))
-				if (x === 4)
-					levelThree.push(thirdStem)
-				if (x === userChallenges.length - 1) {
-					blossomNode.parent = "1"
-					levelOne.push(blossomNode);
-					break
-				}
-			}
+		// for (var x = 0; x < userChallenges.length; x++) {
+		// 	if (x < 2) {
+		// 		levelOne.push(makeNode(userChallenges[x].data, "1", 50))
+		// 		if (x === 1)
+		// 			levelOne.push(firstStem)
+		// 		if (x === userChallenges.length - 1) {
+		// 			blossomNode.parent = "1"
+		// 			levelOne.push(blossomNode);
+		// 			break
+		// 		}
+		// 	} else if (x >= 2 && x < 4) {
+		// 		levelTwo.push(makeNode(userChallenges[x].data, "2", 50))
+		// 		if (x === 3)
+		// 			levelTwo.push(secondStem)
+		// 		if (x === userChallenges.length - 1) {
+		// 			blossomNode.parent = "1"
+		// 			levelTwo.push(blossomNode);
+		// 			break
+		// 		}
+		// 	} else if (x >= 4) {
+		// 		levelThree.push(makeNode(userChallenges[x].data, 3, 35))
+		// 		if (x === 4)
+		// 			levelThree.push(thirdStem)
+		// 		if (x === userChallenges.length - 1) {
+		// 			blossomNode.parent = "1"
+		// 			levelOne.push(blossomNode);
+		// 			break
+		// 		}
+		// 	}
 
-			if(x===5){
-				blossomNode.show=true;
-			}
-		}
-		initial.children = levelOne;
-		if (levelTwo.length > 0)
-			firstStem.children = levelTwo
-		if (levelThree.length > 0)
-			secondStem.children = levelThree
-		if (levelFour.length > 0)
-			thirdStem.children = levelFour
+		// 	if(x===5){
+		// 		blossomNode.show=true;
+		// 	}
+		// }
+		// initial.children = levelOne;
+		// if (levelTwo.length > 0)
+		// 	firstStem.children = levelTwo
+		// if (levelThree.length > 0)
+		// 	secondStem.children = levelThree
+		// if (levelFour.length > 0)
+		// 	thirdStem.children = levelFour
 
-		root.children[0] = initial
-		var challengeJson = angular.toJson(userChallenges)
+		// root.children[0] = initial
+		// var challengeJson = angular.toJson(userChallenges)
 
 		var margin = {
 				top: 40,
@@ -211,23 +231,23 @@ app.factory('PlantFactory', function($http, $q) {
 				})
 				.attr("height", function(d) {
 					if (d.show)
-						return d.imgSize
+						return 30
 					else
 						return 0;
 				})
 				.attr("width", function(d) {
 					if (d.show)
-						return d.imgSize
+						return 30
 					else
 						return 0;
 				})
 				.attr("x", o.x)
 				.attr("y", o.y)
-				.attr("transform", function(d) {
-					var x = -d.imgSize / 2
-					var y = -d.imgSize / 2
-					return "translate(" + x + ", " + y + ")"
-				})
+				// .attr("transform", function(d) {
+				// 	var x = -d.imgSize / 2
+				// 	var y = -d.imgSize / 2
+				// 	return "translate(" + x + ", " + y + ")"
+				// })
 			// svg.selectAll("text")
 			// 	.data(nodes)
 			// 	.enter()

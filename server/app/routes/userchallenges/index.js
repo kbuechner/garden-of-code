@@ -66,30 +66,56 @@ router.post('/:userId/challenges/:challengeId', function(req, res, next){
 
 // view all challenges I've done in a path
 router.get('/:userId/path/:pathId', function(req, res, next) {
-  Path.findOne({
-    where: {id: req.params.pathId},
-    include: [ Challenge ]
-    })
-  .then(function (path) {
-    let userChallengePromises = path.challenges.map(function (challenge) {
-      return UserChallenge.findOne({
-        where: {
-          userId: req.params.userId,
-          challengeId: challenge.id
-        }
-      })
-    });
-    return Promise.all(userChallengePromises)
+  UserChallenge.findAll({
+    where: {
+      userId: req.params.userId
+    },
+    include: [{
+      model: Challenge,
+      where: {
+        pathId: req.params.pathId 
+      }
+    }]
   })
-  .then(function (userChallenges) {
-    // filter out some null objects
-    userChallenges = userChallenges.filter(function (usrChal) {
-      return usrChal;
-    });
-    if (userChallenges.length) res.send(userChallenges);
-    // else res.status(404).send('This user has no active challenges for this path')
-    else res.send({userId: req.params.userId, challengeId: 1})
+  .then(function(challenges){
+    res.send(challenges)
   })
+  .catch(next)
+
+  // Path.findOne({
+  //   where: {id: req.params.pathId},
+  //   include: [ {
+  //     model: Challenge,
+  //     include: [ {
+  //       model: User,
+  //       where: {
+  //         id: req.params.userId}
+  //     } ]
+  //   } ]
+  // })
+  // .then(function(path){
+  //   res.send(path)
+  // })
+  // .then(function (path) {
+  //   let userChallengePromises = path.challenges.map(function (challenge) {
+  //     return UserChallenge.findOne({
+  //       where: {
+  //         userId: req.params.userId,
+  //         challengeId: challenge.id
+  //       }
+  //     })
+  //   });
+  //   return Promise.all(userChallengePromises)
+  // })
+  // .then(function (userChallenges) {
+  //   // filter out some null objects
+  //   userChallenges = userChallenges.filter(function (usrChal) {
+  //     return usrChal;
+  //   });
+  //   if (userChallenges.length) res.send(userChallenges);
+  //   // else res.status(404).send('This user has no active challenges for this path')
+  //   else res.send({userId: req.params.userId, challengeId: 1})
+  // })
   .catch(next);
 
 });
