@@ -27,21 +27,21 @@ app.factory('PlantFactory', function($http, $q) {
 		})
 
 		var levels = _.groupBy(userChallenges, x=>x.challenge.level)
-		var levelNodes = Object.keys(levels)
-								.map((level, index) => ({
-									name: index,
-									parent: index ? index-1 : null,
-									children: levels[level]
-									.map(userChallenge=>({
-										name: userChallenge.challenge.title,
-										parent: index,
-										children: [],
-										show: userChallenge.complete,
-										imgSize: 65,
-										imgType: "leaf",
-										userChallenge
-									}))
-								}))
+		// var levelNodes = Object.keys(levels)
+		// 						.map((level, index) => ({
+		// 							name: index,
+		// 							parent: index ? index-1 : null,
+		// 							children: levels[level]
+		// 							.map(userChallenge=>({
+		// 								name: userChallenge.challenge.title,
+		// 								parent: index,
+		// 								children: [],
+		// 								show: userChallenge.complete,
+		// 								imgSize: 65,
+		// 								imgType: "leaf",
+		// 								userChallenge
+		// 							}))
+		// 						}))
 		// console.log("Level Nodes: ", levelNodes)
 
 var data = userChallenges
@@ -71,13 +71,15 @@ data.forEach(function(node) {
 console.log(treeData)
 
 
-
-
-		var root = treeData
-		// var root = {
-		// "name": "0",
-		// "parent": "null",
-		// "children": [{
+		var root = {
+		"name": "0",
+		"parent": "null",
+		"children": [{
+			"name": "1",
+			"parent": "0",
+			"imgType": "leaf",
+			"imgSize": "50"
+		}],
 		// 	//level one center
 		// 	"name:": "1",
 		// 	"parent": "0",
@@ -105,21 +107,21 @@ console.log(treeData)
 		// 	"imgType": "leaf",
 		// 	"show": "true"
 		// }],
-		// "text": "",
-		// "imgSize": "200",
-		// "imgType": "grass",
-		// "show": "true"
-		// }
-
-		function makeNode(challengeData, level, size) {
-			var returnObj = {}
-			returnObj.parent = level,
-			returnObj.text = challengeData.code;
-			returnObj.imgSize = size;
-			returnObj.imgType = "leaf",
-			returnObj.show = challengeData.complete;
-			return returnObj
+		"text": "",
+		"imgSize": "200",
+		"imgType": "grass",
+		"show": "true"
 		}
+		root.children[0].children = treeData
+		// function makeNode(challengeData, level, size) {
+		// 	var returnObj = {}
+		// 	returnObj.parent = level,
+		// 	returnObj.text = challengeData.code;
+		// 	returnObj.imgSize = size;
+		// 	returnObj.imgType = "leaf",
+		// 	returnObj.show = challengeData.complete;
+		// 	return returnObj
+		// }
 
 		// for (var x = 0; x < userChallenges.length; x++) {
 		// 	if (x < 2) {
@@ -231,37 +233,37 @@ console.log(treeData)
 				})
 				.attr("height", function(d) {
 					if (d.show)
-						return 30
+						return d.imgSize
 					else
 						return 0;
 				})
 				.attr("width", function(d) {
 					if (d.show)
-						return 30
+						return d.imgSize
 					else
 						return 0;
 				})
 				.attr("x", o.x)
 				.attr("y", o.y)
-				// .attr("transform", function(d) {
-				// 	var x = -d.imgSize / 2
-				// 	var y = -d.imgSize / 2
-				// 	return "translate(" + x + ", " + y + ")"
-				// })
-			// svg.selectAll("text")
-			// 	.data(nodes)
-			// 	.enter()
-			// 	.append("text")
-			// 	.attr("x", o.x)
-			// 	.attr("y", o.y)
-			// 	.attr("transform", function(d){
-			// 		var x = -d.imgSize/2
-			// 		var y = -d.imgSize/2
-			// 		return "translate(" + x + ", " + y + ")"
-			// 	})
-			// 	.text(function(d) {
-			// 		return d.text
-			// });
+				.attr("transform", function(d) {
+					var x = -d.imgSize / 2
+					var y = -d.imgSize / 2
+					return "translate(" + x + ", " + y + ")"
+				})
+			svg.selectAll("text")
+				.data(nodes)
+				.enter()
+				.append("text")
+				.attr("x", o.x)
+				.attr("y", o.y)
+				.attr("transform", function(d){
+					var x = -d.imgSize/2
+					var y = -d.imgSize/2
+					return "translate(" + x + ", " + y + ")"
+				})
+				.text(function(d) {
+					return d.text
+			});
 		});
 	}
 	return PlantFactory;
