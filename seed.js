@@ -37,7 +37,8 @@ var seedUsers = function() {
         email: 'obama@gmail.com',
         password: '123',
         userName: 'POTUS',
-        name: 'barak'
+        name: 'barak',
+        isAdmin: true
     }, ];
 
     return Promise.map(users, function(userObj) {
