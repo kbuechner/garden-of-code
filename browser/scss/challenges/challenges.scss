@@ -2,13 +2,17 @@
     height: calc(100vh - 405px);
     font-size: 14px !important;
     font-family: "Ubuntu Mono", "Lucida Console", Monaco, monospace !important;
-    box-shadow: 3px 3px 6px lightgray;
+    margin-top: 3px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     .ace_print-margin {
         //removes vertical split line
         display: none;
     }
     .ace-layer {
         z-index: 0;
+    }
+    .ace_gutter > .ace_layer {
+        min-width: 30px;
     }
 }
 
@@ -20,7 +24,7 @@ md-card#results-card {
 }
 
 #challenge-view{
-        background-color: darken(#FFFBD1,7%);
+        background-color: darken(#FFFBD1,10%);
         height: 100%;
 
     div {
@@ -33,15 +37,21 @@ md-card#results-card {
     }
     md-card {
         padding: 5px 10px 5px 10px;
-        background-color: lighten(rgb(139,195,74),41%);
-            margin-top: 12px;
+        background-color: lighten(#FFFBD1,7%);
+            margin-top: 10px;
         md-card {
             background-color: white;
         }
-        md-card-header {
+        md-card-header,  {
             margin: -10px -10px 0px -10px;
-            background-color: lighten(rgb(139,195,74),20%)
+            background-color: lighten(rgb(139,195,74),12%)
         }
+        #lvl{
+            margin: -25px -10px 5px -10px;
+            padding-left: 16px;
+            background-color: lighten(rgb(139,195,74),12%)
+        }
+
         #btn1, #btn2 {
             padding-left: 36px;
             padding-right: 36px;
