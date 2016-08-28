@@ -2,11 +2,9 @@
   ng-submit="usernameForm.$valid && checkUsername(signup.userName)">
     <md-input-container>
         <label for="userName">Choose a username</label>
-        <input type="text" ng-model="signup.userName" id="userName" class="form-control"
-        placeholder="Enter a unique username" ng-change="clearChecked()" ng-pattern="/^[a-zA-Z0-9\-\_]+$/" required>
+        <input type="text" ng-model="signup.userName" id="userName" class="form-control" placeholder="Enter a unique username" ng-change="clearChecked()" ng-pattern="/^[a-zA-Z0-9\-\_]+$/" required>
 
-        <md-button type="submit" class="deepBlue" ng-hide="!dupeName && checkedName"
-            ng-disabled="usernameForm.$invalid">
+        <md-button type="submit" class="md-raised md-primary" ng-hide="!dupeName && checkedName" ng-disabled="usernameForm.$invalid">
             Check Availability
         </md-button>
     </md-input-container>
@@ -37,5 +35,5 @@
         <label for="signup-password">Password</label>
         <input type="password" ng-model="signup.password" class="form-control" id="signup-password" placeholder="Password">
     </md-input-container>
-    <button type="submit" class="btn btn-default">Submit</button>
+    <md-button type="submit" class="md-raised md-primary">Submit</md-button>
 </form>

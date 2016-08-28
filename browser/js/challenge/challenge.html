@@ -30,9 +30,9 @@
 						}"
 					ng-model="userCode" ng-show="challenge.level !== 1"></div>
 
-			<md-button type="submit" ng-click="challenge.level === 1 ? complete = true : runTests(userCode)" class='deepBlue' id='btn1'>Submit</md-button>
+			<md-button type="submit" ng-click="challenge.level === 1 ? complete = true : runTests(userCode)" class='md-raised md-primary' id='btn1'>Submit</md-button>
 			<md-button type="save" ng-show="challenge.level !== 1&&!complete" ng-click="saveCode(userCode)" class='md-warn' id='btn2'>Save Code</md-button>
-			<md-button type="next" ng-show="complete" ng-click="nextChallenge()" class='deepBlue' id='btn2'>Next Challenge</md-button>
+			<md-button type="next" ng-show="complete" ng-click="nextChallenge()" class='md-raised md-primary md-hue-1' id='btn2'>Next Challenge</md-button>
 			<span ng-show="saved">Your code has been saved!</span>
 		</form></md-card>
 
