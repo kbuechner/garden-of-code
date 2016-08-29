@@ -58,7 +58,7 @@ app.run(function ($rootScope, AuthService, $state) {
 app.config(function($mdThemingProvider) {
   $mdThemingProvider.theme('default')
     .primaryPalette('light-green', {
-        'default' : '400',
+        'default': '400',
         'hue-1': '100'
     })
 });
