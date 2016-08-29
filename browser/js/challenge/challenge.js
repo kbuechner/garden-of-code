@@ -41,6 +41,7 @@ app.controller('ChallengeCtrl', function ($state, $scope, $stateParams, challeng
 					failMsg += "<br/><br/>Title: " + failure.title + "<br/> Error: " + failure.err.stack;
 				}
 				$scope.output = $sce.trustAsHtml(failMsg);
+				$scope.showHint=false;
 			}
 		});
 	};

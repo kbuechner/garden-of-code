@@ -1,23 +1,22 @@
-<section id="challenge-view" layout="row" class="yellow">
-	<md-card flex="33" flex-xs="25">
+<section flex id="challenge-view" layout="row" class="yellow">
+	<md-card flex="33" >
 		<md-card-header><h2>{{challenge.title}}</h2></md-card-header>
-		<md-card>Language: {{challenge.language}}</samp><span>Level {{challenge.level}}</span></md-card>
+		<md-subheader id="lvl">Level {{challenge.level}} {{challenge.language}}</md-subheader>
 		<md-card><md-card-header>Description:</md-card-header> <p ng-bind-html="challenge.description"></p></md-card>
 
-		<md-card >
-			<md-card-header ng-hide="showHint" ng-click="toggleHint()">Show Hint</md-card-header>
-			<md-card-header ng-show="showHint" ng-click="toggleHint()">Hint:</md-card-header>
-			<p ng-show="showHint" ng-bind-html="challenge.examples"></p>
-		</md-card>
+
 		<md-card ><md-card-header>Your Plant:</md-card-header>
 		<plant-directive path="challenge.pathId">{{challenge.path}}</plant-directive>
 		</md-card>
 
 	</md-card>
 
-	<div flex="66" flex-xs="100">
+	<div flex="66" >
 		<md-card id="ace_card" ><form>
-			<md-card-header ng-show="challenge.level !== 1">Enter your solution below:</md-card-header>
+			<md-card-header ng-show="challenge.level !== 1">Enter your solution below:
+				<span flex></span>
+
+			</md-card-header>
 			<md-card-header ng-show="challenge.level === 1">Click Submit to move on to your first coding challenge</md-card-header>
 			<div ui-ace="{
 						require: ['ace/ext/language_tools'],
@@ -34,12 +33,18 @@
 			<md-button type="save" ng-show="challenge.level !== 1&&!complete" ng-click="saveCode(userCode)" class='md-warn' id='btn2'>Save Code</md-button>
 			<md-button type="next" ng-show="complete" ng-click="nextChallenge()" class='deepBlue' id='btn2'>Next Challenge</md-button>
 			<span ng-show="saved">Your code has been saved!</span>
-		</form></md-card>
 
+			<md-button ng-hide="showHint || challenge.level === 1 || complete" ng-click="toggleHint()">Show Hint</md-button>
+			<md-button ng-show="showHint && challenge.level > 1 " ng-click="toggleHint()">Hide Hint</md-button>
+		</form></md-card>
+		<md-card ng-show="showHint" ng-click="toggleHint()" class="animate-show">
+			<md-card-header >Hint:</md-card-header>
+			<md-card ng-show="showHint" ng-bind-html="challenge.examples"></md-card>
+		</md-card>
 		<md-card id="results-card" ng-show="challenge.level !== 1">
 			<md-card-header> Results:  </md-card-header>
 
-			<div ng-bind-html="output"></div>
+			<md-card ng-show="output" ng-bind-html="output"></md-card ng-show="output">
 		</md-card>
 	</div>
 </section>
