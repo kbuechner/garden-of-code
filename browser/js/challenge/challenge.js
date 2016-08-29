@@ -31,7 +31,7 @@ app.controller('ChallengeCtrl', function ($state, $scope, $stateParams, challeng
 		ChallengeFactory.runTests(challenge, usrCode)
 		.then(function(result){
 			if (!result.failures.length) {
-				let successMsg = "Congratualtions, you completed the challenge!"
+				let successMsg = "Congratulations, you completed the challenge!"
 				$scope.output = $sce.trustAsHtml(successMsg);
 				$scope.saveCode($scope.userCode, true)
 			}
