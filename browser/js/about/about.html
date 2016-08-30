@@ -1,16 +1,20 @@
 <section id="about" layout="column">
 	<div>
 		<h2>About Garden of Code</h2>
-		<p>Lorem ipsum dolor sit amet, te stet iisque prodesset vel, an quo atomorum reprimique. Pri ne nostro appareat. Harum exerci eu eos, affert dolore euismod per no. Ad duo eros quaestio, cum animal scripta in, ei agam audire duo. Ad usu odio singulis intellegebat. Cum an amet falli errem, vocibus minimum verterem cu his. Ad nam prodesset suscipiantur.</p>
+		<p>Garden of Code is a platform to gamify coding practice, where a user completes coding challenges to collect plants for their garden.</p>
+
+		<p>Garden of Code encourages users to learn how to code by providing them with visual representations of their progress. Using nurturing and collecting as motivation, as seen in popular games such as Pokemon Go and Neko Atsume, Garden of Code aims to be a friendly and accessible platform for a younger audience — particularly girls. </p>
+
+		<p>Users select paths through which they learn new concepts to apply to coding challenges. As users complete challenges, we test their code in a  Docker instance, and use the D3.js data visualization library to generate a plant. </p>
 	</div>
 	<div>
-		<h2>About the Developers</h2>
+		<h2>The Developers</h2>
 		<md-list layout="row" layout-wrap>
 			<md-list-item flex="50" class="md-3-line" ng-repeat="developer in developers">
 				<img ng-src="{{ developer.photo }}" class="md-avatar" />
 				<div class="md-list-item-text">
 					<h3>{{ developer.name }}</h3>
-					<p>{{ developer.bio }}</p>
+					<!-- <p>{{ developer.bio }}</p> -->
 					<md-button ng-href="{{ developer.github }}" target="_blank" aria-label="Github for {{ developer.name }}">
 						<md-icon md-svg-src="/images/github-mark.svg"></md-icon>
 					</md-button>
@@ -20,7 +24,9 @@
 	            </div>
 			</md-list-item>
 		</md-list>
-
+	<div>
+		<p>Visit <a href="https://github.com/kbuechner/garden-of-code">our repo on GitHub</a>.</p>
+	</div>
 	<!-- ENTER INFORMATION ABOUT OPEN SOURCE STUFF WE'VE USED
 	<div>
 		<h2>Attributions</h2>
