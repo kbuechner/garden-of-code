@@ -6,6 +6,6 @@
 
 <p>Users select paths through which they learn new concepts to apply to coding challenges. As users complete challenges, we test their code in a  Docker instance, and use the D3.js data visualization library to generate a plant. </p>
 
-<p>
+<p></p>
 [http://www.gardenofcode.com](http://www.gardenofcode.com)
-</p>
+
