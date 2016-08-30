@@ -1,7 +1,7 @@
 const child_process = require('child_process');
 
 let argv = require('minimist')(process.argv.slice(2));
-let code = argv.code;
+let code = argv.code.replace(/"/g, "'");
 let testName = argv.testName;
 let command = 'code=' + '"' + code + '"' + ' ./node_modules/mocha/bin/mocha --grep "' + testName + '"' + ' --reporter json'
 
