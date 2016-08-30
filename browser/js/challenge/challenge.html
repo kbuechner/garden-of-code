@@ -2,11 +2,15 @@
 	<md-card flex="33" >
 		<md-card-header><h2>{{challenge.title}}</h2></md-card-header>
 		<md-subheader id="lvl">Level {{challenge.level}} {{challenge.language}}</md-subheader>
-		<md-card><md-card-header>Description:</md-card-header> <p ng-bind-html="challenge.description"></p></md-card>
+		<md-card>
+			<md-card-header>Description:</md-card-header>
+			<p ng-bind-html="challenge.description"></p>
+		</md-card>
 
 
-		<md-card ><md-card-header>Your Plant:</md-card-header>
-		<plant-directive path="challenge.pathId">{{challenge.path}}</plant-directive>
+		<md-card>
+			<md-card-header>Your Plant:</md-card-header>
+			<plant-directive path="challenge.pathId">{{challenge.path}}</plant-directive>
 		</md-card>
 
 	</md-card>

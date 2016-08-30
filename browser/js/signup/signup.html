@@ -3,18 +3,22 @@
     <md-input-container>
         <label for="userName">Choose a username</label>
         <input type="text" ng-model="signup.userName" id="userName" class="form-control" placeholder="Enter a unique username" ng-change="clearChecked()" ng-pattern="/^[a-zA-Z0-9\-\_]+$/" required>
-
+    </md-input-container>
+    <div>
         <md-button type="submit" class="md-raised md-primary" ng-hide="!dupeName && checkedName" ng-disabled="usernameForm.$invalid">
             Check Availability
         </md-button>
-    </md-input-container>
+    </div>
+    
     <alert type="danger" ng-show="dupeName">{{ dupeName }}</alert>
     <alert type="danger" ng-show="usernameForm.$error.pattern ">
         Please use only letters, numbers, dash (-) and underscore (_). </alert>
 </form>
 
 <div ng-show="!dupeName && checkedName">
-    <h5>Great! The name {{signup.userName}} is available. To continue: </h5>
+    <md-input-container>
+        Great! The name {{signup.userName}} is available. To continue:
+    </md-input-container>
     <!-- <img src="http://i.stack.imgur.com/ZW4QC.png" ng-click="signupFacebook()" />
     <h4>Or create an account below:</h4> -->
 </div>
@@ -35,5 +39,7 @@
         <label for="signup-password">Password</label>
         <input type="password" ng-model="signup.password" class="form-control" id="signup-password" placeholder="Password">
     </md-input-container>
-    <md-button type="submit" class="md-raised md-primary">Submit</md-button>
+    <div>
+        <md-button type="submit" class="md-raised md-primary">Submit</md-button>
+    </div>
 </form>

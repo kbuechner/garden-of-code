@@ -8,8 +8,13 @@ app.factory('DevTeam', function () {
 			linkedin: 'https://www.linkedin.com/in/stephanie-adams'
 		}, {
 			name: 'Katie Buechner',
+<<<<<<< HEAD
+			bio: 'Lorem ipsum dolor sit amet, te stet iisque prodesset vel, an quo atomorum reprimique. Pri ne nostro appareat. Harum exerci eu eos, affert dolore euismod per no.',
+			photo: '/images/katie-buechner.jpg',
+=======
 			// bio: 'Lorem ipsum dolor sit amet, te stet iisque prodesset vel, an quo atomorum reprimique. Pri ne nostro appareat. Harum exerci eu eos, affert dolore euismod per no.',
 			photo: '/images/stephanie-adams.png',
+>>>>>>> master
 			github: 'https://github.com/kbuechner',
 			linkedin: 'https://www.linkedin.com/in/katherine-buechner-b00a3a33'
 		}, {
