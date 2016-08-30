@@ -96,7 +96,7 @@ var seedChallenges = function() {
         examples: '<code>var x = 1000; <br>function makeXEqualZero() {<br>&nbsp;&nbsp;x = 0; <br>}</code>',
         level: 3,
         pathId: 1
-    },
+    }/*,
     {
         title: 'Functions that Return Values',
         language: 'node',
@@ -111,7 +111,7 @@ var seedChallenges = function() {
         description: 'You can set a variable equal to a function call - the variable\'s value will be whatever the function returns.</p> <p>Create a function called <code>returnsOne</code> that returns the number 1.</p> <p>Now declare a variable called <code>one</code> and assign it to the function call getOne().  The variable will now equal 1!',
         examples: '<code>var getAge = function () {<br>&nbsp;&nbsp;lastYearsAge += 1; <br>}</p> <p>var myAge = getAge();</code>',level: 3,
         pathId: 1
-    },{
+    }*/,{
         title: 'Welcome to JavaScript Arrays',
         language: 'node',
         description: '',
@@ -151,7 +151,7 @@ var seedChallenges = function() {
         level: 3,
         pathId: 2,
         startCode: 'var array = [1, 2, 3, 4]\n\n'
-    },{
+    },/*{
         title: 'Array.prototype.filter',
         language: 'node',
         description: 'The <code>.filter()</code> method takes in a testing function.  It passes each array value into the function you specify. If the function returns <code>true</code>, it keeps that value.  <code>.filter()</code> doesn\'t change the original array, but returns a new one with only the <code>true</code> values.  </p><p>Using <code>.filter()</code>, set the variable <code>newArray</code> to contain all the even numbers in <code>array</code>.',
@@ -159,7 +159,7 @@ var seedChallenges = function() {
         level: 3,
         pathId: 2,
         startCode: 'var array = [1, 2, 3, 4]\n\n'
-    },{
+    },*//*{
         title: 'Array.prototype.forEach',
         language: 'node',
         description: 'The method <code>.forEach()</code> takes in a function that you want to execute for each value in an array. It returns an array of the results.</p><p>Using <code>.forEach()</code>, return an array where every value is 1 more than the original array value.',
@@ -167,7 +167,7 @@ var seedChallenges = function() {
         level: 3,
         pathId: 2,
         startCode: 'var array = [1, 2, 3, 4]\n\n'
-    }];
+    }*/];
 
     return Promise.mapSeries(challenges, function (challenge) {
         return Challenge.create(challenge);
