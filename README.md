@@ -10,10 +10,10 @@
 [www.gardenofcode.com](http://www.gardenofcode.com "Visit Garden of Code")
 ___
 ######Created by:
-<ul>
-<li>[Meredith Roman](https://github.com/meredithroman "meredithroman on GitHub")</li>
-<li>[Dana Norwood](https://github.com/nimadera "nimadera on GitHub")</li>
-<li>Katie Buechner](https://github.com/kbuechner/ "kbuechner on GitHub")</li>
-<li>[Stephanie Adams](https://github.com/earthtone0ne/ "earthtone0ne on GitHub")</li>
 
-</ul>
+<li>
+[Meredith Roman](https://github.com/meredithroman "meredithroman on GitHub")</li><li>
+[Dana Norwood](https://github.com/nimadera "nimadera on GitHub")</li><li>
+[Katie Buechner](https://github.com/kbuechner/ "kbuechner on GitHub")</li><li>
+[Stephanie Adams](https://github.com/earthtone0ne/ "earthtone0ne on GitHub")</li>
+
