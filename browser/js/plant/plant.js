@@ -71,42 +71,61 @@ data.forEach(function(node) {
 console.log(treeData)
 
 
-		var root = {
-		"name": "0",
-		"parent": "null",
+	var root = {
+	//base node
+	"name": "0",
+	"parent": "null",
+	"children": [{
+		//level one center
+		"name:": "1",
+		"parent": "0",
 		"children": [{
-			"name": "1",
-			"parent": "0",
-			"imgType": "leaf",
-			"imgSize": "50"
+			"parent": "1",
+			"name": "2",
+			"text": "",
+			"children": [{
+				"name": "3-1",
+				"parent": "2",
+				"text": "Functions with Side Effects",
+				"imgSize": "35",
+				"imgType": "leaf",
+				"show": "true"
+			},{
+				"name": "3-2",
+				"parent": "2",
+				"text": "Functions with Side Effects",
+				"imgSize": "35",
+				"imgType": "leaf",
+				"show": "true"
+			},{
+				"name": "3",
+				"parent": "2",
+				"children": [{
+					"parent": "3",
+					"text": "",
+					"imgSize": "75",
+					"imgType": "flower",
+					"show": "true"
+				}],
+				"text": "",
+				"imgSize": "0",
+				"imgType": "leaf"
+			},{
+				"name": "3-3",
+				"parent": "2",
+				"text": "Functions with Side Effects",
+				"imgSize": "35",
+				"imgType": "leaf",
+				"show": "true"
+			},],
+			"imgSize": "0"
 		}],
-		// 	//level one center
-		// 	"name:": "1",
-		// 	"parent": "0",
-		// 	"children": [{
-		// 		"parent": "1",
-		// 		"name": "2",
-		// 		"text": "",
-		// 		"children": [{
-		// 			"name": "3",
-		// 			"parent": "2",
-		// 			"children": [{
-		// 				"parent": "3",
-		// 				"text": "",
-		// 				"imgSize": "75",
-		// 				"imgType": "flower",
-		// 			}],
-		// 			"text": "",
-		// 			"imgSize": "0",
-		// 			"imgType": "leaf"
-		// 		}],
-		// 		"imgSize": "0"
-		// 	}],
-		// 	"text": "Welcome to Javascript!",
-		// 	"imgSize": "65",
-		// 	"imgType": "leaf",
-		// 	"show": "true"
-		// }],
+		"text": "Welcome to Javascript!",
+		"imgSize": "65",
+		"imgType": "leaf",
+		"show": "true"
+	}],
+
 		"text": "",
 		"imgSize": "200",
 		"imgType": "grass",
@@ -249,20 +268,20 @@ console.log(treeData)
 					var x = -d.imgSize / 2
 					var y = -d.imgSize / 2
 					return "translate(" + x + ", " + y + ")"
-				})
-			svg.selectAll("text")
-				.data(nodes)
-				.enter()
-				.append("text")
-				.attr("x", o.x)
-				.attr("y", o.y)
-				.attr("transform", function(d){
-					var x = -d.imgSize/2
-					var y = -d.imgSize/2
-					return "translate(" + x + ", " + y + ")"
-				})
-				.text(function(d) {
-					return d.text
+			// 	})
+			// svg.selectAll("text")
+			// 	.data(nodes)
+			// 	.enter()
+			// 	.append("text")
+			// 	.attr("x", o.x)
+			// 	.attr("y", o.y)
+			// 	.attr("transform", function(d){
+			// 		var x = -d.imgSize/2
+			// 		var y = -d.imgSize/2
+			// 		return "translate(" + x + ", " + y + ")"
+			// 	})
+			// 	.text(function(d) {
+			// 		return d.text
 			});
 		});
 	}
