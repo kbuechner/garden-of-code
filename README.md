@@ -14,16 +14,16 @@ ___
 <li>
 Meredith Roman (
 [GitHub](https://github.com/meredithroman "meredithroman on GitHub")
-) ([LinkedIn]("https://www.linkedin.com/in/meredith-roman-ba7a2433 Meredith Roman on LinkedIn"))</li><li>
+)  ([LinkedIn](https://www.linkedin.com/in/meredith-roman-ba7a2433 "Meredith Roman on LinkedIn") )</li><li>
 
 Dana Norwood (
 [GitHub](https://github.com/nimadera "nimadera on GitHub")
-) ( [LinkedIn]( "https://www.linkedin.com/in/dana-norwood Dana Norwood on LinkedIn") ) </li><li>
+)  ( [LinkedIn](https://www.linkedin.com/in/dana-norwood "Dana Norwood on LinkedIn") ) </li><li>
 
 Katie Buechner (
 [GitHub](https://github.com/kbuechner/ "kbuechner on GitHub")
-) ( [LinkedIn]( "https://www.linkedin.com/in/katherine-buechner-b00a3a33 Katherine Buechner on LinkedIn") )</li><li>
+)  ( [LinkedIn](https://www.linkedin.com/in/katherine-buechner-b00a3a33 "Katherine Buechner on LinkedIn") )</li><li>
 
 Stephanie Adams (
 [GitHub](https://github.com/earthtone0ne/ "earthtone0ne on GitHub")
-) ( [LinkedIn]( "https://www.linkedin.com/in/stephanie-adams Stephanie Adams on LinkedIn") )</li>
+)  ( [LinkedIn](https://www.linkedin.com/in/stephanie-adams "Stephanie Adams on LinkedIn") )</li>
