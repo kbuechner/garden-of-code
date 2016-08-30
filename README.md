@@ -7,5 +7,11 @@
 <p>Users select paths through which they learn new concepts to apply to coding challenges. As users complete challenges, we test their code in a  Docker instance, and use the D3.js data visualization library to generate a plant. </p>
 
 <p></p>
-[www.gardenofcode.com](http://www.gardenofcode.com "Visit Garden of Code!")
+[www.gardenofcode.com](http://www.gardenofcode.com "Visit Garden of Code")
+
+######Created by:
+[Meredith Roman](https://github.com/meredithroman "meredithroman on GitHub")
+[Dana Norwood](https://github.com/nimadera "nimadera on GitHub")
+[Katie Buechner](https://github.com/kbuechner/ "kbuechner on GitHub")
+[Stephanie Adams](https://github.com/earthtone0ne/ "earthtone0ne on GitHub")
 
