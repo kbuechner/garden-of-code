@@ -9,9 +9,9 @@ app.factory('DevTeam', function () {
 		}, {
 			name: 'Katie Buechner',
 			bio: 'Lorem ipsum dolor sit amet, te stet iisque prodesset vel, an quo atomorum reprimique. Pri ne nostro appareat. Harum exerci eu eos, affert dolore euismod per no.',
-			photo: '/images/stephanie-adams.png',
+			photo: '/images/katie-buechner.jpg',
 			github: 'https://github.com/kbuechner',
-			linkedin: ''
+			linkedin: 'https://www.linkedin.com/in/katherine-buechner-b00a3a33'
 		}, {
 			name: 'Dana Norwood',
 			bio: 'Dana is a fullstack interactive developer.',

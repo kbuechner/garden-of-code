@@ -36,7 +36,7 @@ app.controller('DashboardCtrl', function ($scope, allChallenges, PathsFactory) {
 
       var nextChallenge = sortedChallenges[sortedChallenges.length-1].challengeId + 1;
 
-      console.log('nextChallenge', nextChallenge);
+      //console.log('nextChallenge', nextChallenge);
 
       PathsFactory.getChallenges(pathNum)
       .then(function (path) {
@@ -54,6 +54,8 @@ app.controller('DashboardCtrl', function ($scope, allChallenges, PathsFactory) {
             };
             $scope.dashHero.headline = "Resume Learning!";
             $scope.dashHero.subheadIntro = "Begin working on ";
+
+            console.log(dashHero)
           }
         }
       })
@@ -69,7 +71,8 @@ app.controller('DashboardCtrl', function ($scope, allChallenges, PathsFactory) {
           id: 1
         }
       },
-      challengeId: 1
+      challengeId: 1,
+      pathId: 1
     };
     $scope.dashHero.headline = "Start Learning!";
     $scope.dashHero.subheadIntro = "Begin working on ";
