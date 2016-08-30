@@ -107,41 +107,34 @@ app.factory('PlantFactory', function($http, $q) {
 			returnObj.show = challengeData.complete;
 			return returnObj
 		}
-
 		for (var x = 0; x < userChallenges.length; x++) {
+			console.log("")
+			console.log("IN LOOP # ", x)
 			if (x < 2) {
+				console.log("IN X < 2")
 				levelOne.push(makeNode(userChallenges[x].data, "1", 50))
 				if (x === 1)
 					levelOne.push(firstStem)
-				if (x === userChallenges.length - 1) {
-					blossomNode.parent = "1"
-					levelOne.push(blossomNode);
-					break
-				}
-			} else if (x >= 2 && x < 4) {
+			} 
+			else if (x >= 2 && x < 4) {
+				console.log("in x>=2 x<4")
 				levelTwo.push(makeNode(userChallenges[x].data, "2", 50))
 				if (x === 3)
 					levelTwo.push(secondStem)
-				if (x === userChallenges.length - 1) {
-					blossomNode.parent = "1"
-					levelTwo.push(blossomNode);
-					break
-				}
-			} else if (x >= 4) {
-				levelThree.push(makeNode(userChallenges[x].data, 3, 35))
+				console.log("length, ", userChallenges.length)
+			} 
+			else{
+				console.log("in x>=4 && x< userChallenges.length")
+				console.log("length: ", userChallenges.length)
+				levelThree.push(makeNode(userChallenges[x].data, "3", 35))
 				if (x === 4)
 					levelThree.push(thirdStem)
-				if (x === userChallenges.length - 1) {
-					blossomNode.parent = "1"
-					levelOne.push(blossomNode);
-					break
-				}
-			}
-
-			if(x===5){
-				blossomNode.show=true;
 			}
 		}
+		blossomNode.parent = "4"
+		levelThree.push(blossomNode)
+		blossomNode.show = true;
+
 		initial.children = levelOne;
 		if (levelTwo.length > 0)
 			firstStem.children = levelTwo
@@ -186,7 +179,7 @@ app.factory('PlantFactory', function($http, $q) {
 		svg.each(function(orientation) {
 			var svg = d3.select(this);
 			var o = orientation.value;
-
+			
 			// Compute the layout.
 			var tree = d3.layout.tree().size(o.size);
 			var nodes = tree.nodes(root);
