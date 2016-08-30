@@ -12,8 +12,18 @@ ___
 ######Created by:
 
 <li>
-[Meredith Roman](https://github.com/meredithroman "meredithroman on GitHub")</li><li>
-[Dana Norwood](https://github.com/nimadera "nimadera on GitHub")</li><li>
-[Katie Buechner](https://github.com/kbuechner/ "kbuechner on GitHub")</li><li>
-[Stephanie Adams](https://github.com/earthtone0ne/ "earthtone0ne on GitHub")</li>
+Meredith Roman (
+[GitHub](https://github.com/meredithroman "meredithroman on GitHub")
+) ([https://www.linkedin.com/in/meredith-roman-ba7a2433]( "Meredith Roman on LinkedIn"))</li><li>
 
+Dana Norwood (
+[GitHub](https://github.com/nimadera "nimadera on GitHub")
+)([https://www.linkedin.com/in/dana-norwood]( "Dana Norwood on LinkedIn")) </li><li>
+
+Katie Buechner (
+[GitHub](https://github.com/kbuechner/ "kbuechner on GitHub")
+)([https://www.linkedin.com/in/katherine-buechner-b00a3a33]( "Katherine Buechner on LinkedIn"))</li><li>
+
+Stephanie Adams (
+[GitHub](https://github.com/earthtone0ne/ "earthtone0ne on GitHub")
+)([https://www.linkedin.com/in/stephanie-adams]( "Stephanie Adams on LinkedIn") )</li>
