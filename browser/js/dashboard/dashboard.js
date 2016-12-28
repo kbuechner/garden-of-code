@@ -50,10 +50,10 @@ app.controller('DashboardCtrl', function ($scope, allChallenges, PathsFactory) {
                 }
               },
               challengeId: path.challenges[i].id,
-              pathId: path.id
+              pathId: path.id,
+              headline: "Resume Learning!",
+              subheadIntro: "Begin working on "
             };
-            $scope.dashHero.headline = "Resume Learning!";
-            $scope.dashHero.subheadIntro = "Begin working on ";
           }
         }
       })
@@ -69,10 +69,10 @@ app.controller('DashboardCtrl', function ($scope, allChallenges, PathsFactory) {
           id: 1
         }
       },
-      challengeId: 1
+      challengeId: 1,
+      headline: "Start Learning!",
+      subheadIntro: "Begin working on "
     };
-    $scope.dashHero.headline = "Start Learning!";
-    $scope.dashHero.subheadIntro = "Begin working on ";
 
     return $scope.dashHero;
   }
