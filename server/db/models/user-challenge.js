@@ -4,7 +4,7 @@ var Sequelize = require('sequelize');
 var db = require('../_db');
 var Challenge = db.model('challenge');
 
-var userChallenge = db.define('user_challenge', {
+module.exports = db.define('user_challenge', {
     complete: {
         type: Sequelize.BOOLEAN,
         defaultValue: false
@@ -23,5 +23,3 @@ var userChallenge = db.define('user_challenge', {
         }
     }
 });
-
-module.exports = userChallenge;

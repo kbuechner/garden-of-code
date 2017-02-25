@@ -3,7 +3,7 @@ var Sequelize = require('sequelize');
 
 var db = require('../_db');
 
-var Challenge = db.define('challenge', {
+module.exports = db.define('challenge', {
     title: {
         type: Sequelize.STRING,
         allowNull: false
@@ -26,5 +26,3 @@ var Challenge = db.define('challenge', {
         type: Sequelize.STRING,
     }
 });
-
-module.exports = Challenge;
