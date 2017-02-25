@@ -7,6 +7,8 @@
 <p>Users select paths through which they learn new concepts to apply to coding challenges. As users complete challenges, we test their code in a  Docker instance, and use the D3.js data visualization library to generate a plant. </p>
 
 <p></p>
+####[Garden of Code demo video](https://www.gracehopper.com/student-projects/garden-of-code "See the Garden of Code demo presentation")
+
 ####[www.gardenofcode.com](http://www.gardenofcode.com "Visit Garden of Code")
 ___
 ######Created by:
@@ -24,6 +26,6 @@ Katie Buechner ([GitHub](https://github.com/kbuechner/ "kbuechner on GitHub"))
 ([LinkedIn](https://www.linkedin.com/in/katherine-buechner-b00a3a33 "Katherine Buechner on LinkedIn"))
 </li>
 <li>
-Stephanie Adams ([GitHub](https://github.com/earthtone0ne/ "earthtone0ne on GitHub"))
-([LinkedIn](https://www.linkedin.com/in/stephanie-adams "Stephanie Adams on LinkedIn"))
+Stephanie Marsh ([GitHub](https://github.com/earthtone0ne/ "earthtone0ne on GitHub"))
+([LinkedIn](https://www.linkedin.com/in/stephanie-adams "Stephanie Marsh on LinkedIn"))
 </li>
