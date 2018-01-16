@@ -1,4 +1,4 @@
-###Welcome to Garden of Code
+### Welcome to Garden of Code
 <p></p>
 <p>Garden of Code is a platform to gamify coding practice, where a user completes coding challenges to collect plants for their garden.</p>
 
@@ -7,11 +7,11 @@
 <p>Users select paths through which they learn new concepts to apply to coding challenges. As users complete challenges, we test their code in a  Docker instance, and use the D3.js data visualization library to generate a plant. </p>
 
 <p></p>
-####[Garden of Code demo video](https://www.gracehopper.com/student-projects/garden-of-code "See the Garden of Code demo presentation")
+#### [Garden of Code demo video](https://www.gracehopper.com/student-projects/garden-of-code "See the Garden of Code demo presentation")
 
-####[www.gardenofcode.com](http://www.gardenofcode.com "Visit Garden of Code")
+#### [www.gardenofcode.com](http://www.gardenofcode.com "Visit Garden of Code")
 ___
-######Created by:
+###### Created by:
 
 <li>
 Meredith Roman ([GitHub](https://github.com/meredithroman "meredithroman on GitHub"))
